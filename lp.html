@@ -35,7 +35,40 @@ header { background: #1a3a3a; padding: 14px 24px; text-align: center; }
 header a { color: #b8976a; text-decoration: none; font-size: 1.2rem; letter-spacing: 0.1em; }
 
 /* ── ヒーロー ── */
-.hero { background: #1a3a3a; padding: 52px 24px 60px; text-align: center; }
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 52px 24px 60px;
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0d2020;
+}
+
+/* slideshow */
+.hero-slide {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.4s ease-in-out;
+  will-change: opacity;
+}
+.hero-slide.active { opacity: 1; }
+.hero-slide:nth-child(1) { background-image: url('images/hero-slide1.jpg'); background-position: center 30%; }
+.hero-slide:nth-child(2) { background-image: url('images/hero-slide2.jpg'); background-position: center 25%; }
+.hero-slide:nth-child(3) { background-image: url('images/hero-slide3.jpg'); background-position: center center; }
+.hero-slide:nth-child(4) { background-image: url('images/hero-slide4.jpg'); background-position: center center; }
+.hero-slide:nth-child(5) { background-image: url('images/hero-slide5.jpg'); background-position: center center; }
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(10,25,20,0.82) 0%, rgba(10,25,20,0.70) 50%, rgba(10,25,20,0.85) 100%);
+  z-index: 1;
+}
+.hero > *:not(.hero-slide):not(.hero-overlay) { position: relative; z-index: 2; }
 
 .hero-eyebrow { color: #b8976a; font-size: 0.75rem; letter-spacing: 0.25em; margin-bottom: 24px; }
 
@@ -367,9 +400,14 @@ footer p { color: #888; font-size: 0.78rem; }
 <header><a href="index.html">Na'au Noa</a></header>
 
 <!-- ── ヒーロー ── -->
-<div class="hero" style="position:relative;">
+<div class="hero">
 
-  <div class="hero-particles" id="heroParticles"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-overlay"></div>
 
   <div style="display:inline-block;background:rgba(184,151,106,0.15);border:1px solid rgba(184,151,106,0.5);border-radius:100px;padding:8px 20px;margin-bottom:24px;font-size:0.8rem;color:#b8976a;letter-spacing:0.12em;">
     🌐 全国どこからでもオンライン（Zoom）で受けられるメンタルシフトセッション
@@ -383,11 +421,9 @@ footer p { color: #888; font-size: 0.78rem; }
   </div>
 
   <p class="hero-title">
-    <span class="line" style="font-size:0.82em;color:#c8b89a;font-weight:400;letter-spacing:0.06em;">夢や目標、やりたいことがあるけど体が動かない</span>
-    <span class="line">パニック・予期不安・自信がない・人目が気になる</span>
-    <span class="line">その自分から、最短でなりたい自分へ</span>
-    <span class="line" style="font-size:0.78em;color:#b8976a;margin-top:8px;">潜在意識アプローチ｜メンタルシフトセッション</span>
-    <span class="line" style="font-size:0.68em;color:#c8b89a;font-weight:400;letter-spacing:0.06em;">ライフデトックスコーチング</span>
+    <span class="line" style="font-size:0.82em;color:#c8b89a;font-weight:400;letter-spacing:0.06em;">パニック・予期不安・自信のなさ・人目が気になる</span>
+    <span class="line">その感情を、一瞬で手放す</span>
+    <span class="line accent">メンタルシフトセッション</span>
   </p>
 
   <!-- 個人差メッセージ -->
@@ -553,42 +589,6 @@ footer p { color: #888; font-size: 0.78rem; }
     </div>
   </div>
 
-  <!-- ライフデトックスコーチング -->
-  <div style="max-width:480px;margin:0 auto 28px;background:#1a3a3a;border-radius:16px;padding:32px 28px;box-shadow:0 4px 24px rgba(26,58,58,0.2);text-align:left;">
-    <p style="font-size:0.72rem;letter-spacing:0.18em;color:#b8976a;margin-bottom:10px;">🌿 LIFE DETOX COACHING</p>
-    <h3 style="font-family:'Noto Serif JP',serif;font-size:1.1rem;color:#f0e8d8;margin-bottom:6px;">ライフデトックスコーチング</h3>
-    <p style="font-size:0.78rem;color:#c8b89a;margin-bottom:18px;line-height:1.6;">パニック・予期不安・自信がない・人目が気になる自分から、最短でなりたい自分へ変化する潜在意識アプローチコーチング</p>
-
-    <!-- 6ヶ月プラン（メイン） -->
-    <div style="background:rgba(184,151,106,0.15);border:1px solid rgba(184,151,106,0.5);border-radius:10px;padding:16px 18px;margin-bottom:12px;">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-        <span style="background:#b8976a;color:#fff;font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:0.06em;">おすすめ</span>
-        <span style="color:#f0e8d8;font-size:0.9rem;font-weight:600;">6ヶ月プラン</span>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:8px;font-size:0.85rem;color:#c8b89a;line-height:1.7;">
-        <div style="display:flex;gap:10px;"><span style="color:#b8976a;font-weight:600;min-width:44px;">期間</span><span>約6ヶ月</span></div>
-        <div style="display:flex;gap:10px;"><span style="color:#b8976a;font-weight:600;min-width:44px;">内容</span><span>計12回のメンタルシフトセッション＋ゴールセット＋伴走サポート</span></div>
-        <div style="display:flex;gap:10px;"><span style="color:#b8976a;font-weight:600;min-width:44px;">料金</span><span style="color:#f0e8d8;">個別相談にてご案内</span></div>
-      </div>
-    </div>
-
-    <!-- 3ヶ月プラン -->
-    <div style="border:1px solid rgba(184,151,106,0.25);border-radius:10px;padding:16px 18px;">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-        <span style="color:#c8b89a;font-size:0.9rem;font-weight:600;">3ヶ月プラン</span>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:8px;font-size:0.85rem;color:#c8b89a;line-height:1.7;">
-        <div style="display:flex;gap:10px;"><span style="color:#b8976a;font-weight:600;min-width:44px;">期間</span><span>約3ヶ月</span></div>
-        <div style="display:flex;gap:10px;"><span style="color:#b8976a;font-weight:600;min-width:44px;">内容</span><span>計6回のメンタルシフトセッション＋ゴールセット＋伴走サポート</span></div>
-        <div style="display:flex;gap:10px;"><span style="color:#b8976a;font-weight:600;min-width:44px;">料金</span><span style="color:#f0e8d8;">個別相談にてご案内</span></div>
-      </div>
-    </div>
-
-    <div style="display:flex;gap:10px;margin-top:14px;font-size:0.82rem;color:#c8b89a;line-height:1.7;">
-      <span style="color:#b8976a;font-weight:600;min-width:44px;">形式</span><span>Zoom（オンライン）/ 全国対応</span>
-    </div>
-  </div>
-
   <p style="font-size:0.8rem;color:#999;margin-top:8px;">まずは無料個別相談で詳細をご確認いただけます</p>
 </div>
 
@@ -641,22 +641,17 @@ window.addEventListener('DOMContentLoaded', () => {
   }, 900);
 });
 
-/* ── ヒーロー背景パーティクル ── */
+/* ── ヒーロースライドショー ── */
 (function() {
-  const wrap = document.getElementById('heroParticles');
-  if (!wrap) return;
-  for (let i = 0; i < 18; i++) {
-    const p = document.createElement('span');
-    p.className = 'particle';
-    p.style.left     = Math.random() * 100 + '%';
-    p.style.bottom   = '-10px';
-    p.style.width    = (Math.random() * 3 + 1.5) + 'px';
-    p.style.height   = p.style.width;
-    p.style.animationDuration  = (Math.random() * 8 + 6) + 's';
-    p.style.animationDelay     = (Math.random() * 8) + 's';
-    p.style.opacity  = (Math.random() * 0.5 + 0.1).toString();
-    wrap.appendChild(p);
-  }
+  const slides = document.querySelectorAll('.hero .hero-slide');
+  if (!slides.length) return;
+  let current = 0;
+  slides[0].classList.add('active');
+  setInterval(function() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 3000);
 })();
 </script>
 
