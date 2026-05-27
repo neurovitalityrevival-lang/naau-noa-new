@@ -253,40 +253,39 @@ input, textarea, select, button,
   background-size: cover;
   background-position: center;
   opacity: 0;
-  animation: slideShow 25s ease-in-out infinite;
   will-change: opacity;
 }
 .hero-slide:nth-child(1) {
   background-image: url('images/hero-slide1.jpg');
   background-position: center 30%;
-  animation-delay: 0s;
+  animation: slideShow 25s ease-in-out 0s infinite;
 }
 .hero-slide:nth-child(2) {
   background-image: url('images/hero-slide3.jpg');
   background-position: center 25%;
-  animation-delay: 5s;
+  animation: slideShow 25s ease-in-out -20s infinite;
 }
 .hero-slide:nth-child(3) {
   background-image: url('images/hero-slide5.jpg');
   background-position: center center;
-  animation-delay: 10s;
+  animation: slideShow 25s ease-in-out -15s infinite;
 }
 .hero-slide:nth-child(4) {
   background-image: url('images/hero-slide6.jpg');
   background-position: center center;
-  animation-delay: 15s;
+  animation: slideShow 25s ease-in-out -10s infinite;
 }
 .hero-slide:nth-child(5) {
   background-image: url('images/hero-slide7.jpg');
   background-position: center center;
-  animation-delay: 20s;
+  animation: slideShow 25s ease-in-out -5s infinite;
 }
 @keyframes slideShow {
-  0%   { opacity: 0; }
-  6%   { opacity: 1; }
-  20%  { opacity: 1; }
-  26%  { opacity: 0; }
-  100% { opacity: 0; }
+  0%    { opacity: 0; }
+  5%    { opacity: 1; }
+  20%   { opacity: 1; }
+  25%   { opacity: 0; }
+  100%  { opacity: 0; }
 }
 .hero-overlay {
   position: absolute; inset: 0;
