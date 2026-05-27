@@ -130,40 +130,15 @@ a { color: inherit; text-decoration: none; }
   background-size: cover;
   background-position: center;
   opacity: 0;
+  transition: opacity 1.4s ease-in-out;
   will-change: opacity;
 }
-.hero-slide:nth-child(1) {
-  background-image: url('images/hero-slide1.jpg');
-  background-position: center 30%;
-  animation: slideShow 25s ease-in-out 0s infinite;
-}
-.hero-slide:nth-child(2) {
-  background-image: url('images/hero-slide3.jpg');
-  background-position: center 25%;
-  animation: slideShow 25s ease-in-out -20s infinite;
-}
-.hero-slide:nth-child(3) {
-  background-image: url('images/hero-slide5.jpg');
-  background-position: center center;
-  animation: slideShow 25s ease-in-out -15s infinite;
-}
-.hero-slide:nth-child(4) {
-  background-image: url('images/hero-slide6.jpg');
-  background-position: center center;
-  animation: slideShow 25s ease-in-out -10s infinite;
-}
-.hero-slide:nth-child(5) {
-  background-image: url('images/hero-slide7.jpg');
-  background-position: center center;
-  animation: slideShow 25s ease-in-out -5s infinite;
-}
-@keyframes slideShow {
-  0%    { opacity: 0; }
-  5%    { opacity: 1; }
-  20%   { opacity: 1; }
-  25%   { opacity: 0; }
-  100%  { opacity: 0; }
-}
+.hero-slide.active { opacity: 1; }
+.hero-slide:nth-child(1) { background-image: url('images/hero-slide1.jpg'); background-position: center 30%; }
+.hero-slide:nth-child(2) { background-image: url('images/hero-slide3.jpg'); background-position: center 25%; }
+.hero-slide:nth-child(3) { background-image: url('images/hero-slide5.jpg'); background-position: center center; }
+.hero-slide:nth-child(4) { background-image: url('images/hero-slide6.jpg'); background-position: center center; }
+.hero-slide:nth-child(5) { background-image: url('images/hero-slide7.jpg'); background-position: center center; }
 
 /* dark gradient overlay for text legibility */
 .hero-overlay {
@@ -1224,6 +1199,19 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-up, .fade-in').forEach(el => observer.observe(el));
+
+// Hero slideshow
+(function() {
+  const slides = document.querySelectorAll('.hero-slide');
+  if (!slides.length) return;
+  let current = 0;
+  slides[0].classList.add('active');
+  setInterval(function() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 5000);
+})();
 
 // FAQ toggle
 function toggleFaq(el) {

@@ -2,6 +2,19 @@
    Na'au Noa BODY detox — Main Script
    =================================================== */
 
+/* ----- Hero slideshow ----- */
+(function() {
+  const slides = document.querySelectorAll('.hero-slide');
+  if (!slides.length) return;
+  let current = 0;
+  slides[0].classList.add('active');
+  setInterval(function() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 5000);
+})();
+
 /* ----- Scroll-driven fade animations ----- */
 const animObserver = new IntersectionObserver(
   (entries) => {
