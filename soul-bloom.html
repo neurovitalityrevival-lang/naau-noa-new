@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>他人軸・心のブレーキを一瞬で手放し、最短で理想の人生・夢を叶える自分に還る | Soul Bloom Coaching | Na'au Noa</title>
+<meta name="description" content="他人軸・心のブレーキを一瞬で手放し、最短で理想の人生、夢を叶える自分に還るSoul Bloom Coaching。小松大将。全国オンライン対応。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2080933312746435');
+fbq('track','PageView');
+fbq('track','ViewContent',{
+  content_name: 'SoulBloomCoachingLP',
+  content_category: 'LP'
+});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2080933312746435&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
+
+<style>
+/* ===== Reset & Base ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Noto Serif JP', Georgia, serif;
+  color: #2c2c2c;
+  background: #faf8f5;
+  line-height: 1.9;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ===== Design Tokens ===== */
+:root {
+  --deep:   #1a3a3a;
+  --amber:  #b8976a;
+  --amber2: #d4a96a;
+  --ivory:  #faf8f5;
+  --sand:   #f0ebe3;
+  --text:   #2c2c2c;
+  --mid:    #555;
+  --light:  #888;
+  --plum-light: #fef6e4;
+  --plum-gold:  #f0c060;
+}
+
+/* ===== Header ===== */
+.site-header {
+  background: var(--deep);
+  padding: 14px 24px;
+  text-align: center;
+  position: sticky; top: 0; z-index: 100;
+}
+.site-header a {
+  color: var(--amber);
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+}
+.site-header span {
+  color: rgba(184,151,106,0.5);
+  margin: 0 12px;
+  font-size: 0.75rem;
+}
+
+/* ===== Hero ===== */
+.hero {
+  padding: 88px 24px 96px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* slideshow background layers */
+.hero-slide {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: slideShow 20s ease-in-out infinite;
+  will-change: opacity;
+}
+.hero-slide:nth-child(1) {
+  /* サロン勤務の女性（白いユニフォーム） */
+  background-image: url('images/hero-slide1.jpg');
+  background-position: center 30%;
+  animation-delay: 0s;
+}
+.hero-slide:nth-child(2) {
+  /* ビジネス・仕事する女性（ネイビーブレザー） */
+  background-image: url('images/hero-slide2.jpg');
+  background-position: center center;
+  animation-delay: 5s;
+}
+.hero-slide:nth-child(3) {
+  /* フリーランス・在宅ワーク女性（ブルーブラウス） */
+  background-image: url('images/hero-slide3.jpg');
+  background-position: center 25%;
+  animation-delay: 10s;
+}
+.hero-slide:nth-child(4) {
+  /* スポーツ・ジムで活躍する女性 */
+  background-image: url('images/hero-slide4.jpg');
+  background-position: center 40%;
+  animation-delay: 15s;
+}
+@keyframes slideShow {
+  0%    { opacity: 0; }
+  8%    { opacity: 1; }
+  28%   { opacity: 1; }
+  36%   { opacity: 0; }
+  100%  { opacity: 0; }
+}
+
+/* dark gradient overlay for text legibility */
+.hero-overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(10,25,20,0.72) 0%, rgba(10,25,20,0.55) 50%, rgba(10,25,20,0.75) 100%);
+  z-index: 1;
+}
+/* brand color tint layer */
+.hero-tint {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(184,151,106,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 30%, rgba(220,160,120,0.1) 0%, transparent 50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* sparkle elements */
+.hero-sparks { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 3; }
+.spark {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,240,200,0.95) 0%, transparent 70%);
+  animation: sparkle ease-in-out infinite;
+}
+@keyframes sparkle {
+  0%,100% { opacity: 0; transform: scale(0.4); }
+  50%      { opacity: 0.9; transform: scale(1.6); }
+}
+
+/* hero headline */
+.hero .hero-resolve {
+  color: #fff;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+}
+.hero .hero-resolve .gold {
+  color: #f0cc70;
+  text-shadow: 0 0 32px rgba(240,200,80,0.5);
+}
+
+
+.hero-eyebrow {
+  color: var(--amber);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display: block;
+}
+
+.hero-pain {
+  color: #fff;
+  font-size: clamp(1.05rem, 4vw, 1.4rem);
+  line-height: 2.0;
+  font-weight: 600;
+  margin-bottom: 36px;
+  padding: 0 8px;
+}
+.hero-pain em {
+  font-style: normal;
+  color: var(--amber2);
+}
+.hero-pain .block {
+  display: block;
+  opacity: 0;
+  transform: translateY(22px);
+  animation: lineIn 0.75s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.hero-pain .block:nth-child(1) { animation-delay: 0.15s; }
+.hero-pain .block:nth-child(2) { animation-delay: 0.35s; }
+.hero-pain .block:nth-child(3) { animation-delay: 0.55s; }
+.hero-pain .block:nth-child(4) { animation-delay: 0.75s; }
+.hero-pain .block:nth-child(5) { animation-delay: 0.95s; }
+.hero-pain .block:nth-child(6) { animation-delay: 1.15s; }
+@keyframes lineIn { to { opacity: 1; transform: translateY(0); } }
+
+.hero-divider {
+  width: 48px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--amber), transparent);
+  margin: 0 auto 36px;
+  opacity: 0;
+  animation: lineIn 0.6s ease 1.4s forwards;
+}
+
+.hero-resolve {
+  color: #fff;
+  font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: lineIn 0.8s cubic-bezier(0.22,1,0.36,1) 1.6s forwards;
+}
+.hero-resolve .gold { color: var(--amber2); }
+
+.hero-badge {
+  display: inline-block;
+  border: 1px solid rgba(184,151,106,0.45);
+  color: var(--amber);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  padding: 7px 20px;
+  border-radius: 50px;
+  margin-bottom: 36px;
+  opacity: 0;
+  animation: lineIn 0.6s ease 2.0s forwards;
+}
+
+/* CTA Button */
+.cta-btn {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto 12px;
+  background: linear-gradient(135deg, #c9a870, #e8c080, #b8976a);
+  background-size: 200% 200%;
+  color: #fff;
+  padding: 22px 20px;
+  border-radius: 18px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1rem, 3.5vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+  box-shadow: 0 8px 40px rgba(184,151,106,0.55), inset 0 1px 0 rgba(255,255,255,0.2);
+  animation: ctaFloat 2.8s ease-in-out infinite, ctaGlow 2.8s ease-in-out infinite;
+  position: relative;
+  overflow: clip;
+  cursor: pointer;
+}
+.cta-btn::before {
+  content: '';
+  position: absolute; top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.28), transparent);
+  animation: ctaShine 2.8s ease-in-out infinite;
+}
+.cta-btn:hover {
+  animation: none;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 56px rgba(184,151,106,0.7);
+}
+@keyframes ctaFloat {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
+}
+@keyframes ctaGlow {
+  0%,100% { box-shadow: 0 8px 40px rgba(184,151,106,0.55), inset 0 1px 0 rgba(255,255,255,0.2); }
+  50%      { box-shadow: 0 16px 56px rgba(184,151,106,0.72), inset 0 1px 0 rgba(255,255,255,0.2); }
+}
+@keyframes ctaShine {
+  0%       { left: -100%; }
+  40%,100% { left: 160%; }
+}
+
+.cta-note { color: rgba(200,184,154,0.75); font-size: 0.78rem; letter-spacing: 0.05em; margin-top: 10px; }
+.slots {
+  display: inline-block;
+  background: rgba(184,151,106,0.15);
+  border: 1px solid rgba(184,151,106,0.5);
+  color: var(--amber);
+  font-size: 0.8rem;
+  padding: 6px 20px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(184,151,106,0.3); }
+  50%      { opacity: 0.85; box-shadow: 0 0 0 6px rgba(184,151,106,0); }
+}
+
+/* ===== Sections Common ===== */
+.section { padding: 80px 24px; }
+.inner { max-width: 720px; margin: 0 auto; }
+.sec-label {
+  color: var(--amber);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  margin-bottom: 10px;
+}
+.sec-title {
+  color: var(--deep);
+  font-size: clamp(1.2rem, 3.8vw, 1.65rem);
+  font-weight: 700;
+  line-height: 1.75;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.sec-title .gold { color: var(--amber); }
+
+/* ===== Empathy — 共感 ===== */
+.empathy { background: var(--sand); }
+.empathy-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+.empathy-list li {
+  background: #fff;
+  border-left: 4px solid var(--amber);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 20px;
+  font-size: 0.93rem;
+  line-height: 1.85;
+  color: var(--text);
+}
+.empathy-list li::before {
+  content: '✦ ';
+  color: var(--amber);
+  font-size: 0.75rem;
+}
+.empathy-close {
+  text-align: center;
+  font-size: 1.05rem;
+  color: var(--deep);
+  font-weight: 600;
+  line-height: 1.9;
+  padding: 28px 0 0;
+}
+.empathy-close em { font-style: italic; color: var(--amber); }
+
+/* ===== Reveal — Soul Bloom ===== */
+.reveal { background: var(--deep); padding: 80px 24px; text-align: center; }
+.reveal .inner { max-width: 680px; }
+.plumeria-wrap { margin: 0 auto 36px; width: 110px; height: 110px; }
+.plumeria-wrap svg { filter: drop-shadow(0 4px 24px rgba(240,192,96,0.4)); }
+.reveal-pre { color: rgba(200,184,154,0.8); font-size: 0.9rem; line-height: 1.9; margin-bottom: 28px; }
+.program-name-en {
+  color: var(--amber2);
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+.program-name-ja {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 32px;
+}
+.reveal-desc {
+  color: rgba(220,204,180,0.9);
+  font-size: 0.95rem;
+  line-height: 2.1;
+  margin-bottom: 40px;
+  text-align: left;
+}
+.reveal-desc strong { color: var(--amber2); font-weight: 600; }
+
+/* ===== For You — こんな方へ ===== */
+.foryou { background: #fff; }
+.foryou-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+@media (max-width: 580px) { .foryou-grid { grid-template-columns: 1fr; } }
+.foryou-card {
+  background: var(--sand);
+  border-radius: 12px;
+  padding: 20px 18px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.foryou-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+.foryou-text { font-size: 0.88rem; line-height: 1.8; color: var(--text); }
+
+/* ===== Not For You — 向いていない方 ===== */
+.not-foryou { background: #f5f0e8; padding: 60px 24px; }
+.not-foryou .inner { max-width: 680px; }
+.not-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.not-list li {
+  background: rgba(200,60,60,0.07);
+  border: 1px solid rgba(200,60,60,0.2);
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 0.87rem;
+  color: #6b3030;
+  line-height: 1.7;
+}
+.not-list li::before { content: '✕ '; opacity: 0.7; }
+
+/* ===== Story ===== */
+.story { background: var(--sand); }
+.story-body { font-size: 0.95rem; line-height: 2.2; color: var(--text); }
+.story-body p { margin-bottom: 22px; }
+.story-body strong { color: var(--deep); font-weight: 600; }
+.story-body em { font-style: italic; color: var(--amber); }
+
+/* ===== Method — 4 Pillars ===== */
+.method { background: #fff; }
+.pillars { display: flex; flex-direction: column; gap: 20px; margin-bottom: 36px; }
+.pillar {
+  background: var(--ivory);
+  border-radius: 14px;
+  padding: 24px 22px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  border: 1px solid rgba(184,151,106,0.15);
+}
+.pillar-num {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--amber), var(--amber2));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.pillar-body h3 {
+  color: var(--deep);
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: 0.03em;
+}
+.pillar-body p { font-size: 0.85rem; color: var(--mid); line-height: 1.85; }
+
+/* ===== Program Contents ===== */
+.contents { background: var(--sand); }
+.plan-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 28px rgba(26,58,58,0.08);
+  border-top: 4px solid var(--amber);
+}
+.plan-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.plan-duration {
+  background: rgba(184,151,106,0.12);
+  border: 1px solid rgba(184,151,106,0.35);
+  color: var(--amber);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  padding: 5px 14px;
+  border-radius: 50px;
+}
+.plan-card h3 {
+  color: var(--deep);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.plan-card-body { font-size: 0.87rem; color: var(--mid); line-height: 1.9; }
+.plan-includes { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+.plan-includes li { display: flex; align-items: flex-start; gap: 10px; }
+.plan-includes li::before {
+  content: '✦';
+  color: var(--amber);
+  font-size: 0.7rem;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+.plan-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  color: rgba(184,151,106,0.8);
+  background: rgba(184,151,106,0.08);
+  border: 1px solid rgba(184,151,106,0.2);
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-top: 14px;
+  letter-spacing: 0.05em;
+}
+.plan-note {
+  font-size: 0.78rem;
+  color: var(--light);
+  line-height: 1.8;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(184,151,106,0.15);
+}
+.plan-custom {
+  background: linear-gradient(135deg, rgba(26,58,58,0.04), rgba(184,151,106,0.06));
+  border: 1px dashed rgba(184,151,106,0.35);
+  border-radius: 12px;
+  padding: 20px 22px;
+  font-size: 0.87rem;
+  color: var(--mid);
+  line-height: 1.85;
+  margin-top: 8px;
+}
+.plan-custom strong { color: var(--deep); }
+
+/* ===== Value Stack ===== */
+.value-stack { background: var(--deep); padding: 80px 24px; }
+.value-stack .inner { max-width: 680px; }
+.value-stack .sec-title { color: #fff; }
+.value-stack .sec-label { color: var(--amber); }
+.vs-items { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+.vs-item {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(184,151,106,0.2);
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.vs-label { color: rgba(220,204,180,0.9); font-size: 0.88rem; flex: 1; line-height: 1.5; }
+.vs-price {
+  color: var(--amber2);
+  font-size: 0.95rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.vs-total {
+  background: rgba(184,151,106,0.12);
+  border: 1px solid rgba(184,151,106,0.35);
+  border-radius: 12px;
+  padding: 22px 24px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.vs-total-label { color: rgba(200,184,154,0.7); font-size: 0.8rem; letter-spacing: 0.2em; margin-bottom: 8px; }
+.vs-total-price { color: var(--amber2); font-size: clamp(1.5rem, 5vw, 2rem); font-weight: 700; }
+.vs-arrow {
+  text-align: center;
+  color: rgba(200,184,154,0.5);
+  font-size: 1.4rem;
+  margin: 0 0 20px;
+}
+.vs-offer {
+  text-align: center;
+  padding: 28px;
+  background: rgba(184,151,106,0.08);
+  border: 1px solid rgba(184,151,106,0.3);
+  border-radius: 14px;
+}
+.vs-offer-label { color: rgba(200,184,154,0.7); font-size: 0.78rem; letter-spacing: 0.2em; margin-bottom: 10px; }
+.vs-offer-name { color: #fff; font-size: 1rem; margin-bottom: 20px; letter-spacing: 0.05em; }
+.vs-plans { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 480px) { .vs-plans { grid-template-columns: 1fr; } }
+.vs-plan {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(184,151,106,0.25);
+  border-radius: 12px;
+  padding: 20px 16px;
+  text-align: center;
+}
+.vs-plan-dur { color: rgba(200,184,154,0.7); font-size: 0.75rem; letter-spacing: 0.15em; margin-bottom: 6px; }
+.vs-plan-regular { color: rgba(150,136,128,0.6); font-size: 0.8rem; text-decoration: line-through; margin-bottom: 4px; }
+.vs-plan-limited { color: var(--amber2); font-size: 1.35rem; font-weight: 700; margin-bottom: 6px; }
+.vs-plan-deadline {
+  display: inline-block;
+  background: rgba(232,192,128,0.15);
+  border: 1px solid rgba(232,192,128,0.4);
+  color: var(--amber);
+  font-size: 0.7rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  letter-spacing: 0.1em;
+}
+.vs-footnote { color: rgba(150,136,128,0.7); font-size: 0.75rem; text-align: center; margin-top: 14px; line-height: 1.7; }
+
+/* ===== Testimonials ===== */
+.testimonials { background: var(--ivory); }
+.review-grid { display: flex; flex-direction: column; gap: 24px; }
+.review-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  border-left: 4px solid var(--amber);
+}
+.review-stars { color: var(--amber); font-size: 0.95rem; letter-spacing: 2px; margin-bottom: 12px; }
+.review-text { font-size: 0.9rem; color: #444; line-height: 2.1; margin-bottom: 14px; font-style: italic; }
+.review-meta { font-size: 0.8rem; color: var(--amber); font-weight: 600; }
+
+/* ===== DM Screenshots ===== */
+.dm-section { background: var(--sand); }
+.dm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 8px; }
+@media (max-width: 600px) { .dm-grid { grid-template-columns: 1fr; } }
+.dm-grid img { border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+
+/* ===== FAQ ===== */
+.faq { background: #fff; }
+.faq-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid rgba(184,151,106,0.2); }
+.faq-item { border-bottom: 1px solid rgba(184,151,106,0.2); }
+.faq-q {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 12px;
+  padding: 20px 4px;
+  cursor: pointer;
+  color: var(--deep);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.7;
+}
+.faq-q-icon {
+  color: var(--amber);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+  margin-top: 2px;
+}
+.faq-item.open .faq-q-icon { transform: rotate(45deg); }
+.faq-a {
+  display: none;
+  font-size: 0.87rem;
+  color: var(--mid);
+  line-height: 2.0;
+  padding: 0 4px 20px;
+}
+.faq-item.open .faq-a { display: block; }
+.faq-q-prefix { color: var(--amber); font-size: 0.8rem; margin-right: 8px; letter-spacing: 0.1em; }
+
+/* ===== Final CTA ===== */
+.final-cta { background: linear-gradient(160deg, #0d1f1f 0%, #1a3a3a 60%, #0d2020 100%); padding: 88px 24px; text-align: center; }
+.final-cta .inner { max-width: 640px; }
+.final-cta h2 { color: #fff; font-size: clamp(1.2rem, 4vw, 1.65rem); line-height: 1.75; margin-bottom: 14px; font-weight: 700; }
+.final-cta p { color: rgba(200,184,154,0.85); font-size: 0.9rem; margin-bottom: 40px; line-height: 2.0; }
+
+/* ===== Footer ===== */
+footer { background: #0d2020; padding: 28px 24px; text-align: center; }
+footer p { color: rgba(150,136,128,0.7); font-size: 0.76rem; line-height: 1.8; }
+footer a { color: var(--amber); }
+
+/* ===== VSL / Video ===== */
+.vsl-wrap { max-width: 720px; margin: 0 auto; }
+.vsl-container {
+  position: relative; padding-top: 56.25%;
+  background: #0d2020; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+.vsl-container iframe {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+}
+
+/* ===== Scroll animations ===== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.85s cubic-bezier(0.22,1,0.36,1), transform 0.85s cubic-bezier(0.22,1,0.36,1);
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-in { opacity: 0; transition: opacity 1.1s ease; }
+.fade-in.visible { opacity: 1; }
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <a href="index.html">Na'au Noa BODY detox</a>
+  <span>|</span>
+  <a href="#final-cta" style="font-size:0.82rem; letter-spacing:0.1em;">無料相談を予約する ▶</a>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="hero">
+
+  <!-- slideshow background photos -->
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+
+  <!-- overlays -->
+  <div class="hero-overlay"></div>
+  <div class="hero-tint"></div>
+
+  <!-- sparkles -->
+  <div class="hero-sparks" id="sparkContainer"></div>
+
+  <div class="inner" style="position:relative; z-index:4;">
+
+    <!-- program badge top -->
+    <div style="margin-bottom:24px; opacity:0; animation:lineIn 0.7s ease 0.1s forwards;">
+      <span style="display:inline-block; background:linear-gradient(135deg,rgba(255,180,160,0.2),rgba(255,220,120,0.2)); border:1px solid rgba(255,200,160,0.45); color:rgba(255,220,190,0.95); font-size:0.72rem; letter-spacing:0.2em; padding:7px 22px; border-radius:50px;">🌸 Soul Bloom Coaching — 魂を咲かせる</span>
+    </div>
+
+    <p class="hero-resolve" style="margin-top:0;">
+      他人軸・心のブレーキを一瞬で手放し、<br>
+      <span class="gold">最短で理想の人生、夢を叶える自分に還る。</span>
+    </p>
+
+    <p style="color:rgba(240,228,210,0.92); font-size:0.95rem; line-height:2.05; margin-bottom:28px; opacity:0; animation:lineIn 0.8s ease 0.6s forwards;">
+      パニックや予期不安、他者基準のループ——<br>
+      それはあなたが、本来の姿に戻ろうとしているサインです。<br><br>
+      <strong style="color:#f5d87a;">「症状を消す」ではなく「本当の自分で生きる」</strong>ことを目指す、<br>
+      完全オーダーメイドのコーチングプログラムです。
+    </p>
+
+    <div style="background:linear-gradient(135deg,rgba(255,180,160,0.12),rgba(255,220,120,0.08)); border:1px solid rgba(255,200,160,0.3); border-radius:14px; padding:22px 26px; margin:0 auto 20px; max-width:580px; font-size:0.9rem; color:rgba(255,230,210,0.95); line-height:2.0; text-align:left; opacity:0; animation:lineIn 0.8s ease 0.9s forwards;">
+      <strong style="color:#f5d87a; display:block; margin-bottom:8px; font-size:0.95rem;">✨ 米国最新脳科学に基づいた強力な成功マインドセットコーチング。</strong>
+      潜在意識に潜むあなたの行動をブロックしている思い込み、信じてしまっている不要なものを消去し、理想の信念と価値観、感覚と感情をセッティングします。
+    </div>
+
+    <div style="background:linear-gradient(135deg,rgba(255,160,180,0.1),rgba(200,140,220,0.08)); border:1px solid rgba(255,180,200,0.25); border-radius:14px; padding:18px 24px; margin:0 auto 36px; max-width:580px; font-size:0.87rem; color:rgba(255,220,200,0.88); line-height:1.9; opacity:0; animation:lineIn 0.8s ease 1.1s forwards;">
+      <strong style="color:#fff; display:block; margin-bottom:8px;">🌺 これは、ただのコーチングではありません。</strong>
+      起業・フリーランスで自由に働きたい、身体の不調をライフスタイルから変えたい、<br>
+      スポーツや音楽で結果を出したい、もっと活躍したい——<br>
+      あなたの「本当のゴール」に合わせて、プログラムをカスタマイズします。<br>
+      <span style="color:rgba(255,200,160,0.6); font-size:0.8rem;">神奈川・茅ヶ崎発、全国どこからでもオンライン（Zoom）対応。</span>
+    </div>
+
+    <div style="max-width:540px; margin:0 auto; text-align:center; opacity:0; animation:lineIn 0.7s ease 1.4s forwards;">
+      <p class="slots">✦ 6月の無料オンライン夢を叶える相談 — 残り7名</p>
+      <button class="cta-btn" onclick="handleCTA()">
+        私の悩みと理想の将来について相談する
+      </button>
+      <p class="cta-note">✔ 完全オンライン（Zoom）で受けられます｜全国対応</p>
+      <p style="color:rgba(200,184,154,0.6); font-size:0.76rem; margin-top:4px;">茅ヶ崎に来なくてもOK。どこからでも参加できます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Empathy Section ===== -->
+<section class="section empathy" id="empathy">
+  <div class="inner">
+    <span class="sec-label fade-up">RESONANCE</span>
+    <h2 class="sec-title fade-up">こんなこと、感じていませんか？</h2>
+
+    <ul class="empathy-list">
+      <li class="fade-up">仕事や予定の前日から胸が重くなり、当日の朝が来るのが怖い</li>
+      <li class="fade-up delay-1">動悸・めまい・息苦しさが出て、頑張ろうとするほど体がブレーキをかける</li>
+      <li class="fade-up delay-2">「また迷惑をかけてしまった」「自分さえ我慢すれば」が口ぐせになっている</li>
+      <li class="fade-up delay-3">人の目が気になってNoが言えない。与えすぎて自分が空っぽになる</li>
+      <li class="fade-up delay-4">本当の自分が何をしたいのか、何が好きなのかわからなくなった</li>
+      <li class="fade-up">単価を上げたい、自由に働きたい——でも罪悪感と恐怖で一歩が出ない</li>
+      <li class="fade-up delay-1">薬やカウンセリングを試した。でも、根本が何も変わっていない気がする</li>
+      <li class="fade-up delay-2">他の潜在意識の書き換えセッションを受けたが、効果を感じられなかった</li>
+    </ul>
+
+    <p class="empathy-close fade-up">
+      それは心の問題じゃない。<br>
+      <em>潜在意識に刻まれたパターン</em>が、あなたを縛っているだけ。<br><br>
+      そのパターンを、<em>エネルギー技法を使って潜在意識レベルから書き換えると</em>——<br>
+      同じ状況でも、体の反応が変わる。<br>
+      呼吸が深くなる。行動が変わる。人生が動き出す。
+    </p>
+  </div>
+</section>
+
+<!-- ===== Voice / DM + Videos ===== -->
+<section class="section" id="voice" style="background:var(--sand); padding:72px 24px;">
+  <div class="inner">
+    <span class="sec-label fade-up">VOICE</span>
+    <h2 class="sec-title fade-up">セッションを受けた方の声</h2>
+
+    <!-- DM画像 -->
+    <div class="dm-grid fade-up" style="margin-bottom:40px;">
+      <img src="images/voice-dm3.jpg" alt="お客様の声 DM1" style="border-radius:8px; box-shadow:0 2px 12px rgba(0,0,0,0.1);">
+      <img src="images/voice-dm2.jpg" alt="お客様の声 DM2" style="border-radius:8px; box-shadow:0 2px 12px rgba(0,0,0,0.1);">
+      <img src="images/voice-dm1.jpg" alt="お客様の声 DM3" style="border-radius:8px; box-shadow:0 2px 12px rgba(0,0,0,0.1);">
+    </div>
+
+    <!-- 体感動画 -->
+    <div class="vsl-wrap scale-in" style="margin-bottom:28px;">
+      <div class="vsl-container">
+        <iframe src="https://www.youtube.com/embed/hu3XCLP9i3E?rel=0&modestbranding=1" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="vsl-wrap scale-in" style="margin-bottom:28px;">
+      <div class="vsl-container">
+        <iframe src="https://www.youtube.com/embed/TZyw7Aa0KrA?rel=0&modestbranding=1" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="vsl-wrap scale-in" style="margin-bottom:28px;">
+      <div class="vsl-container">
+        <iframe src="https://www.youtube.com/embed/TnvdSDjRfWQ?rel=0&modestbranding=1" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="vsl-wrap scale-in" style="margin-bottom:0;">
+      <div class="vsl-container">
+        <iframe src="https://www.youtube.com/embed/rwn5CDWlXbM?rel=0&modestbranding=1" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== For You ===== -->
+<section class="section foryou" id="foryou">
+  <div class="inner">
+    <span class="sec-label fade-up">FOR YOU</span>
+    <h2 class="sec-title fade-up">こんな方のためのプログラムです</h2>
+
+    <div class="foryou-grid">
+      <div class="foryou-card fade-up">
+        <div class="foryou-icon">🌸</div>
+        <p class="foryou-text">パニック・予期不安・過呼吸が出て、行動が制限されている</p>
+      </div>
+      <div class="foryou-card fade-up delay-1">
+        <div class="foryou-icon">🌿</div>
+        <p class="foryou-text">与えすぎて疲弊している。自分の感情よりも相手を優先してしまう</p>
+      </div>
+      <div class="foryou-card fade-up delay-2">
+        <div class="foryou-icon">✨</div>
+        <p class="foryou-text">起業・副業・単価アップを目指しているが、罪悪感や恐怖で動けない</p>
+      </div>
+      <div class="foryou-card fade-up delay-3">
+        <div class="foryou-icon">🏆</div>
+        <p class="foryou-text">スポーツや目標達成で、本番に弱い・自分を信じられない・メンタルが課題</p>
+      </div>
+      <div class="foryou-card fade-up">
+        <div class="foryou-icon">💫</div>
+        <p class="foryou-text">「本当の自分らしさ」を取り戻して、自由で豊かな人生を歩みたい</p>
+      </div>
+      <div class="foryou-card fade-up delay-1">
+        <div class="foryou-icon">🌺</div>
+        <p class="foryou-text">スピリチュアリティを大切にしつつ、現実を着実に変えたい</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Not For You ===== -->
+<section class="not-foryou fade-up">
+  <div class="inner">
+    <span class="sec-label" style="color:#b06060; text-align:center; display:block; margin-bottom:10px; font-size:0.7rem; letter-spacing:0.3em;">NOT FOR YOU</span>
+    <h2 class="sec-title" style="color:#6b3030; font-size:clamp(1rem, 3vw, 1.3rem); margin-bottom:22px;">このプログラムに向いていない方</h2>
+    <ul class="not-list">
+      <li>誰かに変えてもらうことを期待していて、自分では行動したくない方</li>
+      <li>悲劇のヒロインのように悲観グセが激しい方</li>
+      <li>自分の理想の将来に自己投資する度胸と勇気のない方</li>
+      <li>自分の課題を深く見つめることが怖く、現状に留まることを選びたい方</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ===== 4 Pillars ===== -->
+<section class="section method" id="method">
+  <div class="inner">
+    <span class="sec-label fade-up">METHOD</span>
+    <h2 class="sec-title fade-up">Soul Bloom Coachingの<span class="gold">4つの柱</span></h2>
+
+    <div class="pillars">
+      <div class="pillar fade-up">
+        <div class="pillar-num">1</div>
+        <div class="pillar-body">
+          <h3>潜在意識の書き換え（メンタルシフトセッション × コーチング）</h3>
+          <p>潜在意識レベルからパターンを更新。パニックや予期不安、他者基準の根本にある「ブロック」を体感レベルで解除していきます。</p>
+        </div>
+      </div>
+      <div class="pillar fade-up delay-1">
+        <div class="pillar-num">2</div>
+        <div class="pillar-body">
+          <h3>ゴール設定 × 現実設計</h3>
+          <p>「本当に叶えたい未来」を言語化し、そこへの最短ルートを設計。ビジネス・スポーツ・人間関係・身体——あなたのゴールに合わせてカスタマイズします。</p>
+        </div>
+      </div>
+      <div class="pillar fade-up delay-2">
+        <div class="pillar-num">3</div>
+        <div class="pillar-body">
+          <h3>自己基準の確立（他者軸→自分軸）</h3>
+          <p>与えすぎる・顔色を窺う・Noが言えない——他者基準の癖を手放し、自分の内側からゴールへ動けるメンタル基盤をつくります。</p>
+        </div>
+      </div>
+      <div class="pillar fade-up delay-3">
+        <div class="pillar-num">4</div>
+        <div class="pillar-body">
+          <h3>継続サポート × 環境設計</h3>
+          <p>セッション間のLINEサポートと宿題・振り返りで、日常の中にゴールへ向かうリズムをつくります。一人で抱え込まない体制で伴走します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Program Contents ===== -->
+<section class="section contents" id="contents">
+  <div class="inner">
+    <span class="sec-label fade-up">PROGRAM</span>
+    <h2 class="sec-title fade-up">プログラム内容</h2>
+
+    <!-- 3ヶ月 -->
+    <div class="plan-card fade-up">
+      <div class="plan-card-header">
+        <span class="plan-duration">3ヶ月プラン</span>
+        <h3>魂から変わる・完全伴走コース</h3>
+      </div>
+      <div class="plan-card-body">
+        <ul class="plan-includes">
+          <li>メンタルシフトセッション（60分 × 月2回 × 3ヶ月）</li>
+          <li>セッション間LINEサポート（平日対応）</li>
+          <li>ゴール設定 × 現実設計ワークシート（オーダーメイド）</li>
+          <li>理想の顧客の設定とオファー設計</li>
+          <li>理想の顧客とご縁を繋げるSNS集客術・発信術</li>
+          <li>お金のメンタルブロック解除</li>
+          <li>単価2倍アップ戦略・自分の天才性を発揮する事業設計</li>
+        </ul>
+        <span class="plan-tag">※ビジネス・起業向けの基本プラン例です</span>
+        <p class="plan-note">※スポーツ・目標達成・フィジカルサポートなど、ビジネス以外のご相談もオーダーメイドで対応。<br>※プログラム内容・期間・回数はご相談の上カスタマイズします。</p>
+      </div>
+    </div>
+
+    <!-- カスタム -->
+    <div class="plan-custom fade-up delay-2">
+      <strong>🌺 オーダーメイド対応について</strong><br>
+      スポーツのメンタルコーチング、目標達成に向けた潜在意識ブロックの解除、フィジカル面のサポート、人間関係・恋愛の再構築など——ビジネス以外のゴールにも、あなたに必要なものをセットにしてプログラムをカスタマイズします。まずは無料相談でご相談ください。
+    </div>
+  </div>
+</section>
+
+<!-- ===== Value Stack ===== -->
+<section class="value-stack" id="value">
+  <div class="inner">
+    <span class="sec-label fade-up">VALUE</span>
+    <h2 class="sec-title fade-up" style="color:#fff;">ビジネス・起業目的で<br><span style="color:var(--amber2);">一般的サービスをバラバラに受けた場合</span>の総額例</h2>
+
+    <p style="color:rgba(200,184,154,0.7); font-size:0.8rem; text-align:center; margin-bottom:24px; letter-spacing:0.05em;" class="fade-up">サロン・エステ・フリーランス起業を本気でやる場合に支払う費用の目安</p>
+
+    <div class="vs-items">
+      <div class="vs-item fade-up">
+        <span class="vs-label">
+          起業塾・事業設計プログラム<br>
+          <span style="font-size:0.78rem; color:rgba(184,151,106,0.6);">※市場相場</span>
+        </span>
+        <span class="vs-price">約50〜100万円</span>
+      </div>
+      <div class="vs-item fade-up delay-1">
+        <span class="vs-label">
+          集客術・マーケティングコーチング<br>
+          <span style="font-size:0.78rem; color:rgba(184,151,106,0.6);">※市場相場</span>
+        </span>
+        <span class="vs-price">約30〜50万円</span>
+      </div>
+      <div class="vs-item fade-up delay-2">
+        <span class="vs-label">
+          SNS発信・ライティング講座<br>
+          <span style="font-size:0.78rem; color:rgba(184,151,106,0.6);">※市場相場</span>
+        </span>
+        <span class="vs-price">約10〜30万円</span>
+      </div>
+      <div class="vs-item fade-up delay-3">
+        <span class="vs-label">
+          潜在意識専門書き換えプログラム（別途）<br>
+          <span style="font-size:0.78rem; color:rgba(184,151,106,0.6);">※市場相場</span>
+        </span>
+        <span class="vs-price">約30〜60万円</span>
+      </div>
+    </div>
+
+    <div class="vs-total fade-up delay-1">
+      <p class="vs-total-label">バラバラに受けた場合の合計目安</p>
+      <p class="vs-total-price">約120〜240万円相当</p>
+      <p style="color:rgba(184,151,106,0.55); font-size:0.75rem; margin-top:8px;">※各サービスの市場相場をもとにした目安金額です</p>
+    </div>
+
+    <div class="vs-arrow fade-up">↓</div>
+
+    <div class="vs-offer fade-up delay-1">
+      <p class="vs-offer-label">SOUL BLOOM COACHING — これを1つのプログラムで</p>
+      <p class="vs-offer-name">🌸 6月30日まで期間限定価格</p>
+
+      <div class="vs-plans">
+        <div class="vs-plan">
+          <p class="vs-plan-dur">6ヶ月プラン</p>
+          <p class="vs-plan-regular">通常 ¥600,000</p>
+          <p class="vs-plan-limited">¥500,000</p>
+          <span class="vs-plan-deadline">6/30まで</span>
+        </div>
+        <div class="vs-plan">
+          <p class="vs-plan-dur">3ヶ月プラン</p>
+          <p class="vs-plan-regular">通常 ¥300,000</p>
+          <p class="vs-plan-limited">¥250,000</p>
+          <span class="vs-plan-deadline">6/30まで</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="vs-footnote fade-up">※金額・プラン内容・期間等はご相談承ります。お気軽にどうぞ。<br>※分割払い・各種お支払い方法もご相談可能です。</p>
+  </div>
+</section>
+
+
+<!-- ===== FAQ ===== -->
+<section class="section faq" id="faq">
+  <div class="inner">
+    <span class="sec-label fade-up">FAQ</span>
+    <h2 class="sec-title fade-up">よくある質問</h2>
+
+    <div class="faq-list fade-up">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="faq-q-prefix">Q.</span>パニック障害と診断されています。受けられますか？</span>
+          <span class="faq-q-icon">＋</span>
+        </div>
+        <div class="faq-a">はい、ご受講いただけます。ただし、現在主治医の指示のもとで治療中の方は、事前にご相談ください。このプログラムは医療行為ではなく、潜在意識の書き換えと行動変容を目的としたコーチングです。症状の治療・診断・処方は行いません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="faq-q-prefix">Q.</span>ビジネスをしていなくてもOKですか？</span>
+          <span class="faq-q-icon">＋</span>
+        </div>
+        <div class="faq-a">もちろんです。ビジネスや起業はあくまで「基本プランの例」です。スポーツのメンタル強化、目標達成、人間関係の改善、身体の不調のライフスタイル改善など、あなたの「本当のゴール」に合わせてオーダーメイドでプログラムをつくります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="faq-q-prefix">Q.</span>全国どこからでも受けられますか？</span>
+          <span class="faq-q-icon">＋</span>
+        </div>
+        <div class="faq-a">はい。全セッションZoom（オンライン）で行います。北海道・沖縄・海外在住の方もご受講いただいています。スマートフォン1台あればOKです。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="faq-q-prefix">Q.</span>分割払いはできますか？</span>
+          <span class="faq-q-icon">＋</span>
+        </div>
+        <div class="faq-a">はい、分割払いのご相談も承っています。無料オンライン夢を叶える相談の際にお気軽にお伝えください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="faq-q-prefix">Q.</span>まずどんな相談をすればいいですか？</span>
+          <span class="faq-q-icon">＋</span>
+        </div>
+        <div class="faq-a">無料オンライン夢を叶える相談では「今、何に困っているか」「どんな未来を目指したいか」を一緒に整理します。売り込みは一切しません。まず「自分に合うかどうか」を確認する場としてご活用ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="faq-q-prefix">Q.</span>どれくらいで変化を感じられますか？</span>
+          <span class="faq-q-icon">＋</span>
+        </div>
+        <div class="faq-a">多くの方が初回〜3回目のセッションで「体が軽くなった」「呼吸が変わった」という変化を体感されています。根本的なパターンの書き換えには3〜6ヶ月が目安ですが、個人差があります。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Final CTA ===== -->
+<section class="final-cta" id="final-cta">
+  <div class="inner">
+    <div class="plumeria-wrap" style="margin:0 auto 28px; width:72px; height:72px;">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="72" height="72">
+        <g transform="translate(60,60)">
+          <ellipse cx="0" cy="-28" rx="13" ry="23" fill="#fef6e4" transform="rotate(0)" opacity="0.9"/>
+          <ellipse cx="0" cy="-28" rx="13" ry="23" fill="#fde8b8" transform="rotate(72)" opacity="0.85"/>
+          <ellipse cx="0" cy="-28" rx="13" ry="23" fill="#fef6e4" transform="rotate(144)" opacity="0.9"/>
+          <ellipse cx="0" cy="-28" rx="13" ry="23" fill="#fde8b8" transform="rotate(216)" opacity="0.85"/>
+          <ellipse cx="0" cy="-28" rx="13" ry="23" fill="#fef6e4" transform="rotate(288)" opacity="0.9"/>
+          <circle cx="0" cy="0" r="13" fill="#f0c060"/>
+          <circle cx="0" cy="0" r="8" fill="#e8a020"/>
+          <circle cx="0" cy="0" r="4" fill="#c87810"/>
+        </g>
+      </svg>
+    </div>
+
+    <h2 class="fade-up">他人軸・心のブレーキを手放して、<br><span style="color:var(--amber2);">夢を叶える自分に還る</span>一歩を。</h2>
+    <p class="fade-up delay-1">無料オンライン夢を叶える相談では「今の状態」と「本当に叶えたい未来」を一緒に整理します。<br>売り込みは一切しません。まず、話してみてください。</p>
+
+    <p class="slots fade-up delay-2">✦ 6月の無料オンライン夢を叶える相談 — 残り7名</p>
+
+    <div style="max-width:520px; margin:0 auto;">
+      <button class="cta-btn" onclick="handleCTA()">
+        私の悩みと理想の将来について相談する
+      </button>
+      <p class="cta-note" style="color:rgba(200,184,154,0.7); margin-top:12px; font-size:0.78rem;">✔ 完全オンライン（Zoom）で受けられます｜全国対応</p>
+      <p style="color:rgba(200,184,154,0.5); font-size:0.75rem; margin-top:4px;">茅ヶ崎に来なくてもOK。どこからでも参加できます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <p>
+    <a href="index.html">Na'au Noa BODY detox</a> ｜ Soul Bloom Coaching<br>
+    神奈川県茅ヶ崎市 ／ 全国オンライン対応（Zoom）<br>
+    © 2025 Na'au Noa. All rights reserved.
+  </p>
+</footer>
+
+<!-- ===== Scripts ===== -->
+<script>
+// Sparkle effect in hero
+(function() {
+  const container = document.getElementById('sparkContainer');
+  if (!container) return;
+  const colors = ['#fff','#ffd87a','#ffb8d0','#ffc8a0','#e8c0ff'];
+  function makeSpark() {
+    const s = document.createElement('div');
+    s.className = 'spark';
+    const size = 2 + Math.random() * 5;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random()*100}%;
+      top:${Math.random()*100}%;
+      background:radial-gradient(circle, ${colors[Math.floor(Math.random()*colors.length)]} 0%, transparent 70%);
+      animation-duration:${2+Math.random()*3}s;
+      animation-delay:${Math.random()*4}s;
+    `;
+    container.appendChild(s);
+  }
+  for (let i = 0; i < 28; i++) makeSpark();
+})();
+
+// CTA handler — tracks with Meta Pixel then goes to booking
+function handleCTA() {
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'Lead', {
+      content_name: '無料相談予約ボタン',
+      content_category: 'SoulBloomLP'
+    });
+  }
+  window.location.href = 'booking.html';
+}
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up, .fade-in').forEach(el => observer.observe(el));
+
+// FAQ toggle
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+</script>
+
+</body>
+</html>
