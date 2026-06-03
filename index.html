@@ -48,14 +48,13 @@
 
   <!-- ===== Hero ===== -->
   <section class="hero" id="hero">
-    <!-- Slideshow background -->
-    <div class="hero-slide"></div>
-    <div class="hero-slide"></div>
-    <div class="hero-slide"></div>
-    <div class="hero-slide"></div>
-    <div class="hero-slide"></div>
-    <!-- Dark overlay -->
-    <div class="hero-overlay"></div>
+    <!-- Video background -->
+    <video autoplay muted loop playsinline preload="auto"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none;">
+      <source src="images/hero-bg.mp4" type="video/mp4">
+    </video>
+    <!-- Dark overlay (視認性確保) -->
+    <div class="hero-overlay" style="background:linear-gradient(to bottom,rgba(8,22,18,0.72) 0%,rgba(8,22,18,0.58) 50%,rgba(8,22,18,0.78) 100%);z-index:1;"></div>
     <div class="hero-content">
       <p class="hero-sub fade-in">一瞬で潜在意識を書き換え、あなたの限界を壊す魔法のセッション</p>
       <h1 class="hero-title fade-in delay-1">Na'au Noa</h1>
