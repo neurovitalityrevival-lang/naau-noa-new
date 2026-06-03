@@ -257,11 +257,11 @@ input, textarea, select, button,
   will-change: opacity;
 }
 .hero-slide.active { opacity: 1; }
-.hero-slide:nth-child(1) { background-image: url('images/hero-slide1.jpg'); background-position: center 30%; }
-.hero-slide:nth-child(2) { background-image: url('images/hero-slide2.jpg'); background-position: center 25%; }
-.hero-slide:nth-child(3) { background-image: url('images/hero-slide3.jpg'); background-position: center center; }
-.hero-slide:nth-child(4) { background-image: url('images/hero-slide4.jpg'); background-position: center center; }
-.hero-slide:nth-child(5) { background-image: url('images/hero-slide5.jpg'); background-position: center center; }
+.hero-slide:nth-child(1) { background-image: url('images/hero-hawaii.jpg'); background-position: center 40%; }
+.hero-slide:nth-child(2) { background-image: url('images/landscape-1.jpg'); background-position: center 25%; }
+.hero-slide:nth-child(3) { background-image: url('images/hero-hawaii.jpg'); background-position: center 55%; }
+.hero-slide:nth-child(4) { background-image: url('images/landscape-5.jpg'); background-position: center center; }
+.hero-slide:nth-child(5) { background-image: url('images/landscape-2.jpg'); background-position: center center; }
 .hero-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(to bottom, rgba(10,25,20,0.78) 0%, rgba(10,25,20,0.62) 50%, rgba(10,25,20,0.80) 100%);
