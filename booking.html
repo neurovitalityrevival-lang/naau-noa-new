@@ -194,9 +194,11 @@ textarea { height: 100px; resize: vertical; line-height: 1.8; }
     <div class="card">
       <h2>① ご希望のメニューを選んでください</h2>
       <div class="menu-options" id="menuOptions">
-        <div class="menu-opt" data-key="オンライン無料個別相談" onclick="selectMenu(this)">
-          <div class="menu-opt-title">🎁 無料個別相談</div>
-          <div class="menu-opt-detail">60分 / 無料 / Zoom（全国対応）</div>
+        <div class="menu-opt" data-key="ベストエンディングワーク" onclick="selectMenu(this)">
+          <div class="menu-opt-title">🙏 人生の軸と停滞の原因が見つかるベストエンディングワーク</div>
+          <div class="menu-opt-detail">60分 / お賽銭形式 / Zoom（全国対応）<br>
+            <span style="font-size:0.8rem;color:#b8976a;font-weight:600;">セッション後にあなたが払いたい金額をご自由に</span>
+          </div>
           <span class="menu-check">✓</span>
         </div>
         <div class="menu-opt" data-key="リミットブレイクセッション" onclick="selectMenu(this)">
@@ -296,14 +298,14 @@ textarea { height: 100px; resize: vertical; line-height: 1.8; }
 <script>
 // ── メニュー設定 ──
 const MENU_CONFIG = {
-  'オンライン無料個別相談': { duration: 60, type: 'online' },
+  'ベストエンディングワーク': { duration: 60, type: 'online' },
   'リミットブレイクセッション': { duration: 60, type: 'online' },
   'リミットブレイクセッション（2回目以降）': { duration: 60, type: 'online' }
 };
 
 // ── メニューごとの最大枠数 ──
 const MENU_MAX_SLOTS = {
-  'オンライン無料個別相談': 17,
+  'ベストエンディングワーク': 17,
   'リミットブレイクセッション': 17,
   'リミットブレイクセッション（2回目以降）': 17
 };
