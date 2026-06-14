@@ -220,44 +220,83 @@
 
     /* Video block */
     .video-card {
-      background: #fff;
-      border: 1px solid rgba(184,151,106,0.25);
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      border: 1px solid rgba(184,151,106,0.35);
       border-radius: 14px;
       overflow: hidden;
       margin-bottom: 40px;
-      box-shadow: 0 4px 20px rgba(26,58,58,0.07);
+      box-shadow: 0 4px 20px rgba(26,58,58,0.12);
     }
 
-    .video-wrapper {
+    .video-thumb {
       position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
+      width: 100%;
+      background: #0a1a1a;
+      cursor: pointer;
       overflow: hidden;
     }
 
-    .video-wrapper iframe {
+    .video-thumb img {
+      width: 100%;
+      display: block;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+
+    .video-thumb:hover img { opacity: 0.9; }
+
+    .video-play-overlay {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: none;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .video-play-btn {
+      width: 72px;
+      height: 72px;
+      background: rgba(184,151,106,0.92);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      transition: transform 0.2s, background 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .video-play-overlay:hover .video-play-btn {
+      transform: scale(1.08);
+      background: var(--gold);
+    }
+
+    .video-play-label {
+      font-size: 0.78rem;
+      color: #fff;
+      letter-spacing: 0.15em;
+      font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.6);
     }
 
     .video-caption {
       padding: 16px 20px;
       border-top: 1px solid rgba(184,151,106,0.2);
-      background: linear-gradient(135deg, rgba(26,58,58,0.03), rgba(15,42,32,0.02));
     }
 
     .video-caption-title {
       font-size: 0.85rem;
-      color: var(--dark);
+      color: #fff;
       letter-spacing: 0.04em;
       margin-bottom: 2px;
     }
 
     .video-caption-sub {
       font-size: 0.7rem;
-      color: var(--text-light);
+      color: rgba(255,255,255,0.4);
       font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
     }
 
@@ -404,13 +443,14 @@
     </p>
 
     <div class="video-card">
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/cDyMJ7ehFkQ?rel=0&modestbranding=1"
-          title="Na'au Noa プログラム動画"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/cDyMJ7ehFkQ/maxresdefault.jpg"
+             onerror="this.src='https://img.youtube.com/vi/cDyMJ7ehFkQ/hqdefault.jpg'"
+             alt="プログラム動画サムネイル">
+        <a class="video-play-overlay" href="https://youtu.be/cDyMJ7ehFkQ" target="_blank" rel="noopener">
+          <div class="video-play-btn">▶</div>
+          <span class="video-play-label">YouTubeで視聴する</span>
+        </a>
       </div>
       <div class="video-caption">
         <div class="video-caption-title">メンタルフォームプログラム — ご説明動画</div>
@@ -455,7 +495,7 @@
 <script>
   // ─── パスワード設定 ───────────────────────────
   // ※ 変更する場合はここのパスワードを書き換えてください
-  const CORRECT_PASSWORD = "naaunoa2025";
+  const CORRECT_PASSWORD = "naaunoa";
   // ───────────────────────────────────────────────
 
   const SESSION_KEY = "naaunoa_member_auth";
