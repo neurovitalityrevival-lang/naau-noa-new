@@ -192,29 +192,12 @@ textarea { height: 100px; resize: vertical; line-height: 1.8; }
 
     <!-- ① メニュー選択 -->
     <div class="card">
-      <h2>① ご希望のメニューを選んでください</h2>
+      <h2>① メニュー</h2>
       <div class="menu-options" id="menuOptions">
         <div class="menu-opt" data-key="オンライン無料個別相談" onclick="selectMenu(this)">
           <div class="menu-opt-title">🎁 無料オンライン個別相談</div>
           <div class="menu-opt-detail">60分 / 完全無料 / Zoom（全国対応）<br>
             <span style="font-size:0.8rem;color:#888;">緊張・パニック・あがり症のお悩み・現状・ゴールをじっくりお聞きします</span>
-          </div>
-          <span class="menu-check">✓</span>
-        </div>
-        <div class="menu-opt" data-key="リミットブレイクセッション" onclick="selectMenu(this)">
-          <div class="menu-opt-title">⚡ リミットブレイクセッション
-            <span style="background:#c0392b;color:#fff;font-size:0.68rem;padding:2px 8px;border-radius:10px;margin-left:6px;font-weight:700;vertical-align:middle;">初回割引</span>
-          </div>
-          <div class="menu-opt-detail">60分 / Zoom（全国対応）／ 潜在意識・意識・身体の3方向アプローチ<br>
-            <span style="font-size:0.88rem;font-weight:700;color:#b8976a;">¥33,000</span>
-            <span style="font-size:0.75rem;color:#aaa;margin-left:4px;text-decoration:line-through;">¥55,000</span>
-          </div>
-          <span class="menu-check">✓</span>
-        </div>
-        <div class="menu-opt" data-key="リミットブレイクセッション（2回目以降）" onclick="selectMenu(this)">
-          <div class="menu-opt-title">⚡ リミットブレイクセッション（2回目以降）</div>
-          <div class="menu-opt-detail">60分 / Zoom（全国対応）／ 潜在意識・意識・身体の3方向アプローチ<br>
-            <span style="font-size:0.88rem;font-weight:700;">¥55,000</span>
           </div>
           <span class="menu-check">✓</span>
         </div>
@@ -298,16 +281,12 @@ textarea { height: 100px; resize: vertical; line-height: 1.8; }
 <script>
 // ── メニュー設定 ──
 const MENU_CONFIG = {
-  'オンライン無料個別相談': { duration: 60, type: 'online' },
-  'リミットブレイクセッション': { duration: 60, type: 'online' },
-  'リミットブレイクセッション（2回目以降）': { duration: 60, type: 'online' }
+  'オンライン無料個別相談': { duration: 60, type: 'online' }
 };
 
 // ── メニューごとの最大枠数 ──
 const MENU_MAX_SLOTS = {
-  'オンライン無料個別相談': 17,
-  'リミットブレイクセッション': 17,
-  'リミットブレイクセッション（2回目以降）': 17
+  'オンライン無料個別相談': 17
 };
 
 // ── 状態 ──
@@ -324,6 +303,9 @@ function init() {
   currentYear = now.getFullYear();
   currentMonth = now.getMonth() + 1;
   updateCalTitle();
+  // 無料個別相談を自動選択
+  const menuEl = document.querySelector('.menu-opt[data-key="オンライン無料個別相談"]');
+  if (menuEl) selectMenu(menuEl);
 }
 
 function updateCalTitle() {
