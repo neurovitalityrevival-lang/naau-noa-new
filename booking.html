@@ -371,11 +371,21 @@ function hasConsecutiveSlots(dateStr, startTime, durationMins) {
 // ── 日付の有効なスロット一覧 ──
 function getValidSlots(dateStr) {
   const slots = slotsData[dateStr] || [];
-  if (!selectedMenuKey) return slots;
+  const now = new Date();
+  const cutoffMs = 5 * 60 * 60 * 1000; // 5時間前カットオフ
+  if (!selectedMenuKey) {
+    return slots.filter(s => {
+      const t = s.start_time.substring(0, 5);
+      const slotDt = new Date(`${dateStr}T${t}:00`);
+      return (slotDt - now) >= cutoffMs;
+    });
+  }
   const cfg = MENU_CONFIG[selectedMenuKey];
   if (!cfg) return slots;
   return slots.filter(s => {
     const t = s.start_time.substring(0, 5);
+    const slotDt = new Date(`${dateStr}T${t}:00`);
+    if ((slotDt - now) < cutoffMs) return false; // 5時間以内は予約不可
     if (t > '21:15') return false;
     if (cfg.minStart && t < cfg.minStart) return false;
     if (cfg.maxStart && t > cfg.maxStart) return false;
