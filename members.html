@@ -609,6 +609,20 @@
         <canvas id="wellness-wheel" width="720" height="720"></canvas>
         <div style="width:100%; margin-top:16px; display:flex; flex-direction:column; gap:10px;">
           <div id="wellness-sliders" class="wl-slider-grid"></div>
+
+          <!-- 合計得点 -->
+          <div id="wl-total-box" style="background:rgba(255,255,255,0.06); border:1px solid rgba(184,151,106,0.4); border-radius:10px; padding:14px 16px; text-align:center;">
+            <div style="font-size:9.5px; color:var(--amber); letter-spacing:2px; margin-bottom:8px; font-family:'Hiragino Sans','Yu Gothic',sans-serif;">合計得点</div>
+            <div style="display:flex; justify-content:center; align-items:baseline; gap:6px;">
+              <span id="wl-total-score" style="font-size:40px; font-weight:800; color:#fff; font-family:'Hiragino Sans','Yu Gothic',sans-serif;">30</span>
+              <span style="font-size:15px; color:rgba(255,255,255,0.35); font-family:'Hiragino Sans','Yu Gothic',sans-serif;">/ 60</span>
+            </div>
+            <div style="margin-top:5px; font-size:10px; color:rgba(255,255,255,0.45); font-family:'Hiragino Sans','Yu Gothic',sans-serif;">
+              平均 <span id="wl-avg-score" style="color:var(--amber); font-weight:700;">5.0</span> / 10
+            </div>
+            <div id="wl-status-msg" style="margin-top:10px; font-size:10px; font-family:'Hiragino Sans','Yu Gothic',sans-serif; line-height:1.7; padding: 6px 10px; border-radius:6px; background:rgba(0,0,0,0.2);"></div>
+          </div>
+
           <div class="wl-guide">
             <div class="wl-guide-title">採点の目安</div>
             <div>🟡 &nbsp;10〜8点：自慢できる・気にならない</div>
@@ -705,6 +719,7 @@
         b.textContent = this.value;
         d.style.borderLeftColor = wlColor(wlAreas[i].score);
         wlDraw();
+        wlUpdateTotal();
       });
     });
 
@@ -766,10 +781,29 @@
       ctx.fillStyle = 'rgba(184,151,106,0.8)'; ctx.fill();
     }
 
+    function wlUpdateTotal() {
+      var total = wlAreas.reduce(function(sum, a) { return sum + a.score; }, 0);
+      var avg = (total / 6).toFixed(1);
+      document.getElementById('wl-total-score').textContent = total;
+      document.getElementById('wl-avg-score').textContent = avg;
+      var el = document.getElementById('wl-status-msg');
+      if (total >= 48) {
+        el.textContent = '全体的にバランスが取れています。この状態を維持することが大切です。';
+        el.style.color = '#b8976a';
+      } else if (total >= 30) {
+        el.textContent = '改善の余地があるエリアが見られます。凹んでいる領域に注目しましょう。';
+        el.style.color = '#c9a060';
+      } else {
+        el.textContent = '複数のエリアで課題が発生しています。優先度の高い領域から取り組みましょう。';
+        el.style.color = '#c07060';
+      }
+    }
+
     // Draw initially (and re-draw after login reveals the canvas)
     wlDraw();
+    wlUpdateTotal();
     var origShow = showMembers;
-    showMembers = function() { origShow(); setTimeout(wlDraw, 50); };
+    showMembers = function() { origShow(); setTimeout(function(){ wlDraw(); wlUpdateTotal(); }, 50); };
   })();
   // ────────────────────────────────────────────
 </script>
