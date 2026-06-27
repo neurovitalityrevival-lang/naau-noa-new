@@ -384,12 +384,126 @@
       font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
     }
 
+    /* ── WELLNESS WHEEL ── */
+    .wl-card {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      border: 1px solid rgba(184,151,106,0.35);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(26,58,58,0.12);
+      padding: 24px 20px;
+    }
+    .wl-inner {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .wl-slider-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(184,151,106,0.25);
+      border-left: 3px solid var(--amber);
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+    .wl-slider-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .wl-area-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.3;
+      font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+    }
+    .wl-badge {
+      min-width: 24px;
+      height: 24px;
+      border-radius: 12px;
+      background: var(--amber);
+      color: var(--dark);
+      font-size: 11px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 5px;
+      flex-shrink: 0;
+      font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+    }
+    .wl-range {
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+      outline: none;
+      -webkit-appearance: none;
+      background: rgba(255,255,255,0.15);
+      cursor: pointer;
+    }
+    .wl-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--amber);
+      cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+    .wl-guide {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(184,151,106,0.2);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-top: 4px;
+      font-size: 9px;
+      color: rgba(255,255,255,0.5);
+      line-height: 2;
+      font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+    }
+    .wl-guide-title {
+      font-weight: 700;
+      color: var(--amber);
+      margin-bottom: 3px;
+      font-size: 9.5px;
+      letter-spacing: 0.1em;
+    }
+    .wl-area-desc {
+      font-size: 9px;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.65;
+      margin-top: 5px;
+      font-style: italic;
+      font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+    }
+
+    /* Wellness Wheel grid */
+    .wl-slider-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    /* canvas responsive */
+    #wellness-wheel {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 720px;
+      border-radius: 8px;
+    }
+
     /* Responsive */
-    @media (max-width: 540px) {
+    @media (max-width: 600px) {
       .gate-card { padding: 36px 24px; }
       .members-content { padding: 28px 16px 60px; }
       .pdf-card { flex-direction: column; align-items: flex-start; gap: 16px; }
       .pdf-dl-btn { width: 100%; justify-content: center; }
+      .wl-inner { flex-direction: column; }
+      .wl-slider-grid { grid-template-columns: 1fr; }
+      .wl-card { padding: 16px 14px; }
     }
   </style>
 </head>
@@ -479,6 +593,32 @@
       </a>
     </div>
 
+    <div class="section-divider"></div>
+
+    <!-- Wellness Wheel -->
+    <div class="section-tag">◎ TOOL</div>
+    <h2 class="section-title">ウェルネスの車輪</h2>
+    <p class="section-desc">
+      人生の6つのエリアを 1〜10 のスコアで可視化するセルフ診断ツールです。<br>
+      車輪の形が均一なほどバランスが取れている状態を表します。凹んでいるエリアが、今もっとも注目すべき領域です。<br>
+      スライダーを動かすと車輪がリアルタイムで更新されます。
+    </p>
+
+    <div class="wl-card">
+      <div class="wl-inner" style="flex-direction:column; align-items:center;">
+        <canvas id="wellness-wheel" width="720" height="720"></canvas>
+        <div style="width:100%; margin-top:16px; display:flex; flex-direction:column; gap:10px;">
+          <div id="wellness-sliders" class="wl-slider-grid"></div>
+          <div class="wl-guide">
+            <div class="wl-guide-title">採点の目安</div>
+            <div>🟡 &nbsp;10〜8点：自慢できる・気にならない</div>
+            <div>🟠 &nbsp;7〜4点：改善しないと行けない</div>
+            <div>🔴 &nbsp;3点以下：問題・苦痛が発生している</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Footer -->
@@ -529,6 +669,109 @@
   document.getElementById("pw-input").addEventListener("keydown", function(e) {
     if (e.key === "Enter") checkPassword();
   });
+
+  // ─── WELLNESS WHEEL ───────────────────────────
+  (function() {
+    const wlAreas = [
+      { name: 'スピリチュアリティ\n（精神性）', desc: '自分が人生でやるべきこと、自分の道や自分のベストな在り方が明確か？',                          score: 5, start: -90 },
+      { name: 'キャリア・経済',               desc: '自分が心から望む働きができているか？お金は健全に循環しているか？',                               score: 5, start: -30 },
+      { name: '身体的\nフィットネス',          desc: 'いつでもやりたい時にやりたいことができる状態か？',                                              score: 5, start:  30 },
+      { name: '家族\n人間関係',               desc: '依存関係ではなく、お互いを尊重し、ポジティブな関係か？',                                        score: 5, start:  90 },
+      { name: 'パートナーシップ',             desc: 'ビジネスパートナー、ライフパートナーの関係はお互いにWinWinで健全な状態か？',                      score: 5, start: 150 },
+      { name: '思考・感情の\nフィットネス',    desc: '幸せで健康的に自己を前向きに成長させる思考感情の状態か？',                                       score: 5, start: 210 },
+    ];
+
+    function wlColor(s) {
+      if (s >= 8) return '#b8976a';
+      if (s >= 4) return '#c9a060';
+      return '#c06050';
+    }
+
+    const slDiv = document.getElementById('wellness-sliders');
+    wlAreas.forEach(function(a, i) {
+      const d = document.createElement('div');
+      d.className = 'wl-slider-item';
+      d.innerHTML =
+        '<div class="wl-slider-top">' +
+          '<span class="wl-area-label">' + a.name.replace('\n', ' ') + '</span>' +
+          '<span class="wl-badge" id="wb' + i + '">5</span>' +
+        '</div>' +
+        '<input type="range" class="wl-range" id="ws' + i + '" min="1" max="10" value="5">' +
+        '<div class="wl-area-desc">' + a.desc + '</div>';
+      slDiv.appendChild(d);
+      document.getElementById('ws' + i).addEventListener('input', function() {
+        wlAreas[i].score = +this.value;
+        var b = document.getElementById('wb' + i);
+        b.textContent = this.value;
+        d.style.borderLeftColor = wlColor(wlAreas[i].score);
+        wlDraw();
+      });
+    });
+
+    function wlDraw() {
+      var cv = document.getElementById('wellness-wheel');
+      if (!cv) return;
+      var ctx = cv.getContext('2d');
+      var cx = 360, cy = 360, r = 315;
+      ctx.clearRect(0, 0, 720, 720);
+
+      // background
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2*Math.PI);
+      ctx.fillStyle = 'rgba(10,26,20,0.85)'; ctx.fill();
+
+      // filled segments
+      wlAreas.forEach(function(a) {
+        var s = a.start * Math.PI / 180;
+        var e = (a.start + 60) * Math.PI / 180;
+        var fr = (a.score / 10) * r;
+        ctx.beginPath(); ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, fr, s, e); ctx.closePath();
+        ctx.fillStyle = wlColor(a.score); ctx.globalAlpha = 0.72; ctx.fill(); ctx.globalAlpha = 1;
+      });
+
+      // concentric rings
+      [2,4,6,8,10].forEach(function(ring) {
+        ctx.beginPath(); ctx.arc(cx, cy, (ring/10)*r, 0, 2*Math.PI);
+        ctx.strokeStyle = ring === 10 ? 'rgba(184,151,106,0.55)' : 'rgba(184,151,106,0.18)';
+        ctx.lineWidth = ring === 10 ? 4 : 2; ctx.stroke();
+      });
+
+      // dividers
+      for (var i = 0; i < 6; i++) {
+        var ang = (-90 + i*60) * Math.PI / 180;
+        ctx.beginPath(); ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + r*Math.cos(ang), cy + r*Math.sin(ang));
+        ctx.strokeStyle = 'rgba(184,151,106,0.45)'; ctx.lineWidth = 2.5; ctx.stroke();
+      }
+
+      // labels
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      wlAreas.forEach(function(a) {
+        var mid = (a.start + 30) * Math.PI / 180;
+        var lr = r * 0.6;
+        var lx = cx + lr*Math.cos(mid), ly = cy + lr*Math.sin(mid);
+        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        ctx.font = 'bold 22px Hiragino Sans, Yu Gothic, sans-serif';
+        var lines = a.name.split('\n');
+        lines.forEach(function(ln, j) {
+          ctx.fillText(ln, lx, ly + (j - (lines.length-1)/2) * 28);
+        });
+        var sr = r * 0.87;
+        ctx.font = 'bold 26px sans-serif'; ctx.fillStyle = '#b8976a';
+        ctx.fillText(a.score, cx + sr*Math.cos(mid), cy + sr*Math.sin(mid));
+      });
+
+      // center dot
+      ctx.beginPath(); ctx.arc(cx, cy, 11, 0, 2*Math.PI);
+      ctx.fillStyle = 'rgba(184,151,106,0.8)'; ctx.fill();
+    }
+
+    // Draw initially (and re-draw after login reveals the canvas)
+    wlDraw();
+    var origShow = showMembers;
+    showMembers = function() { origShow(); setTimeout(wlDraw, 50); };
+  })();
+  // ────────────────────────────────────────────
 </script>
 
 </body>
