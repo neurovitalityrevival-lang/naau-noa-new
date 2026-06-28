@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>パニック障害を潜在意識の書き換えで根本解決 | Na'au Noa メンタルフォームコーチング</title>
+<title>パニック障害を潜在意識の書き換えで根本解決 | Na'au Noa</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
 
 <!-- Meta Pixel -->
@@ -28,27 +28,24 @@ src="https://www.facebook.com/tr?id=2080933312746435&ev=PageView&noscript=1"/></
 
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Noto Serif JP', serif; background: #faf8f5; color: #2c2c2c; }
+body { font-family: 'Noto Serif JP', serif; background: #070d0d; color: #f0e8d8; }
 
 /* ── ヘッダー ── */
-header { background: #1a3a3a; padding: 14px 24px; text-align: center; }
-header a { color: #b8976a; text-decoration: none; font-size: 1.2rem; letter-spacing: 0.1em; }
+header { background: rgba(7,13,13,0.9); padding: 14px 24px; text-align: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(184,151,106,0.15); }
+header a { color: #b8976a; text-decoration: none; font-size: 1.1rem; letter-spacing: 0.16em; }
 
 /* ── ヒーロー ── */
 .hero {
   position: relative;
   min-height: 100vh;
-  padding: 52px 24px 60px;
-  text-align: center;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #0d2020;
+  text-align: center;
+  padding: 60px 24px 80px;
+  overflow: hidden;
 }
-
-/* video background */
 .hero-video {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
@@ -58,50 +55,46 @@ header a { color: #b8976a; text-decoration: none; font-size: 1.2rem; letter-spac
 }
 .hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(8,22,18,0.72) 0%, rgba(8,22,18,0.58) 50%, rgba(8,22,18,0.78) 100%);
+  background: linear-gradient(to bottom, rgba(5,10,10,0.78) 0%, rgba(5,10,10,0.62) 50%, rgba(5,10,10,0.85) 100%);
   z-index: 1;
 }
 .hero > *:not(.hero-video):not(.hero-overlay) { position: relative; z-index: 2; }
 
 .hero-title {
   color: #fff;
-  font-size: clamp(1.55rem, 5.8vw, 3.2rem);
-  line-height: 1.75;
-  margin-bottom: 44px;
+  font-size: clamp(1.8rem, 6.5vw, 3.8rem);
+  line-height: 1.65;
   font-weight: 600;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
+  margin-bottom: 48px;
 }
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: clamp(1.1rem, 5.8vw, 1.5rem);
-    line-height: 2.0;
-    letter-spacing: 0.01em;
-    padding: 0 8px;
-  }
-  .hero-title .line { font-size: 1em; }
+.hero-title .line {
+  display: block;
+  opacity: 0;
+  transform: translateY(28px);
+  animation: heroLine 0.9s cubic-bezier(0.22,1,0.36,1) forwards;
 }
-.hero-title .accent { color: #b8976a; }
-.hero-sub { color: #c8b89a; font-size: 0.9rem; line-height: 1.9; margin-bottom: 44px; }
+.hero-title .line:nth-child(1) { animation-delay: 0.2s; }
+.hero-title .line:nth-child(2) { animation-delay: 0.5s; }
+.hero-title .line:nth-child(3) { animation-delay: 0.8s; }
+.accent { color: #e8c080; }
+@keyframes heroLine { to { opacity: 1; transform: translateY(0); } }
 
 /* ── CTAボタン ── */
-.cta-wrap { text-align: center; padding: 0 16px; }
+.cta-wrap { text-align: center; padding: 0 16px; width: 100%; }
 .cta-btn {
   display: block;
   width: 100%;
-  max-width: 560px;
+  max-width: 520px;
   margin: 0 auto;
   background: linear-gradient(135deg, #c9a870, #e8c080, #b8976a);
   background-size: 200% 200%;
-  color: #fff; text-decoration: none;
-  padding: 24px 20px; border-radius: 20px;
-  font-size: clamp(1rem, 3.8vw, 1.35rem);
-  font-weight: 600; letter-spacing: 0.03em;
-  word-break: keep-all;
-  box-shadow:
-    0 8px 40px rgba(184,151,106,0.6),
-    0 0 0 4px rgba(184,151,106,0.2),
-    inset 0 1px 0 rgba(255,255,255,0.25);
-  cursor: pointer; border: none; font-family: 'Noto Serif JP', serif;
+  color: #1a2e2e; text-decoration: none;
+  padding: 22px 20px; border-radius: 16px;
+  font-size: clamp(0.95rem, 3.2vw, 1.2rem);
+  font-weight: 700; letter-spacing: 0.04em;
+  border: none; font-family: 'Noto Serif JP', serif;
+  cursor: pointer;
   position: relative; overflow: clip;
   animation: ctaFloat 2.8s ease-in-out infinite, ctaGlow 2.8s ease-in-out infinite;
   line-height: 1.6;
@@ -113,35 +106,23 @@ header a { color: #b8976a; text-decoration: none; font-size: 1.2rem; letter-spac
   background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
   animation: ctaShine 2.8s ease-in-out infinite;
 }
-.cta-btn::after {
-  content: '▶';
-  font-size: 0.9em;
-  margin-left: 10px;
-  display: inline-block;
-  animation: ctaArrow 2.8s ease-in-out infinite;
-}
 .cta-btn:hover {
   animation: none;
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 16px 56px rgba(184,151,106,0.7), 0 0 0 5px rgba(184,151,106,0.3);
+  box-shadow: 0 16px 56px rgba(184,151,106,0.7);
 }
 @keyframes ctaFloat {
   0%,100% { transform: translateY(0); }
-  50%      { transform: translateY(-6px); }
+  50%      { transform: translateY(-5px); }
 }
 @keyframes ctaGlow {
-  0%,100% { box-shadow: 0 8px 40px rgba(184,151,106,0.6), 0 0 0 4px rgba(184,151,106,0.2), inset 0 1px 0 rgba(255,255,255,0.25); }
-  50%      { box-shadow: 0 16px 56px rgba(184,151,106,0.75), 0 0 0 6px rgba(184,151,106,0.3), inset 0 1px 0 rgba(255,255,255,0.25); }
+  0%,100% { box-shadow: 0 8px 40px rgba(184,151,106,0.5), 0 0 0 3px rgba(184,151,106,0.15); }
+  50%      { box-shadow: 0 16px 56px rgba(184,151,106,0.7), 0 0 0 5px rgba(184,151,106,0.25); }
 }
 @keyframes ctaShine {
   0%      { left: -100%; }
   40%,100% { left: 160%; }
 }
-@keyframes ctaArrow {
-  0%,100% { transform: translateX(0); }
-  50%      { transform: translateX(5px); }
-}
-.cta-note { color: #c8b89a; font-size: 0.8rem; margin-top: 12px; }
 
 /* ── スティッキーCTA ── */
 .sticky-cta {
@@ -149,16 +130,14 @@ header a { color: #b8976a; text-decoration: none; font-size: 1.2rem; letter-spac
   bottom: 0; left: 0; right: 0;
   z-index: 999;
   padding: 12px 16px 16px;
-  background: linear-gradient(to top, rgba(10,22,18,0.98) 0%, rgba(10,22,18,0.92) 100%);
+  background: linear-gradient(to top, rgba(5,10,10,0.98), rgba(5,10,10,0.92));
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transform: translateY(100%);
   transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
-  border-top: 1px solid rgba(184,151,106,0.25);
+  border-top: 1px solid rgba(184,151,106,0.2);
 }
-.sticky-cta.visible {
-  transform: translateY(0);
-}
+.sticky-cta.visible { transform: translateY(0); }
 .sticky-cta-btn {
   display: flex;
   align-items: center;
@@ -167,170 +146,123 @@ header a { color: #b8976a; text-decoration: none; font-size: 1.2rem; letter-spac
   width: 100%;
   max-width: 480px;
   margin: 0 auto;
-  padding: 17px 24px;
+  padding: 16px 24px;
   background: linear-gradient(135deg, #b8976a 0%, #e8c080 50%, #b8976a 100%);
   background-size: 200% 100%;
-  color: #1a3a3a;
+  color: #1a2e2e;
   font-family: 'Noto Serif JP', serif;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  text-decoration: none;
-  box-shadow: 0 4px 24px rgba(184,151,106,0.45), 0 0 0 0 rgba(232,192,128,0.5);
+  letter-spacing: 0.04em;
+  border: none; border-radius: 50px;
+  cursor: pointer; text-decoration: none;
+  box-shadow: 0 4px 24px rgba(184,151,106,0.4);
   animation: stickyPulse 2.4s ease-in-out infinite;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-  -webkit-tap-highlight-color: transparent;
-}
-.sticky-cta-btn:active {
-  transform: scale(0.96);
-  box-shadow: 0 2px 12px rgba(184,151,106,0.3);
-  animation: none;
 }
 .sticky-cta-arrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px; height: 26px;
-  background: rgba(26,58,58,0.18);
-  border-radius: 50%;
-  font-size: 0.9rem;
-  animation: arrowBounce 1.2s ease-in-out infinite;
-  flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px;
+  background: rgba(26,46,46,0.2); border-radius: 50%;
+  font-size: 0.85rem;
+  animation: arrowBounce 1.2s ease-in-out infinite; flex-shrink: 0;
 }
 .sticky-cta-sub {
-  text-align: center;
-  font-size: 0.72rem;
-  color: rgba(184,151,106,0.7);
-  margin-top: 7px;
-  letter-spacing: 0.06em;
+  text-align: center; font-size: 0.7rem;
+  color: rgba(184,151,106,0.65); margin-top: 6px; letter-spacing: 0.06em;
 }
 @keyframes stickyPulse {
-  0%, 100% {
-    box-shadow: 0 4px 24px rgba(184,151,106,0.45), 0 0 0 0 rgba(232,192,128,0.4);
-    background-position: 0% 50%;
-  }
-  50% {
-    box-shadow: 0 6px 32px rgba(184,151,106,0.65), 0 0 0 8px rgba(232,192,128,0);
-    background-position: 100% 50%;
-  }
+  0%,100% { box-shadow: 0 4px 24px rgba(184,151,106,0.4), 0 0 0 0 rgba(232,192,128,0.4); }
+  50%      { box-shadow: 0 6px 32px rgba(184,151,106,0.6), 0 0 0 8px rgba(232,192,128,0); }
 }
 @keyframes arrowBounce {
-  0%, 100% { transform: translateX(0); }
-  50%       { transform: translateX(4px); }
+  0%,100% { transform: translateX(0); } 50% { transform: translateX(4px); }
 }
+
+/* ── 残り枠バッジ ── */
 .slots {
   display: inline-block;
-  background: rgba(184,151,106,0.15); border: 1px solid #b8976a;
+  background: rgba(184,151,106,0.12); border: 1px solid rgba(184,151,106,0.45);
   color: #b8976a; padding: 7px 22px; border-radius: 50px;
-  font-size: 0.82rem; margin-bottom: 20px;
+  font-size: 0.8rem; margin-bottom: 20px;
   animation: pulse 2s infinite;
 }
 @keyframes pulse {
-  0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(184,151,106,0.3); }
+  0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(184,151,106,0.25); }
   50%      { opacity: 0.85; box-shadow: 0 0 0 6px rgba(184,151,106,0); }
 }
 
-/* ── ヒーロー入場アニメーション ── */
-.hero-title .line {
-  display: block;
-  opacity: 0;
-  transform: translateY(28px);
-  animation: heroLine 0.9s cubic-bezier(0.22,1,0.36,1) forwards;
+/* ── セクション共通 ── */
+.sec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 110px 24px;
 }
-.hero-title .line:nth-child(1) { animation-delay: 0.1s; }
-.hero-title .line:nth-child(2) { animation-delay: 0.3s; }
-.hero-title .line:nth-child(3) { animation-delay: 0.5s; }
-.hero-title .line:nth-child(4) { animation-delay: 0.7s; }
-@keyframes heroLine {
-  to { opacity: 1; transform: translateY(0); }
+.sec-screen { min-height: 100vh; }
+
+/* ── 背景 ── */
+.bg-darkest  { background: #050a0a; }
+.bg-dark     { background: #090f0f; }
+.bg-mid      { background: #0d1a1a; }
+.bg-warm     { background: #0a1510; }
+.bg-story    { background: #0d2020; }
+
+/* ── テキスト ── */
+.t-label {
+  font-size: 0.7rem; letter-spacing: 0.24em; color: #b8976a;
+  margin-bottom: 24px;
 }
-
-/* ── FOR YOU ── */
-.for-you { background: #faf8f5; padding: 72px 24px; }
-.for-you-inner { max-width: 720px; margin: 0 auto; }
-.for-you ul { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
-.for-you li {
-  background: #fff; border-radius: 10px; padding: 18px 20px;
-  font-size: 0.92rem; line-height: 1.9; color: #2c2c2c;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-  border-left: 4px solid #b8976a;
-  display: flex; gap: 12px; align-items: flex-start;
+.t-impact {
+  font-size: clamp(1.7rem, 6vw, 3.5rem);
+  line-height: 1.7; font-weight: 600; color: #f0e8d8;
+  max-width: 680px;
 }
-.for-you li.highlight { border-left-color: #8b5a2b; background: #fdf6ec; }
-.check { color: #b8976a; font-weight: 700; font-size: 1rem; flex-shrink: 0; padding-top: 2px; }
-.check.hl { color: #8b5a2b; }
-
-/* ── このまま放置したら ── */
-.risk-section { background: #0d1f1f; padding: 72px 24px; }
-.risk-inner { max-width: 720px; margin: 0 auto; }
-.risk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
-@media (max-width: 560px) { .risk-grid { grid-template-columns: 1fr; } }
-.risk-card {
-  background: rgba(139,28,28,0.18);
-  border: 1px solid rgba(200,60,60,0.35);
-  border-radius: 10px; padding: 20px 18px;
+.t-mid {
+  font-size: clamp(1.1rem, 3.8vw, 1.7rem);
+  line-height: 1.9; font-weight: 600; color: #f0e8d8;
+  max-width: 600px;
 }
-.risk-card-icon { font-size: 1.4rem; margin-bottom: 8px; }
-.risk-card-title { color: #e8a0a0; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px; letter-spacing: 0.04em; }
-.risk-card-body { color: #c8a8a8; font-size: 0.8rem; line-height: 1.85; }
-.risk-lead { color: #c8b89a; font-size: 0.9rem; line-height: 1.9; text-align: center; margin-bottom: 0; }
-
-/* ── 口コミ ── */
-.reviews { background: #faf8f5; padding: 72px 24px; }
-.reviews-inner { max-width: 720px; margin: 0 auto; }
-.section-label { color: #b8976a; font-size: 0.75rem; letter-spacing: 0.2em; margin-bottom: 10px; text-align: center; }
-.section-title { color: #1a3a3a; font-size: clamp(1.15rem, 3.5vw, 1.55rem); line-height: 1.7; margin-bottom: 36px; text-align: center; }
-.review-grid { display: flex; flex-direction: column; gap: 24px; }
-.review-card {
-  background: #fff; border-radius: 12px; padding: 28px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-  border-left: 4px solid #b8976a;
+.t-body {
+  font-size: clamp(0.9rem, 2.4vw, 1.02rem);
+  line-height: 2.4; color: #c8b89a;
+  max-width: 520px;
 }
-.review-stars { color: #b8976a; font-size: 1rem; margin-bottom: 12px; letter-spacing: 2px; }
-.review-text { font-size: 0.92rem; color: #444; line-height: 2.1; margin-bottom: 16px; font-style: italic; }
-.review-meta { font-size: 0.82rem; color: #b8976a; font-weight: 600; }
-
-/* ── 最終CTA ── */
-.final-cta { background: #1a3a3a; padding: 72px 24px; text-align: center; }
-.final-cta h2 { color: #fff; font-size: clamp(1.2rem, 3.5vw, 1.6rem); line-height: 1.7; margin-bottom: 14px; }
-.final-cta p { color: #c8b89a; font-size: 0.9rem; margin-bottom: 36px; line-height: 1.9; }
-
-/* ── フッター ── */
-footer { background: #0d2020; padding: 24px; text-align: center; }
-footer p { color: #888; font-size: 0.78rem; }
+.t-gold  { color: #b8976a; }
+.t-bright { color: #e8c080; }
+.divider {
+  width: 36px; height: 1px;
+  background: linear-gradient(to right, transparent, #b8976a, transparent);
+  margin: 40px auto;
+}
+.quote {
+  border-left: 2px solid #b8976a;
+  padding: 20px 26px; text-align: left;
+  max-width: 520px; margin: 0 auto;
+}
 
 /* ── スクロールアニメーション ── */
 .fade-up {
-  opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1);
-}
-.fade-up.visible { opacity: 1; transform: translateY(0); }
-.fade-in { opacity: 0; transition: opacity 1s ease; }
-.fade-in.visible { opacity: 1; }
-.scale-in {
-  opacity: 0;
-  transform: scale(0.94) translateY(20px);
+  opacity: 0; transform: translateY(32px);
   transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1);
 }
-.scale-in.visible { opacity: 1; transform: scale(1) translateY(0); }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-in { opacity: 0; transition: opacity 1.1s ease; }
+.fade-in.visible { opacity: 1; }
+.delay-1 { transition-delay: 0.12s; }
+.delay-2 { transition-delay: 0.24s; }
+.delay-3 { transition-delay: 0.36s; }
 
-/* 遅延クラス */
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
+/* ── フッター ── */
+footer { background: #030808; padding: 28px 24px; text-align: center; }
+footer p { color: #555; font-size: 0.76rem; }
+footer a { color: #555; }
 
-@media (max-width: 600px) {
-  .hero { padding: 40px 20px 52px; }
-  .cta-btn {
-    padding: 18px 16px;
-    font-size: clamp(0.88rem, 3.6vw, 1rem);
-    letter-spacing: 0.01em;
-  }
-  .reviews { padding: 56px 20px; }
+@media (max-width: 480px) {
+  .t-impact { font-size: clamp(1.4rem, 6vw, 2rem); }
+  .t-mid    { font-size: clamp(1rem, 4vw, 1.3rem); }
+  .sec { padding: 80px 20px; }
 }
 </style>
 </head>
@@ -338,266 +270,331 @@ footer p { color: #888; font-size: 0.78rem; }
 
 <header><a href="index.html">Na'au Noa</a></header>
 
-<!-- ── ヒーロー ── -->
-<div class="hero">
 
-  <!-- FV background image -->
-  <img src="images/hero-fv.JPG" alt="" aria-hidden="true" class="hero-video"
-    style="object-fit:cover;object-position:center top;">
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <img src="images/hero-fv.JPG" alt="" aria-hidden="true" class="hero-video" style="object-fit:cover;object-position:center top;">
   <div class="hero-overlay"></div>
 
-  <!-- バッジ -->
-  <div style="display:inline-block;background:rgba(184,151,106,0.15);border:1px solid rgba(184,151,106,0.5);border-radius:100px;padding:8px 20px;margin-bottom:28px;font-size:0.8rem;color:#b8976a;letter-spacing:0.12em;">
-    ✨ 全国オンライン対応
-  </div>
+  <p style="font-size:0.7rem;letter-spacing:0.24em;color:#b8976a;margin-bottom:36px;" class="fade-in">FOR THOSE WHO SUFFER FROM PANIC DISORDER</p>
 
-  <p class="hero-title">
-    <span class="line" style="font-size:0.78em;color:#c8b89a;font-weight:400;letter-spacing:0.06em;">パニック障害で毎日が怖いあなたへ</span>
-    <span class="line">その根本は、脳（扁桃体）の誤認識にある。</span>
-    <span class="line accent">潜在意識の書き換えで、一瞬で手放す。</span>
+  <h1 class="hero-title">
+    <span class="line">まだ、</span>
+    <span class="line">見ぬふりを</span>
+    <span class="line accent">しますか。</span>
+  </h1>
+
+  <div class="cta-wrap fade-up" style="margin-top:8px;">
+    <button class="cta-btn" onclick="handleCTA()">
+      小松大将による無料個別相談はこちら
+    </button>
+    <p style="color:#c8b89a;font-size:0.76rem;margin-top:14px;letter-spacing:0.05em;">本気の方のみ、ご参加ください</p>
+  </div>
+</div>
+
+
+<!-- ═══ 01 今この瞬間も ═══ -->
+<div class="sec sec-screen bg-darkest">
+  <p class="t-label fade-up">THE TRUTH</p>
+  <p class="t-impact fade-up delay-1">
+    今この瞬間も、<br>
+    パニック障害は<br>
+    あなたの脳の中に<br>
+    根を張り続けている。
+  </p>
+  <div class="divider fade-up delay-2"></div>
+  <p class="t-body fade-up delay-3">
+    待っていても、消えない。<br>
+    時間が経てば経つほど、<br>
+    恐怖の記憶は深く刻まれていく。
+  </p>
+</div>
+
+
+<!-- ═══ 02 あなたの日常 ═══ -->
+<div class="sec sec-screen bg-dark">
+  <p class="t-label fade-up">YOUR REALITY</p>
+  <p class="t-mid fade-up delay-1">
+    電車に乗れない。<br>
+    人混みが怖い。<br>
+    「また来たらどうしよう」——<br>
+    その声が、一日中<br>
+    頭から離れない。
+  </p>
+  <div class="divider fade-up delay-2"></div>
+  <p class="t-body fade-up delay-3">
+    行きたい場所に行けない。<br>
+    やりたいことができない。<br>
+    誰にも言えずに、一人で抱えている。<br><br>
+    それが、今日のあなただ。
+  </p>
+</div>
+
+
+<!-- ═══ 03 本当の気持ち ═══ -->
+<div class="sec sec-screen bg-mid">
+  <p class="t-label fade-up">YOUR TRUTH</p>
+  <p class="t-impact fade-up delay-1" style="font-style:italic;font-size:clamp(1.5rem,5vw,2.8rem);">
+    でも、あなたは<br>本当は知っている。
+  </p>
+  <div class="divider fade-up delay-2"></div>
+  <p class="t-body fade-up delay-3" style="color:#d4c8b4;">
+    発作なんかなくなって、<br>
+    どこへでも行ける自分になりたいって。<br><br>
+    朝起きたとき、<br>
+    ただ今日を楽しみに起きられる<br>
+    自分になりたいって。
+  </p>
+  <div class="divider fade-up delay-3"></div>
+  <p class="fade-up delay-3" style="color:#b8976a;font-size:0.95rem;letter-spacing:0.08em;">その気持ちは、本物だ。</p>
+</div>
+
+
+<!-- ═══ 04 なぜ動けないか ═══ -->
+<div class="sec sec-screen bg-darkest">
+  <p class="t-label fade-up">WHY YOU CAN'T MOVE</p>
+  <p class="t-mid fade-up delay-1">
+    「また失敗したら」と思うから。<br>
+    「本当に変われるのか」と<br>
+    信じられないから。
+  </p>
+  <div class="divider fade-up delay-2"></div>
+  <p class="t-body fade-up delay-3">
+    でも、それ自体が<br>
+    パニック障害があなたに植え付けた<br>
+    <span style="color:#f0e8d8;font-weight:600;">恐怖のプログラム</span>です。<br><br>
+    あなたが弱いのではない。<br>
+    脳が誤作動しているだけ。
+  </p>
+</div>
+
+
+<!-- ═══ 05 放置した先の未来 ═══ -->
+<div class="sec sec-screen bg-dark">
+  <p class="t-label fade-up" style="color:#c87070;">WARNING</p>
+  <p class="t-impact fade-up delay-1">
+    1年後も。<br>
+    3年後も。<br>
+    10年後も。
+  </p>
+  <div class="divider fade-up delay-2"></div>
+  <p class="t-body fade-up delay-3">
+    何もしなければ、<br>
+    今と同じ恐怖の中で生きていく。<br><br>
+    発作への恐怖が、<br>
+    あなたの行動できる範囲を<br>
+    今日より少しずつ、確実に、<br>
+    狭めていく。
+  </p>
+</div>
+
+
+<!-- ═══ 06 人生は一回 ═══ -->
+<div class="sec sec-screen bg-darkest">
+  <p class="t-impact fade-up" style="font-size:clamp(2rem,7.5vw,4.5rem);letter-spacing:0.04em;">
+    あなたの人生は、<br>
+    <span class="t-bright">たった一回。</span>
+  </p>
+  <div class="divider fade-up delay-2"></div>
+  <p class="t-body fade-up delay-3" style="margin-bottom:56px;">
+    今日という日は、<br>
+    二度と戻らない。
+  </p>
+  <div class="cta-wrap fade-up delay-3">
+    <button class="cta-btn" onclick="handleCTA()">
+      小松大将による無料個別相談はこちら
+    </button>
+  </div>
+</div>
+
+
+<!-- ═══ 07 理想の未来 ═══ -->
+<div class="sec sec-screen bg-mid">
+  <p class="t-label fade-up">YOUR FUTURE</p>
+  <p class="t-mid fade-up delay-1">
+    発作のない朝を、<br>
+    想像してみてください。
+  </p>
+  <div class="divider fade-up delay-2"></div>
+  <p class="t-body fade-up delay-3" style="color:#d4c8b4;">
+    電車に乗れる。<br>
+    人混みの中に、ただいられる。<br>
+    一人でどこへでも行ける。<br>
+    「また来たらどうしよう」と<br>
+    思わない一日がある。<br><br>
+    大切な人と、どこへでも行ける。
+  </p>
+  <div class="divider fade-up delay-3"></div>
+  <p class="fade-up delay-3 t-gold" style="font-size:0.95rem;letter-spacing:0.06em;">それが、パニック障害のない毎日です。</p>
+</div>
+
+
+<!-- ═══ 08 仕組み ═══ -->
+<div class="sec bg-dark" style="padding:110px 24px;">
+  <p class="t-label fade-up">THE MECHANISM</p>
+  <p class="t-mid fade-up delay-1">
+    パニック障害の根本は、<br>
+    脳（扁桃体）の誤認識です。
+  </p>
+  <div class="divider fade-up delay-2"></div>
+  <div class="fade-up delay-3" style="max-width:520px;text-align:left;">
+    <p class="t-body" style="margin-bottom:28px;">
+      薬は、症状を抑える。<br>
+      しかし、発作を起こしている根っこには<br>触れない。<br>
+      だから薬をやめると、また怖くなる。
+    </p>
+    <p class="t-body">
+      潜在意識の書き換えは、<br>
+      扁桃体が「ここは危険だ」と誤認識している<br>
+      プログラムそのものを書き換える。<br><br>
+      根っこを消せば、雑草は生えてこない。
+    </p>
+  </div>
+</div>
+
+
+<!-- ═══ 09 Wバインド ═══ -->
+<div class="sec sec-screen bg-darkest">
+  <p class="t-label fade-up">FOR YOU</p>
+  <p class="t-impact fade-up delay-1" style="font-size:clamp(1.3rem,4.5vw,2.3rem);line-height:2.0;">
+    あなたには、これが<span class="t-bright">必要</span>で、<br>
+    あなたには、これが<span class="t-bright">欲しい</span>はずです。
+  </p>
+  <div class="divider fade-up delay-2"></div>
+  <p class="t-body fade-up delay-3">
+    パニック障害のない自分が欲しいという気持ちと、<br>
+    今の苦しさを終わらせる必要があるという確信。<br><br>
+    その両方が、今あなたの中にある。
+  </p>
+</div>
+
+
+<!-- ═══ 10 口コミ ═══ -->
+<div class="sec bg-warm" style="padding:110px 24px;">
+  <p class="t-label fade-up">VOICE</p>
+  <p class="t-mid fade-up delay-1" style="margin-bottom:60px;font-size:clamp(1rem,3.2vw,1.3rem);">
+    実際に変わった方たちの声
   </p>
 
-  <p class="hero-sub" style="margin-bottom:36px;">発作が怖い・外に出られない・予期不安が1日中続く<br>その苦しみを、根っこから手放し——パニック障害のない、幸せな自分へ。</p>
+  <div class="fade-up delay-2" style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:620px;width:100%;margin-bottom:60px;">
+    <img src="images/voice-dm1.jpg" alt="お客様の声" loading="lazy" style="width:100%;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,0.4);">
+    <img src="images/voice-dm2.jpg" alt="お客様の声" loading="lazy" style="width:100%;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,0.4);">
+    <img src="images/voice-dm3.jpg" alt="お客様の声" loading="lazy" style="width:100%;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,0.4);">
+    <img src="images/voice-dm4.jpg" alt="お客様の声" loading="lazy" style="width:100%;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,0.4);">
+  </div>
 
-  <!-- CTA -->
-  <div class="cta-wrap fade-up">
-    <div class="slots">残り枠わずか ｜ 無料オンライン個別相談</div>
+  <div style="display:flex;flex-direction:column;gap:28px;max-width:580px;width:100%;">
+    <div class="fade-up" style="background:rgba(255,255,255,0.04);border:1px solid rgba(184,151,106,0.18);border-radius:12px;padding:28px;text-align:left;">
+      <p class="t-body" style="margin-bottom:16px;">先生自身がパニック障害の体験者であり、脳科学や古代ハワイの技術を学んだことを話してくださいました。心が軽くなったと同時に、足の痺れが一瞬でなくなり、以後もありません。</p>
+      <p class="t-gold" style="font-size:0.82rem;font-weight:600;">— 女性</p>
+    </div>
+    <div class="fade-up delay-1" style="background:rgba(255,255,255,0.04);border:1px solid rgba(184,151,106,0.18);border-radius:12px;padding:28px;text-align:left;">
+      <p class="t-body" style="margin-bottom:16px;">いつも何かに怯えていたことがわかりました。今はどちらも気にならなくなって、身体の緊張も緩んで、心穏やかにゆったり過ごせるようになりました。</p>
+      <p class="t-gold" style="font-size:0.82rem;font-weight:600;">— 30代女性</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ 11 名前アンカー ═══ -->
+<div class="sec sec-screen bg-darkest">
+  <p class="t-label fade-up">YOUR SOLUTION</p>
+  <p class="t-impact fade-up delay-1">
+    パニック障害の根本解決に、<br>
+    <span class="t-bright">小松大将</span>がいる。
+  </p>
+  <div class="divider fade-up delay-2"></div>
+  <p class="t-body fade-up delay-3">
+    このページを読んでいるあなたが<br>
+    感じている「変わりたい」という気持ちは、<br>
+    すでに変わり始めているサインです。
+  </p>
+</div>
+
+
+<!-- ═══ 12 ストーリー ═══ -->
+<div class="sec bg-story" style="padding:110px 24px;">
+  <p class="t-label fade-up">STORY</p>
+  <div style="max-width:580px;width:100%;">
+    <p class="t-mid fade-up delay-1" style="margin-bottom:52px;font-size:clamp(1rem,3.2vw,1.3rem);">
+      パニック障害の恐怖を——<br>
+      僕は10年間、知っていた。
+    </p>
+    <div class="fade-up delay-2" style="text-align:left;display:flex;flex-direction:column;gap:22px;">
+      <p class="t-body">
+        発作が怖くて外に出られなかった。<br>
+        電車に乗れなかった。<br>
+        「また来たらどうしよう」という恐怖が、<br>
+        毎日頭から離れなかった。
+      </p>
+      <p class="t-body">
+        症状を消そうとしても、変わらなかった。<br>
+        地上の茎を刈り取っても、根っこが残る限り<br>
+        雑草は何度でも生えてくる。<br><br>
+        だから僕は、根っこから書き換えた。<br>
+        そうしたら、現実が変わり始めた。
+      </p>
+      <div class="quote fade-up delay-3">
+        <p style="color:#f0e8d8;font-size:0.95rem;line-height:2.1;">
+          パニック障害は、あなたの弱さではない。<br>
+          脳のプログラムが誤作動しているだけ。<br>
+          書き換えれば、根っこから手放せる。
+        </p>
+      </div>
+    </div>
+    <div style="text-align:right;margin-top:36px;" class="fade-up delay-3">
+      <p class="t-gold" style="font-size:0.88rem;letter-spacing:0.1em;">Na'au Noa 代表　小松 大将</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ 13 なぜ無料か ═══ -->
+<div class="sec sec-screen bg-darkest">
+  <p class="t-label fade-up">WHY FREE</p>
+  <p class="t-impact fade-up delay-1" style="font-size:clamp(1.4rem,4.5vw,2.3rem);">
+    なぜ、無料なのか。
+  </p>
+  <div class="divider fade-up delay-2"></div>
+  <div class="fade-up delay-3" style="max-width:480px;">
+    <p class="t-body" style="margin-bottom:28px;">
+      売り込むためではない。<br><br>
+      本気でパニック障害を手放したいと<br>
+      思っている方と、<br>
+      直接話がしたいからです。
+    </p>
+    <p class="t-gold" style="font-size:0.9rem;line-height:2.0;letter-spacing:0.05em;">
+      「変わりたい」という気持ちがある方だけ、<br>来てください。
+    </p>
+  </div>
+</div>
+
+
+<!-- ═══ 14 最終CTA ═══ -->
+<div class="sec sec-screen bg-dark" style="padding:110px 24px;">
+  <p class="t-impact fade-up" style="margin-bottom:0;">
+    今日という日は、<br>
+    二度と戻らない。
+  </p>
+  <div class="divider fade-up delay-1"></div>
+  <p class="t-body fade-up delay-2" style="margin-bottom:52px;">
+    パニック障害のない人生が、<br>
+    あなたを待っている。
+  </p>
+  <div class="cta-wrap fade-up delay-3">
+    <div class="slots" style="margin-bottom:22px;">残り枠わずか ｜ 無料オンライン個別相談</div>
     <button class="cta-btn" onclick="handleCTA()">
-      Daisuke（小松大将）による無料個別相談はこちら
+      小松大将による無料個別相談はこちら
     </button>
-    <p style="color:#c8b89a;font-size:0.8rem;margin-top:14px;letter-spacing:0.03em;">✔ 完全オンライン（Zoom）で受けられます｜全国対応</p>
-    <p style="color:#c8b89a;font-size:0.75rem;margin-top:6px;letter-spacing:0.03em;opacity:0.8;">茅ヶ崎に来なくてもOK。どこからでも参加できます。</p>
-  </div>
-
-</div>
-
-
-<!-- ── FOR YOU ── -->
-<div class="for-you">
-  <div class="for-you-inner">
-    <p class="section-label fade-up">FOR YOU</p>
-    <h2 class="section-title fade-up delay-1">こんな経験、ありませんか</h2>
-    <p style="color:#666;font-size:0.88rem;text-align:center;line-height:1.9;" class="fade-up delay-2">一つでも当てはまるなら、あなたのためのプログラムがあります</p>
-    <ul>
-      <li class="highlight fade-up">
-        <span class="check hl">✓</span>
-        発作が怖くて外出できない、一人での外出が不安でたまらない
-      </li>
-      <li class="fade-up delay-1">
-        <span class="check">✓</span>
-        電車・人混み・閉じた場所でパニックが起きるかもと常に怯えている
-      </li>
-      <li class="fade-up delay-2">
-        <span class="check">✓</span>
-        「また発作が来たらどうしよう」という予期不安が1日中頭から離れない
-      </li>
-      <li class="fade-up">
-        <span class="check">✓</span>
-        病院・薬で症状を抑えているが、根本から治したいと感じている
-      </li>
-      <li class="fade-up delay-1">
-        <span class="check">✓</span>
-        パニック障害のせいで仕事・外出・人間関係が制限されてしまっている
-      </li>
-      <li class="fade-up delay-2">
-        <span class="check">✓</span>
-        心身の緊張が取れず、リラックスできない状態が続いている
-      </li>
-      <li class="fade-up">
-        <span class="check">✓</span>
-        パニック障害を完全に手放して、自由に生きたい
-      </li>
-    </ul>
+    <p style="color:#c8b89a;font-size:0.76rem;margin-top:14px;letter-spacing:0.04em;">完全オンライン（Zoom）｜ 全国対応 ｜ 完全無料</p>
   </div>
 </div>
 
-
-<!-- ── このまま放置したら ── -->
-<div class="risk-section">
-  <div class="risk-inner">
-    <p class="section-label fade-up" style="color:#c87070;">WARNING</p>
-    <h2 class="section-title fade-up delay-1" style="color:#f0e8d8;">このまま何も変えなかったら</h2>
-    <p class="risk-lead fade-up delay-2">扁桃体の誤認識は、放っておいても消えない。<br>それどころか、発作のたびに恐怖の記憶が上書きされ、より深く刻まれていく。</p>
-    <div class="risk-grid">
-      <div class="risk-card fade-up">
-        <div class="risk-card-icon">😔</div>
-        <div class="risk-card-title">予期不安がどんどん強くなる悪循環</div>
-        <div class="risk-card-body">発作を経験するたびに「また来たらどうしよう」という恐怖が強くなり、発作が来る前から体が反応するようになっていく。</div>
-      </div>
-      <div class="risk-card fade-up delay-1">
-        <div class="risk-card-icon">🔄</div>
-        <div class="risk-card-title">行動できる範囲がどんどん狭くなる</div>
-        <div class="risk-card-body">「ここは危ない」という場所・状況が増え続け、気づけば行けない場所だらけになり、生活範囲が急速に縮まっていく。</div>
-      </div>
-      <div class="risk-card fade-up delay-2">
-        <div class="risk-card-icon">💭</div>
-        <div class="risk-card-title">パニック障害が日常のあらゆる場面を侵食する</div>
-        <div class="risk-card-body">最初は特定の場所だけだった症状が、仕事・家事・人間関係にまで広がり、生活そのものが制限されていく。</div>
-      </div>
-      <div class="risk-card fade-up delay-3">
-        <div class="risk-card-icon">🚪</div>
-        <div class="risk-card-title">本来の人生を生きる時間が静かに失われていく</div>
-        <div class="risk-card-body">パニック障害への恐怖と戦い続けることで、やりたいことへの気力とエネルギーが奪われ、幸せな人生が遠ざかっていく。</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ── 口コミ ── -->
-<div class="reviews">
-  <div class="reviews-inner">
-    <p class="section-label fade-up">VOICE</p>
-    <h2 class="section-title fade-up delay-1">セッションを受けた方の声</h2>
-
-    <!-- 強力さリード文 -->
-    <div class="fade-up" style="background:#fff;border-radius:14px;padding:22px 26px;margin-bottom:36px;border-left:4px solid #b8976a;box-shadow:0 2px 14px rgba(0,0,0,0.06);max-width:720px;margin-left:auto;margin-right:auto;">
-      <p style="font-size:0.92rem;line-height:2.1;color:#2c2c2c;">パニック障害・予期不安・外出恐怖——<br>
-      そういった<strong>長年の苦しみが根っこから消えてしまうほど、強力な技法</strong>です。<br>
-      実際にパニック障害を手放し、自由な毎日を手に入れた方の声をご覧ください。</p>
-    </div>
-
-    <!-- DM口コミ画像 -->
-    <div class="fade-up" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:720px;margin:0 auto 40px;">
-      <img src="images/voice-dm1.jpg" alt="お客様の声DM1" loading="lazy" style="width:100%;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
-      <img src="images/voice-dm2.jpg" alt="お客様の声DM2" loading="lazy" style="width:100%;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
-      <img src="images/voice-dm3.jpg" alt="お客様の声DM3" loading="lazy" style="width:100%;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
-      <img src="images/voice-dm4.jpg" alt="お客様の声DM4" loading="lazy" style="width:100%;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
-    </div>
-
-
-    <div class="review-grid">
-
-      <div class="review-card fade-up">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">「私は自己肯定感が低く周りに流されやすく、自分というものがありませんでした。その根底に母との関係性があると思っていて、その事で悩んでいました。小松さんにお話を聞いていただき潜在意識の書き換えリリースワークをしていただきました。セッション中は不思議な感じで、何かが抜けたように身体が軽くなりました。<br><br>セッション後は悩みを手放せた気持ちが安心感となり、前向きな気持ちで過ごせています。母へ対しての気持ちも穏やかになりました。これからの自分が楽しみです。<br><br>小松さんは初対面の時から気さくで話しやすく安心感があります。ご自身も大変な思いをされているので、優しく親身にお話を聞いてくださいます。」</p>
-        <p class="review-meta">— 女性</p>
-      </div>
-
-      <div class="review-card fade-up delay-1">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">「人の言葉を気にしてしまったり、いつも何かに怯えていたことがわかりました。今はどちらも気にならなくなって、身体の緊張も緩んで、心穏やかにゆったり過ごせるようになりました。」</p>
-        <p class="review-meta">— 30代女性・会社員</p>
-      </div>
-
-      <div class="review-card fade-up delay-2">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">「娘のこと。自傷行為を繰り返し、摂食障害に悩む娘とどう接すればいいのか分からなくなり、お手上げ状態でした。小松さんは、まず、私自身が無理矢理押し込めていた辛い嫌な記憶を整理してくれました。無意識に抱え続けていた不安が消えて、当時のことを思い浮かべても恐怖を感じることがなくなりました。うれしいことに、娘の言動も良い方向に変わってきています。」</p>
-        <p class="review-meta">— 40代女性・主婦</p>
-      </div>
-
-      <div class="review-card fade-up">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">「小松さんは個人的に本当に本当にパーソナルに考えてくれるセラピストなんだ、と施術とセッションを通して感じました。なかなか話せない個人的な悩み事は、赤裸々にこんなに語っちゃっていいのかなって事まで全部話せるし、本物の悩める人へのセラピストだと思ってます。」</p>
-        <p class="review-meta">— 女性</p>
-      </div>
-
-      <div class="review-card fade-up delay-1">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">「職場での不満やストレスを吐き出した後、先生から言われた言葉が刺さりました。『その不満は他人に対してではなく、自分自身に対する不満ですよ』と。他人軸ではなく、まず自分を大切にすることを意識するようになってから、職場への不満が減ったことに気づきました。」</p>
-        <p class="review-meta">— 女性・会社員</p>
-      </div>
-
-      <div class="review-card fade-up delay-2">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">「長年の腰痛と足の痺れで、小松先生の施術を受けることにしました。先生自身がパニック障害の体験者であり、脳科学や古代ハワイの技術を学んだことを話してくださいました。心が軽くなったと同時に、足の痺れが一瞬でなくなり、以後もありません。心の悩みが腰痛に大きく関与しているということを体験できた出来事でした。」</p>
-        <p class="review-meta">— 女性</p>
-      </div>
-
-      <div class="review-card fade-up">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">「体調がすぐれず毎日悶々としていた中でセッションして頂きました。会話していくうちに自分の気持ちが整理され、悩みの根本にあるもの〜自分はどんな性格の人間で、何を大切にしていて、どのような人生を送りたいのか〜ということが見えて来ました。先生はとても話し易く、私の繊細な部分を理解してくれます。先生に巡り逢えたご縁に感謝しています。」</p>
-        <p class="review-meta">— 女性</p>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
-<!-- ── ブランドストーリー ── -->
-<div style="background:#0d2626;padding:72px 24px;">
-  <div style="max-width:680px;margin:0 auto;">
-    <p class="section-label fade-up">STORY</p>
-    <h2 class="fade-up delay-1" style="color:#f0e8d8;font-size:clamp(1.1rem,3.2vw,1.45rem);line-height:1.7;text-align:center;margin-bottom:48px;">Na'au Noa | Daisukeのストーリー</h2>
-    <div style="color:#c8b89a;font-size:clamp(0.9rem,2.6vw,1rem);line-height:2.1;display:flex;flex-direction:column;gap:24px;" class="fade-up delay-2">
-      <p style="color:#f0e8d8;font-size:clamp(1rem,3vw,1.2rem);font-weight:600;line-height:1.8;">パニック障害の恐怖を——僕は10年間、知っていた。</p>
-      <p>発作が怖くて外に出られなかった。電車に乗れなかった。「また来たらどうしよう」という予期不安が、毎日頭から離れなかった。</p>
-      <p style="color:#f0e8d8;">イップス、パニック障害、適応障害——あれは全部、扁桃体が「ここは危険だ」と誤認識し続けた結果だった。</p>
-      <p>症状をいくら消そうとしても解決しなかった。地上の茎や花を刈り取っても、根っこが残る限り雑草は何度でも生えてくる。だから僕は根っこである潜在意識を書き換えた。そうしたら発作の恐怖が消え、現実が変わり始めた。</p>
-      <div style="background:rgba(184,151,106,0.1);border-left:3px solid #b8976a;border-radius:4px;padding:24px 28px;margin:8px 0;">
-        <p style="color:#f0e8d8;margin-bottom:16px;">パニック障害は、あなたの弱さではない。脳のプログラムが誤作動しているだけ。潜在意識を書き換えれば、根っこから手放せる。</p>
-        <p style="color:#b8976a;font-weight:600;">一瞬で変わる体験を、あなたにも。</p>
-      </div>
-    </div>
-    <div style="text-align:right;margin-top:32px;" class="fade-up delay-3">
-      <p style="color:#b8976a;font-size:0.88rem;letter-spacing:0.08em;">Na'au Noa 代表　小松 大将</p>
-    </div>
-  </div>
-</div>
-
-
-<!-- ── セッション詳細 ── -->
-<div style="background:#faf8f5;padding:60px 24px;text-align:center;">
-  <p class="section-label fade-up">MENU</p>
-  <h2 class="fade-up delay-1" style="font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,4vw,2rem);color:#1a3a3a;margin-bottom:40px;">メニュー・料金</h2>
-
-  <!-- 無料オンライン個別相談 -->
-  <div class="scale-in" style="max-width:480px;margin:0 auto 28px;background:#1a3a3a;border-radius:16px;padding:32px 28px;box-shadow:0 4px 24px rgba(0,0,0,0.15);text-align:left;">
-    <p style="font-size:0.72rem;letter-spacing:0.18em;color:#b8976a;margin-bottom:10px;">FREE CONSULTATION</p>
-    <h3 style="font-family:'Noto Serif JP',serif;font-size:1.1rem;color:#f0e8d8;margin-bottom:16px;">無料オンライン個別相談</h3>
-    <div style="display:flex;flex-direction:column;gap:14px;font-size:0.9rem;color:#c8b89a;line-height:1.8;">
-      <div style="display:flex;gap:12px;"><span style="color:#b8976a;font-weight:600;min-width:60px;">形式</span><span>Zoom（オンライン）/ 全国どこからでも</span></div>
-      <div style="display:flex;gap:12px;"><span style="color:#b8976a;font-weight:600;min-width:60px;">時間</span><span>60分</span></div>
-      <div style="display:flex;gap:12px;"><span style="color:#b8976a;font-weight:600;min-width:60px;">料金</span><span style="font-size:1.2rem;font-weight:700;color:#e8c080;">完全無料</span></div>
-      <div style="display:flex;gap:12px;"><span style="color:#b8976a;font-weight:600;min-width:60px;">内容</span><span>現在のお悩み・ゴール・プランについてじっくりお話しします。</span></div>
-    </div>
-  </div>
-
-  <!-- 3ヶ月コーチング -->
-  <div class="scale-in delay-1" style="max-width:480px;margin:0 auto 28px;background:#1a3a3a;border-radius:16px;padding:32px 28px;box-shadow:0 4px 24px rgba(0,0,0,0.15);text-align:left;position:relative;overflow:hidden;">
-    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,#b8976a,#e8c080,#b8976a);"></div>
-    <p style="font-size:0.72rem;letter-spacing:0.18em;color:#b8976a;margin-bottom:10px;">3-MONTH COACHING</p>
-    <h3 style="font-family:'Noto Serif JP',serif;font-size:1.05rem;color:#f0e8d8;margin-bottom:18px;line-height:1.8;">パニック障害を一瞬で手放し、幸せな自分を手にいれるメンタルフォームコーチング</h3>
-    <p style="font-size:0.83rem;color:#c8b89a;line-height:2.0;margin:0 0 20px;">たった3ヶ月でこれから先の人生、パニック障害のない、理想の幸せな自分で生きていけるようになれる。そしてそれはあなたにとって必要ですよね？だから今、あなたはパニック障害を手放す必要がありますよね？あなたの幸せな人生、命の時間、健康で生きられる時間は決してお金には変えられないほどの価値がある。もしあなたが今までのこの苦しみや不安から解放されて、今までよりも幸せを実感できる自分にたった3ヶ月で変われるとしたら？このコーチングはあなたが欲しくてあなたに必要なものしか手に入りません。パニック障害から解放された快適な理想の未来を手に入れるための自分の素敵な将来代は個別相談にてご説明します。</p>
-  </div>
-</div>
-
-
-<!-- ── なぜ無料なのか ── -->
-<div style="background:#0d1f1f;padding:72px 24px;">
-  <div style="max-width:640px;margin:0 auto;text-align:center;">
-    <p class="section-label fade-up" style="color:#b8976a;">WHY FREE</p>
-    <h2 class="fade-up delay-1" style="color:#f0e8d8;font-size:clamp(1.3rem,4vw,1.8rem);line-height:1.6;margin-bottom:40px;">なぜ、無料なのか？</h2>
-    <div class="fade-up delay-2" style="background:rgba(184,151,106,0.08);border:1px solid rgba(184,151,106,0.25);border-radius:16px;padding:36px 32px;">
-      <p style="color:#f0e8d8;font-size:clamp(1rem,3vw,1.15rem);line-height:2.0;margin-bottom:24px;">相談料をいただくためではなく、<br>本気でパニック障害を手放したいと思っている方と、<br>直接話がしたいからです。</p>
-      <div style="width:40px;height:1px;background:#b8976a;margin:0 auto 24px;"></div>
-      <p style="color:#c8b89a;font-size:0.92rem;line-height:2.0;margin-bottom:20px;">売り込みや押し付けは一切しません。あなたの現状をきちんと聞いた上で、このプログラムが合うかどうかを一緒に確認する場です。</p>
-      <p style="color:#b8976a;font-size:0.9rem;font-weight:600;letter-spacing:0.06em;">「変わりたい」という気持ちがある方だけ、来てください。</p>
-    </div>
-  </div>
-</div>
-
-
-<!-- ── 最終CTA ── -->
-<div class="final-cta">
-  <h2 class="fade-up">パニック障害を手放して、<br>幸せな自分を生きよう。</h2>
-  <p class="fade-up delay-1">パニック障害の根本を手放せば、人生の扉が開く。<br>世界トップレベルの人間が密かに使っている<br>潜在意識の書き換え技法をあなたも</p>
-  <div class="fade-up delay-2">
-    <div class="slots" style="margin-bottom:24px;">残り枠わずか ｜ 無料個別相談</div>
-    <div class="cta-wrap">
-      <button class="cta-btn" onclick="handleCTA()">
-        無料個別相談の予約枠へ
-      </button>
-    </div>
-    <p style="color:#c8b89a;font-size:0.8rem;margin-top:14px;letter-spacing:0.03em;">✔ 完全オンライン（Zoom）で受けられます｜全国対応</p>
-    <p style="color:#c8b89a;font-size:0.75rem;margin-top:6px;letter-spacing:0.03em;opacity:0.8;">茅ヶ崎に来なくてもOK。どこからでも参加できます。</p>
-  </div>
-</div>
 
 <footer>
-  <p>© 2026 Na'au Noa ｜ Instagram: <a href="https://www.instagram.com/daisuke_aloha_magician/" style="color:#888;">@daisuke_aloha_magician</a> ｜ <a href="index.html" style="color:#888;">トップページ</a></p>
+  <p>© 2026 Na'au Noa ｜ Instagram: <a href="https://www.instagram.com/daisuke_aloha_magician/">@daisuke_aloha_magician</a> ｜ <a href="index.html">トップページ</a></p>
 </footer>
+
 
 <script>
 function handleCTA() {
@@ -608,7 +605,6 @@ function handleCTA() {
   window.location.href = 'booking.html';
 }
 
-/* ── スクロールアニメーション ── */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -616,34 +612,29 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
-document.querySelectorAll('.fade-up, .fade-in, .scale-in').forEach(el => {
-  observer.observe(el);
-});
+document.querySelectorAll('.fade-up, .fade-in').forEach(el => observer.observe(el));
 
-/* ヒーロー内の要素は即表示 */
 window.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
-    document.querySelectorAll('.hero .fade-up, .hero .scale-in').forEach(el => {
+    document.querySelectorAll('.hero .fade-up, .hero .fade-in').forEach(el => {
       el.classList.add('visible');
     });
-  }, 900);
+  }, 1000);
 });
-
 </script>
 
 <!-- Sticky CTA -->
 <div class="sticky-cta" id="stickyCta">
-  <a href="booking.html" class="sticky-cta-btn">
-    Daisuke による無料個別相談はこちら
+  <a href="booking.html" class="sticky-cta-btn" onclick="handleCTA()">
+    小松大将による無料個別相談はこちら
     <span class="sticky-cta-arrow">▶</span>
   </a>
-  <p class="sticky-cta-sub">✔ 完全無料 / Zoom / 全国対応</p>
+  <p class="sticky-cta-sub">完全無料 / Zoom / 全国対応</p>
 </div>
 
 <script>
-// Sticky CTA scroll behavior
 (function() {
   var stickyCta = document.getElementById('stickyCta');
   window.addEventListener('scroll', function() {
