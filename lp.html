@@ -17,13 +17,9 @@ s.parentNode.insertBefore(t,s)}(window,document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','2080933312746435');
 fbq('track','PageView');
-fbq('track','ViewContent',{
-  content_name: 'メンタルフォームプログラムLP',
-  content_category: 'LP'
-});
+fbq('track','ViewContent',{content_name:'メンタルフォームプログラムLP',content_category:'LP'});
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2080933312746435&ev=PageView&noscript=1"/></noscript>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2080933312746435&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
 
 <style>
@@ -31,49 +27,22 @@ src="https://www.facebook.com/tr?id=2080933312746435&ev=PageView&noscript=1"/></
 body { font-family: 'Noto Serif JP', serif; background: #070d0d; color: #f0e8d8; }
 
 /* ── ヘッダー ── */
-header { background: rgba(7,13,13,0.9); padding: 14px 24px; text-align: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(184,151,106,0.15); }
+header { background: rgba(7,13,13,0.92); padding: 14px 24px; text-align: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(184,151,106,0.12); }
 header a { color: #b8976a; text-decoration: none; font-size: 1.1rem; letter-spacing: 0.16em; }
 
 /* ── ヒーロー ── */
 .hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 60px 24px 80px;
-  overflow: hidden;
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 60px 24px 80px; overflow: hidden;
 }
-.hero-video {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  pointer-events: none;
-}
-.hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(5,10,10,0.78) 0%, rgba(5,10,10,0.62) 50%, rgba(5,10,10,0.85) 100%);
-  z-index: 1;
-}
+.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; pointer-events: none; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(5,10,10,0.82) 0%, rgba(5,10,10,0.68) 50%, rgba(5,10,10,0.88) 100%); z-index: 1; }
 .hero > *:not(.hero-video):not(.hero-overlay) { position: relative; z-index: 2; }
 
-.hero-title {
-  color: #fff;
-  font-size: clamp(1.8rem, 6.5vw, 3.8rem);
-  line-height: 1.65;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  margin-bottom: 48px;
-}
-.hero-title .line {
-  display: block;
-  opacity: 0;
-  transform: translateY(28px);
-  animation: heroLine 0.9s cubic-bezier(0.22,1,0.36,1) forwards;
-}
+.hero-title { color: #fff; font-size: clamp(1.9rem, 6.5vw, 4rem); line-height: 1.65; font-weight: 600; letter-spacing: 0.04em; margin-bottom: 44px; }
+.hero-title .line { display: block; opacity: 0; transform: translateY(28px); animation: heroLine 0.9s cubic-bezier(0.22,1,0.36,1) forwards; }
 .hero-title .line:nth-child(1) { animation-delay: 0.2s; }
 .hero-title .line:nth-child(2) { animation-delay: 0.5s; }
 .hero-title .line:nth-child(3) { animation-delay: 0.8s; }
@@ -83,176 +52,69 @@ header a { color: #b8976a; text-decoration: none; font-size: 1.1rem; letter-spac
 /* ── CTAボタン ── */
 .cta-wrap { text-align: center; padding: 0 16px; width: 100%; }
 .cta-btn {
-  display: block;
-  width: 100%;
-  max-width: 520px;
-  margin: 0 auto;
+  display: block; width: 100%; max-width: 520px; margin: 0 auto;
   background: linear-gradient(135deg, #c9a870, #e8c080, #b8976a);
-  background-size: 200% 200%;
-  color: #1a2e2e; text-decoration: none;
+  background-size: 200% 200%; color: #1a2e2e; text-decoration: none;
   padding: 22px 20px; border-radius: 16px;
-  font-size: clamp(0.95rem, 3.2vw, 1.2rem);
-  font-weight: 700; letter-spacing: 0.04em;
-  border: none; font-family: 'Noto Serif JP', serif;
-  cursor: pointer;
+  font-size: clamp(0.92rem, 3vw, 1.15rem); font-weight: 700; letter-spacing: 0.04em;
+  border: none; font-family: 'Noto Serif JP', serif; cursor: pointer;
   position: relative; overflow: clip;
   animation: ctaFloat 2.8s ease-in-out infinite, ctaGlow 2.8s ease-in-out infinite;
   line-height: 1.6;
 }
-.cta-btn::before {
-  content: '';
-  position: absolute; top: 0; left: -100%;
-  width: 50%; height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
-  animation: ctaShine 2.8s ease-in-out infinite;
-}
-.cta-btn:hover {
-  animation: none;
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 16px 56px rgba(184,151,106,0.7);
-}
-@keyframes ctaFloat {
-  0%,100% { transform: translateY(0); }
-  50%      { transform: translateY(-5px); }
-}
-@keyframes ctaGlow {
-  0%,100% { box-shadow: 0 8px 40px rgba(184,151,106,0.5), 0 0 0 3px rgba(184,151,106,0.15); }
-  50%      { box-shadow: 0 16px 56px rgba(184,151,106,0.7), 0 0 0 5px rgba(184,151,106,0.25); }
-}
-@keyframes ctaShine {
-  0%      { left: -100%; }
-  40%,100% { left: 160%; }
-}
+.cta-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent); animation: ctaShine 2.8s ease-in-out infinite; }
+.cta-btn:hover { animation: none; transform: translateY(-4px) scale(1.02); box-shadow: 0 16px 56px rgba(184,151,106,0.7); }
+@keyframes ctaFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes ctaGlow { 0%,100% { box-shadow: 0 8px 40px rgba(184,151,106,0.5), 0 0 0 3px rgba(184,151,106,0.15); } 50% { box-shadow: 0 16px 56px rgba(184,151,106,0.7), 0 0 0 5px rgba(184,151,106,0.25); } }
+@keyframes ctaShine { 0% { left: -100%; } 40%,100% { left: 160%; } }
 
 /* ── スティッキーCTA ── */
-.sticky-cta {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  z-index: 999;
-  padding: 12px 16px 16px;
-  background: linear-gradient(to top, rgba(5,10,10,0.98), rgba(5,10,10,0.92));
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transform: translateY(100%);
-  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
-  border-top: 1px solid rgba(184,151,106,0.2);
-}
+.sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; padding: 12px 16px 16px; background: linear-gradient(to top, rgba(5,10,10,0.98), rgba(5,10,10,0.92)); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); border-top: 1px solid rgba(184,151,106,0.2); }
 .sticky-cta.visible { transform: translateY(0); }
-.sticky-cta-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 16px 24px;
-  background: linear-gradient(135deg, #b8976a 0%, #e8c080 50%, #b8976a 100%);
-  background-size: 200% 100%;
-  color: #1a2e2e;
-  font-family: 'Noto Serif JP', serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  border: none; border-radius: 50px;
-  cursor: pointer; text-decoration: none;
-  box-shadow: 0 4px 24px rgba(184,151,106,0.4);
-  animation: stickyPulse 2.4s ease-in-out infinite;
-}
-.sticky-cta-arrow {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 24px; height: 24px;
-  background: rgba(26,46,46,0.2); border-radius: 50%;
-  font-size: 0.85rem;
-  animation: arrowBounce 1.2s ease-in-out infinite; flex-shrink: 0;
-}
-.sticky-cta-sub {
-  text-align: center; font-size: 0.7rem;
-  color: rgba(184,151,106,0.65); margin-top: 6px; letter-spacing: 0.06em;
-}
-@keyframes stickyPulse {
-  0%,100% { box-shadow: 0 4px 24px rgba(184,151,106,0.4), 0 0 0 0 rgba(232,192,128,0.4); }
-  50%      { box-shadow: 0 6px 32px rgba(184,151,106,0.6), 0 0 0 8px rgba(232,192,128,0); }
-}
-@keyframes arrowBounce {
-  0%,100% { transform: translateX(0); } 50% { transform: translateX(4px); }
-}
+.sticky-cta-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; max-width: 480px; margin: 0 auto; padding: 16px 24px; background: linear-gradient(135deg, #b8976a 0%, #e8c080 50%, #b8976a 100%); background-size: 200% 100%; color: #1a2e2e; font-family: 'Noto Serif JP', serif; font-size: 0.92rem; font-weight: 700; letter-spacing: 0.04em; border: none; border-radius: 50px; cursor: pointer; text-decoration: none; box-shadow: 0 4px 24px rgba(184,151,106,0.4); animation: stickyPulse 2.4s ease-in-out infinite; }
+.sticky-cta-arrow { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: rgba(26,46,46,0.2); border-radius: 50%; font-size: 0.85rem; animation: arrowBounce 1.2s ease-in-out infinite; flex-shrink: 0; }
+.sticky-cta-sub { text-align: center; font-size: 0.7rem; color: rgba(184,151,106,0.65); margin-top: 6px; letter-spacing: 0.06em; }
+@keyframes stickyPulse { 0%,100% { box-shadow: 0 4px 24px rgba(184,151,106,0.4), 0 0 0 0 rgba(232,192,128,0.4); } 50% { box-shadow: 0 6px 32px rgba(184,151,106,0.6), 0 0 0 8px rgba(232,192,128,0); } }
+@keyframes arrowBounce { 0%,100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
 
-/* ── 残り枠バッジ ── */
-.slots {
-  display: inline-block;
-  background: rgba(184,151,106,0.12); border: 1px solid rgba(184,151,106,0.45);
-  color: #b8976a; padding: 7px 22px; border-radius: 50px;
-  font-size: 0.8rem; margin-bottom: 20px;
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(184,151,106,0.25); }
-  50%      { opacity: 0.85; box-shadow: 0 0 0 6px rgba(184,151,106,0); }
-}
+/* ── バッジ ── */
+.slots { display: inline-block; background: rgba(184,151,106,0.12); border: 1px solid rgba(184,151,106,0.45); color: #b8976a; padding: 7px 22px; border-radius: 50px; font-size: 0.8rem; margin-bottom: 20px; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(184,151,106,0.25); } 50% { opacity: 0.85; box-shadow: 0 0 0 6px rgba(184,151,106,0); } }
 
-/* ── セクション共通 ── */
-.sec {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 110px 24px;
-}
+/* ── セクション ── */
+.sec { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px; }
 .sec-screen { min-height: 100vh; }
+.bg-darkest { background: #050a0a; }
+.bg-dark    { background: #090f0f; }
+.bg-mid     { background: #0d1a1a; }
+.bg-warm    { background: #0a1510; }
+.bg-story   { background: #0d2020; }
+.bg-law     { background: #08100e; }
 
-/* ── 背景 ── */
-.bg-darkest  { background: #050a0a; }
-.bg-dark     { background: #090f0f; }
-.bg-mid      { background: #0d1a1a; }
-.bg-warm     { background: #0a1510; }
-.bg-story    { background: #0d2020; }
-
-/* ── テキスト ── */
-.t-label {
-  font-size: 0.7rem; letter-spacing: 0.24em; color: #b8976a;
-  margin-bottom: 24px;
-}
-.t-impact {
-  font-size: clamp(1.7rem, 6vw, 3.5rem);
-  line-height: 1.7; font-weight: 600; color: #f0e8d8;
-  max-width: 680px;
-}
-.t-mid {
-  font-size: clamp(1.1rem, 3.8vw, 1.7rem);
-  line-height: 1.9; font-weight: 600; color: #f0e8d8;
-  max-width: 600px;
-}
-.t-body {
-  font-size: clamp(0.9rem, 2.4vw, 1.02rem);
-  line-height: 2.4; color: #c8b89a;
-  max-width: 520px;
-}
-.t-gold  { color: #b8976a; }
+/* ── タイポグラフィ ── */
+.t-label { font-size: 0.7rem; letter-spacing: 0.24em; color: #b8976a; margin-bottom: 24px; }
+.t-impact { font-size: clamp(1.7rem, 6vw, 3.5rem); line-height: 1.7; font-weight: 600; color: #f0e8d8; max-width: 680px; }
+.t-mid { font-size: clamp(1.1rem, 3.8vw, 1.7rem); line-height: 1.9; font-weight: 600; color: #f0e8d8; max-width: 600px; }
+.t-body { font-size: clamp(0.9rem, 2.4vw, 1.02rem); line-height: 2.4; color: #c8b89a; max-width: 520px; }
+.t-gold   { color: #b8976a; }
 .t-bright { color: #e8c080; }
-.divider {
-  width: 36px; height: 1px;
-  background: linear-gradient(to right, transparent, #b8976a, transparent);
-  margin: 40px auto;
-}
-.quote {
-  border-left: 2px solid #b8976a;
-  padding: 20px 26px; text-align: left;
-  max-width: 520px; margin: 0 auto;
-}
+.divider { width: 36px; height: 1px; background: linear-gradient(to right, transparent, #b8976a, transparent); margin: 44px auto; }
+.quote { border-left: 2px solid #b8976a; padding: 20px 26px; text-align: left; max-width: 520px; margin: 0 auto; }
+
+/* ── 対極テーブル ── */
+.polarity-grid { display: flex; flex-direction: column; gap: 18px; margin: 0 auto; max-width: 320px; }
+.polarity-row { display: flex; align-items: center; justify-content: center; gap: 20px; font-size: clamp(1rem, 3vw, 1.2rem); color: #c8b89a; letter-spacing: 0.04em; }
+.polarity-sep { color: #b8976a; font-size: 0.85rem; }
 
 /* ── スクロールアニメーション ── */
-.fade-up {
-  opacity: 0; transform: translateY(32px);
-  transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1);
-}
+.fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 .fade-in { opacity: 0; transition: opacity 1.1s ease; }
 .fade-in.visible { opacity: 1; }
-.delay-1 { transition-delay: 0.12s; }
-.delay-2 { transition-delay: 0.24s; }
-.delay-3 { transition-delay: 0.36s; }
+.delay-1 { transition-delay: 0.14s; }
+.delay-2 { transition-delay: 0.28s; }
+.delay-3 { transition-delay: 0.42s; }
+.delay-4 { transition-delay: 0.56s; }
 
 /* ── フッター ── */
 footer { background: #030808; padding: 28px 24px; text-align: center; }
@@ -262,7 +124,7 @@ footer a { color: #555; }
 @media (max-width: 480px) {
   .t-impact { font-size: clamp(1.4rem, 6vw, 2rem); }
   .t-mid    { font-size: clamp(1rem, 4vw, 1.3rem); }
-  .sec { padding: 80px 20px; }
+  .sec { padding: 88px 20px; }
 }
 </style>
 </head>
@@ -284,7 +146,7 @@ footer a { color: #555; }
     <span class="line">10年後も。</span>
   </h1>
 
-  <p style="color:#c8b89a;font-size:clamp(0.9rem,2.5vw,1.05rem);line-height:2.0;margin-bottom:48px;max-width:480px;" class="fade-up">
+  <p style="color:#c8b89a;font-size:clamp(0.9rem,2.5vw,1.05rem);line-height:2.0;margin-bottom:52px;max-width:440px;" class="fade-up">
     何もしなければ、<br>
     今と同じ恐怖の中で生きていく。
   </p>
@@ -336,7 +198,7 @@ footer a { color: #555; }
 </div>
 
 
-<!-- ═══ 03 本当の気持ち ═══ -->
+<!-- ═══ 03 本当は知っている ═══ -->
 <div class="sec sec-screen bg-mid">
   <p class="t-label fade-up">YOUR TRUTH</p>
   <p class="t-impact fade-up delay-1" style="font-style:italic;font-size:clamp(1.5rem,5vw,2.8rem);">
@@ -351,7 +213,7 @@ footer a { color: #555; }
     自分になりたいって。
   </p>
   <div class="divider fade-up delay-3"></div>
-  <p class="fade-up delay-3" style="color:#b8976a;font-size:0.95rem;letter-spacing:0.08em;">その気持ちは、本物だ。</p>
+  <p class="fade-up delay-3 t-gold" style="font-size:0.95rem;letter-spacing:0.08em;">その気持ちは、本物だ。</p>
 </div>
 
 
@@ -374,8 +236,67 @@ footer a { color: #555; }
 </div>
 
 
-<!-- ═══ 05 中間フック ═══ -->
+<!-- ═══ 05 概念破壊：絶対法則 ═══ -->
+<div class="sec sec-screen bg-law">
+  <p class="t-label fade-up">THE UNIVERSAL LAW</p>
+  <p class="t-mid fade-up delay-1" style="margin-bottom:0;">
+    あなたはある日、<br>突然パニックになった。
+  </p>
+  <div class="divider fade-up delay-2"></div>
+  <p class="t-body fade-up delay-2" style="margin-bottom:44px;">
+    この世界には、絶対的な法則がある。<br>
+    対極のないものは、存在できない。
+  </p>
+  <div class="polarity-grid fade-up delay-3">
+    <div class="polarity-row"><span>＋</span><span class="polarity-sep">/</span><span>−</span></div>
+    <div class="polarity-row"><span>光</span><span class="polarity-sep">/</span><span>影</span></div>
+    <div class="polarity-row"><span>表</span><span class="polarity-sep">/</span><span>裏</span></div>
+    <div class="polarity-row"><span>始まり</span><span class="polarity-sep">/</span><span>終わり</span></div>
+    <div class="polarity-row"><span>健康</span><span class="polarity-sep">/</span><span>不健康</span></div>
+  </div>
+  <div class="divider fade-up delay-4"></div>
+  <p class="t-impact fade-up delay-4" style="font-size:clamp(1.3rem,4.5vw,2.3rem);">
+    ということは——<br><br>
+    「パニックはある日、<br>
+    <span class="t-bright">突然なくなる」</span><br><br>
+    も、存在する。
+  </p>
+  <div class="divider fade-up delay-4"></div>
+  <p class="t-body fade-up delay-4">
+    始まりがあるなら、<br>
+    終わりは必ずセットになっている。<br><br>
+    これは、法則だ。
+  </p>
+</div>
+
+
+<!-- ═══ 06 原因側で生きる ═══ -->
 <div class="sec sec-screen bg-dark">
+  <p class="t-label fade-up">THE PRINCIPLE</p>
+  <p class="t-impact fade-up delay-1" style="font-size:clamp(1.6rem,5.5vw,3rem);">
+    原因側で、生きていく。
+  </p>
+  <div class="divider fade-up delay-2"></div>
+  <div class="fade-up delay-3" style="max-width:520px;text-align:left;">
+    <p class="t-body" style="margin-bottom:28px;">
+      全ての結果には、必ず原因がある。<br>
+      そしてその原因は、自分の中にある。
+    </p>
+    <p class="t-body" style="margin-bottom:28px;">
+      外側を変えようとしても、根っこは変わらない。<br>
+      薬は外側から症状を抑えるアプローチ。<br>
+      潜在意識の書き換えは、<br>内側の原因そのものを変えるアプローチ。
+    </p>
+    <p class="t-body">
+      自分が原因側に立てたとき、<br>
+      初めて自分の人生が、変わり始める。
+    </p>
+  </div>
+</div>
+
+
+<!-- ═══ 07 中間問いかけ ═══ -->
+<div class="sec sec-screen bg-darkest">
   <p class="t-impact fade-up" style="font-size:clamp(1.6rem,6vw,3.2rem);font-style:italic;">
     まだ、<br>見ぬふりを<br>
     <span class="t-bright">しますか。</span>
@@ -388,8 +309,8 @@ footer a { color: #555; }
 </div>
 
 
-<!-- ═══ 06 人生は一回 ═══ -->
-<div class="sec sec-screen bg-darkest">
+<!-- ═══ 08 人生は一回 ═══ -->
+<div class="sec sec-screen bg-mid">
   <p class="t-impact fade-up" style="font-size:clamp(2rem,7.5vw,4.5rem);letter-spacing:0.04em;">
     あなたの人生は、<br>
     <span class="t-bright">たった一回。</span>
@@ -407,8 +328,8 @@ footer a { color: #555; }
 </div>
 
 
-<!-- ═══ 07 理想の未来 ═══ -->
-<div class="sec sec-screen bg-mid">
+<!-- ═══ 09 理想の未来 ═══ -->
+<div class="sec sec-screen bg-dark">
   <p class="t-label fade-up">YOUR FUTURE</p>
   <p class="t-mid fade-up delay-1">
     発作のない朝を、<br>
@@ -428,31 +349,7 @@ footer a { color: #555; }
 </div>
 
 
-<!-- ═══ 08 仕組み ═══ -->
-<div class="sec bg-dark" style="padding:110px 24px;">
-  <p class="t-label fade-up">THE MECHANISM</p>
-  <p class="t-mid fade-up delay-1">
-    パニック障害の根本は、<br>
-    脳（扁桃体）の誤認識です。
-  </p>
-  <div class="divider fade-up delay-2"></div>
-  <div class="fade-up delay-3" style="max-width:520px;text-align:left;">
-    <p class="t-body" style="margin-bottom:28px;">
-      薬は、症状を抑える。<br>
-      しかし、発作を起こしている根っこには<br>触れない。<br>
-      だから薬をやめると、また怖くなる。
-    </p>
-    <p class="t-body">
-      潜在意識の書き換えは、<br>
-      扁桃体が「ここは危険だ」と誤認識している<br>
-      プログラムそのものを書き換える。<br><br>
-      根っこを消せば、雑草は生えてこない。
-    </p>
-  </div>
-</div>
-
-
-<!-- ═══ 09 Wバインド ═══ -->
+<!-- ═══ 10 Wバインド ═══ -->
 <div class="sec sec-screen bg-darkest">
   <p class="t-label fade-up">FOR YOU</p>
   <p class="t-impact fade-up delay-1" style="font-size:clamp(1.3rem,4.5vw,2.3rem);line-height:2.0;">
@@ -468,20 +365,18 @@ footer a { color: #555; }
 </div>
 
 
-<!-- ═══ 10 口コミ ═══ -->
-<div class="sec bg-warm" style="padding:110px 24px;">
+<!-- ═══ 11 口コミ ═══ -->
+<div class="sec bg-warm" style="padding:120px 24px;">
   <p class="t-label fade-up">VOICE</p>
   <p class="t-mid fade-up delay-1" style="margin-bottom:60px;font-size:clamp(1rem,3.2vw,1.3rem);">
     実際に変わった方たちの声
   </p>
-
   <div class="fade-up delay-2" style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:620px;width:100%;margin-bottom:60px;">
     <img src="images/voice-dm1.jpg" alt="お客様の声" loading="lazy" style="width:100%;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,0.4);">
     <img src="images/voice-dm2.jpg" alt="お客様の声" loading="lazy" style="width:100%;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,0.4);">
     <img src="images/voice-dm3.jpg" alt="お客様の声" loading="lazy" style="width:100%;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,0.4);">
     <img src="images/voice-dm4.jpg" alt="お客様の声" loading="lazy" style="width:100%;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,0.4);">
   </div>
-
   <div style="display:flex;flex-direction:column;gap:28px;max-width:580px;width:100%;">
     <div class="fade-up" style="background:rgba(255,255,255,0.04);border:1px solid rgba(184,151,106,0.18);border-radius:12px;padding:28px;text-align:left;">
       <p class="t-body" style="margin-bottom:16px;">先生自身がパニック障害の体験者であり、脳科学や古代ハワイの技術を学んだことを話してくださいました。心が軽くなったと同時に、足の痺れが一瞬でなくなり、以後もありません。</p>
@@ -495,24 +390,30 @@ footer a { color: #555; }
 </div>
 
 
-<!-- ═══ 11 名前アンカー ═══ -->
+<!-- ═══ 12 小松大将アンカー ═══ -->
 <div class="sec sec-screen bg-darkest">
-  <p class="t-label fade-up">YOUR SOLUTION</p>
+  <p class="t-label fade-up">YOUR GUIDE</p>
   <p class="t-impact fade-up delay-1">
-    パニック障害の根本解決に、<br>
-    <span class="t-bright">小松大将</span>がいる。
+    この法則を知り、<br>
+    自分で実験し、証明した人間が<br>
+    ここにいる。
   </p>
   <div class="divider fade-up delay-2"></div>
+  <p class="t-body fade-up delay-3" style="margin-bottom:36px;">
+    だから、<br>
+    <span style="color:#f0e8d8;font-weight:600;">小松大将</span>は、あなたのパニック障害を<br>
+    100% 手放すガイドができる。<br><br>
+    自分がそれを生きて証明してきたから。
+  </p>
   <p class="t-body fade-up delay-3">
-    このページを読んでいるあなたが<br>
-    感じている「変わりたい」という気持ちは、<br>
-    すでに変わり始めているサインです。
+    パニック障害の根本解決と、<br>
+    <span class="t-bright">小松大将</span>は同義です。
   </p>
 </div>
 
 
-<!-- ═══ 12 ストーリー ═══ -->
-<div class="sec bg-story" style="padding:110px 24px;">
+<!-- ═══ 13 ストーリー ═══ -->
+<div class="sec bg-story" style="padding:120px 24px;">
   <p class="t-label fade-up">STORY</p>
   <div style="max-width:580px;width:100%;">
     <p class="t-mid fade-up delay-1" style="margin-bottom:52px;font-size:clamp(1rem,3.2vw,1.3rem);">
@@ -531,13 +432,14 @@ footer a { color: #555; }
         地上の茎を刈り取っても、根っこが残る限り<br>
         雑草は何度でも生えてくる。<br><br>
         だから僕は、根っこから書き換えた。<br>
+        原因側に立った。<br>
         そうしたら、現実が変わり始めた。
       </p>
       <div class="quote fade-up delay-3">
         <p style="color:#f0e8d8;font-size:0.95rem;line-height:2.1;">
           パニック障害は、あなたの弱さではない。<br>
           脳のプログラムが誤作動しているだけ。<br>
-          書き換えれば、根っこから手放せる。
+          法則を知り、原因側に立てば、根っこから手放せる。
         </p>
       </div>
     </div>
@@ -548,7 +450,7 @@ footer a { color: #555; }
 </div>
 
 
-<!-- ═══ 13 なぜ無料か ═══ -->
+<!-- ═══ 14 なぜ無料か ═══ -->
 <div class="sec sec-screen bg-darkest">
   <p class="t-label fade-up">WHY FREE</p>
   <p class="t-impact fade-up delay-1" style="font-size:clamp(1.4rem,4.5vw,2.3rem);">
@@ -569,9 +471,9 @@ footer a { color: #555; }
 </div>
 
 
-<!-- ═══ 14 最終CTA ═══ -->
-<div class="sec sec-screen bg-dark" style="padding:110px 24px;">
-  <p class="t-impact fade-up" style="margin-bottom:0;">
+<!-- ═══ 15 最終CTA ═══ -->
+<div class="sec sec-screen bg-dark">
+  <p class="t-impact fade-up">
     今日という日は、<br>
     二度と戻らない。
   </p>
@@ -597,10 +499,7 @@ footer a { color: #555; }
 
 <script>
 function handleCTA() {
-  fbq('track', 'Lead', {
-    content_name: '無料相談予約ボタン',
-    content_category: 'LP'
-  });
+  fbq('track', 'Lead', { content_name: '無料相談予約ボタン', content_category: 'LP' });
   window.location.href = 'booking.html';
 }
 
@@ -617,16 +516,14 @@ document.querySelectorAll('.fade-up, .fade-in').forEach(el => observer.observe(e
 
 window.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
-    document.querySelectorAll('.hero .fade-up, .hero .fade-in').forEach(el => {
-      el.classList.add('visible');
-    });
+    document.querySelectorAll('.hero .fade-up, .hero .fade-in').forEach(el => el.classList.add('visible'));
   }, 1000);
 });
 </script>
 
 <!-- Sticky CTA -->
 <div class="sticky-cta" id="stickyCta">
-  <a href="booking.html" class="sticky-cta-btn" onclick="handleCTA()">
+  <a href="booking.html" class="sticky-cta-btn" onclick="handleCTA(); return false;">
     小松大将による無料個別相談はこちら
     <span class="sticky-cta-arrow">▶</span>
   </a>
@@ -637,11 +534,7 @@ window.addEventListener('DOMContentLoaded', () => {
 (function() {
   var stickyCta = document.getElementById('stickyCta');
   window.addEventListener('scroll', function() {
-    if (window.scrollY > window.innerHeight * 0.6) {
-      stickyCta.classList.add('visible');
-    } else {
-      stickyCta.classList.remove('visible');
-    }
+    stickyCta.classList.toggle('visible', window.scrollY > window.innerHeight * 0.6);
   }, { passive: true });
 })();
 </script>
