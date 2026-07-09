@@ -4,161 +4,143 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ご予約 | Na'au Noa</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Noto Serif JP', serif; background: #faf8f5; color: #2c2c2c; }
-header { background: #1a3a3a; padding: 16px 24px; text-align: center; }
-header a { color: #b8976a; text-decoration: none; font-size: 1.3rem; letter-spacing: 0.1em; }
-.hero { background: linear-gradient(135deg, #1a3a3a 0%, #2a5a5a 100%); color: #fff; text-align: center; padding: 40px 24px 36px; }
-.badge { display: inline-block; background: #b8976a; color: #fff; font-size: 0.85rem; padding: 5px 18px; border-radius: 20px; margin-bottom: 14px; }
-.hero h1 { font-size: 1.5rem; line-height: 1.6; color: #f0e8d8; margin-bottom: 10px; }
-.hero p { color: #c8b89a; font-size: 0.9rem; }
-.container { max-width: 680px; margin: 0 auto; padding: 32px 20px 80px; }
-.card { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 2px 20px rgba(0,0,0,0.06); margin-bottom: 20px; }
-.card h2 { font-size: 0.95rem; color: #1a3a3a; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 2px solid #f0ebe3; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--black:#080a08;--dark:#111310;--mid:#1a1f18;--gold:#b8976a;--gold-l:#d4b48a;--white:#fff;--text-d:#c8c0b4;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--black);color:var(--white);min-height:100vh;}
 
-/* ── Menu Selection ── */
-.menu-options { display: flex; flex-direction: column; gap: 10px; }
-.menu-opt { padding: 14px 16px; border: 2px solid #e8e0d4; border-radius: 10px; cursor: pointer; transition: all 0.2s; background: #faf8f5; position: relative; }
-.menu-opt:hover { border-color: #b8976a; background: #fff; }
-.menu-opt.selected { border-color: #1a3a3a; background: #1a3a3a; color: #fff; }
-.menu-opt-title { font-size: 0.92rem; font-weight: 600; line-height: 1.5; }
-.menu-opt-detail { font-size: 0.78rem; margin-top: 4px; opacity: 0.65; }
-.menu-opt.selected .menu-opt-detail { opacity: 0.8; }
-.menu-check { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 1.2rem; display: none; }
-.menu-opt.selected .menu-check { display: block; }
+/* HEADER */
+header{
+  background:rgba(8,10,8,.96);border-bottom:1px solid rgba(184,151,106,.18);
+  padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+}
+header a{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;letter-spacing:.2em;color:var(--white);text-decoration:none;}
+header a span{font-size:.58rem;letter-spacing:.26em;color:var(--gold);display:block;margin-top:1px;}
+.header-back{font-family:'Noto Sans JP',sans-serif;font-size:.74rem;letter-spacing:.1em;color:var(--text-d);text-decoration:none;border:1px solid rgba(184,151,106,.3);padding:7px 16px;transition:all .2s;}
+.header-back:hover{border-color:var(--gold);color:var(--gold);}
 
-/* ── Calendar ── */
-.cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-.cal-header h3 { font-size: 1rem; color: #1a3a3a; font-weight: 600; }
-.cal-nav { background: none; border: 1px solid #ddd; border-radius: 6px; width: 32px; height: 32px; cursor: pointer; font-size: 1.1rem; color: #555; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-.cal-nav:hover { border-color: #b8976a; color: #b8976a; }
-.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
-.cal-day-label { text-align: center; font-size: 0.73rem; color: #aaa; padding: 5px 0; }
-.cal-day-label:first-child { color: #e74c3c; }
-.cal-day-label:last-child { color: #3498db; }
+/* HERO */
+.hero{
+  text-align:center;padding:72px 24px 56px;
+  background:linear-gradient(to bottom,var(--dark) 0%,var(--black) 100%);
+  border-bottom:1px solid rgba(184,151,106,.12);
+}
+.hero-label{font-family:'Cormorant Garamond',serif;font-size:.76rem;letter-spacing:.36em;color:var(--gold);margin-bottom:16px;font-style:italic;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,10vw,6rem);letter-spacing:.06em;color:var(--white);margin-bottom:12px;line-height:1;}
+.hero p{color:var(--text-d);font-size:.84rem;letter-spacing:.1em;font-weight:300;}
 
-/* ── セル基本 ── */
-.cal-cell {
-  min-height: 58px;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  position: relative;
-  cursor: default;
-  gap: 5px;
-  padding: 6px 2px;
-}
-.cal-cell .date-num { font-size: 0.95rem; line-height: 1; font-weight: 600; }
-.cal-cell.empty { }
-.cal-cell.past { color: #ccc; }
+/* CONTAINER */
+.container{max-width:640px;margin:0 auto;padding:40px 20px 100px;}
 
-/* ── 予約可能セル ── */
-.cal-cell.available {
-  cursor: pointer;
-  background: #fff;
-  border: 1px solid #e8e0d4;
-  color: #1a3a3a;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-}
-.cal-cell.available:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-  border-color: #b8976a;
-}
-.cal-cell.available:active {
-  transform: scale(0.94);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-}
-.cal-cell.selected {
-  background: #1a3a3a !important;
-  border-color: #1a3a3a !important;
-  color: #fff !important;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(26,58,58,0.3) !important;
+/* CARD */
+.card{background:var(--mid);border:1px solid rgba(184,151,106,.1);margin-bottom:16px;padding:28px;}
+.card h2{
+  font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.08em;
+  color:var(--gold);margin-bottom:20px;padding-bottom:12px;
+  border-bottom:1px solid rgba(184,151,106,.2);
 }
 
-/* ── 満席セル ── */
-.cal-cell.no-slots {
-  background: #fafafa;
-  border: 1px solid #eee;
-  color: #ccc;
+/* MENU */
+.menu-options{display:flex;flex-direction:column;gap:10px;}
+.menu-opt{
+  padding:16px 18px;border:1px solid rgba(255,255,255,.08);cursor:pointer;
+  transition:all .2s;background:rgba(255,255,255,.03);position:relative;
 }
+.menu-opt:hover{border-color:var(--gold);background:rgba(184,151,106,.06);}
+.menu-opt.selected{border-color:var(--gold);background:rgba(184,151,106,.12);color:var(--white);}
+.menu-opt-title{font-size:.9rem;font-weight:500;line-height:1.5;color:var(--white);}
+.menu-opt-detail{font-size:.76rem;margin-top:4px;color:var(--text-d);}
+.menu-opt.selected .menu-opt-detail{color:rgba(200,192,180,.9);}
+.menu-check{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:1rem;display:none;color:var(--gold);}
+.menu-opt.selected .menu-check{display:block;}
 
-/* ── カレンダードット ── */
-.cal-dot { font-size: 8px; line-height: 1; }
-.cal-dot-open { color: #4caf50; }
-.cal-dot-some { color: #f59e0b; }
-.cal-dot-few  { color: #e53935; }
-.cal-dot-full { color: #ccc; font-size: 7px; }
-
-/* ── アニメーション ── */
-@keyframes pulse-few {
-  0%, 100% { box-shadow: 0 2px 6px rgba(198,40,40,0.15); }
-  50%       { box-shadow: 0 2px 14px rgba(198,40,40,0.35); }
+/* CALENDAR */
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.cal-header h3{font-size:.95rem;color:var(--white);font-weight:500;letter-spacing:.08em;}
+.cal-nav{
+  background:none;border:1px solid rgba(255,255,255,.15);width:32px;height:32px;
+  cursor:pointer;font-size:1.1rem;color:var(--text-d);display:flex;align-items:center;justify-content:center;transition:all .2s;
 }
-.cal-cell.cell-few {
-  animation: pulse-few 1.8s ease-in-out infinite;
-}
+.cal-nav:hover{border-color:var(--gold);color:var(--gold);}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+.cal-day-label{text-align:center;font-size:.7rem;color:rgba(255,255,255,.3);padding:6px 0;}
+.cal-day-label:first-child{color:rgba(231,76,60,.6);}
+.cal-day-label:last-child{color:rgba(52,152,219,.6);}
 
-.cal-loading { grid-column: span 7; text-align: center; color: #999; padding: 20px; font-size: 0.88rem; }
-.cal-notice { font-size: 0.78rem; color: #aaa; margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
-.cal-notice span { display: flex; align-items: center; gap: 5px; }
-
-/* ── Time Selection ── */
-.time-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.time-btn {
-  padding: 16px 8px;
-  border: 1px solid #e8e0d4;
-  border-radius: 10px;
-  background: #fff;
-  font-family: 'Noto Serif JP', serif;
-  font-size: 0.92rem;
-  color: #1a3a3a;
-  cursor: pointer;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+.cal-cell{
+  min-height:54px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-size:.88rem;position:relative;cursor:default;gap:4px;padding:5px 2px;
 }
-.time-btn:hover {
-  border-color: #b8976a;
-  background: #fdf8f2;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 14px rgba(184,151,106,0.2);
-}
-.time-btn:active { transform: scale(0.94); }
-.time-btn.selected {
-  background: #1a3a3a;
-  border-color: #1a3a3a;
-  color: #fff;
-  box-shadow: 0 4px 14px rgba(26,58,58,0.3);
-  transform: translateY(-2px);
-}
+.cal-cell .date-num{font-size:.9rem;line-height:1;font-weight:500;}
+.cal-cell.past{color:rgba(255,255,255,.18);}
 
-/* ── Form ── */
-.selected-info { background: #f0ebe3; border-radius: 8px; padding: 14px 18px; margin-bottom: 18px; font-size: 0.88rem; color: #1a3a3a; line-height: 2; }
-.menu-display { background: #f0ebe3; border-radius: 6px; padding: 12px 14px; font-size: 0.88rem; color: #1a3a3a; line-height: 1.6; }
-.form-group { margin-bottom: 16px; }
-label { display: block; font-size: 0.88rem; color: #555; margin-bottom: 6px; }
-.req { color: #c0392b; font-size: 0.78rem; margin-left: 4px; }
-.opt { color: #999; font-size: 0.78rem; margin-left: 4px; }
-input, textarea { width: 100%; padding: 12px 14px; border: 1px solid #ddd; border-radius: 6px; font-family: 'Noto Serif JP', serif; font-size: 1rem; color: #2c2c2c; background: #faf8f5; transition: border-color 0.2s; -webkit-appearance: none; }
-input:focus, textarea:focus { outline: none; border-color: #b8976a; background: #fff; }
-textarea { height: 100px; resize: vertical; line-height: 1.8; }
-.err { color: #c0392b; font-size: 0.78rem; margin-top: 4px; display: none; }
-.privacy { font-size: 0.8rem; color: #999; line-height: 1.8; margin-bottom: 18px; }
-.submit-btn { width: 100%; padding: 16px; background: #b8976a; color: #fff; border: none; border-radius: 8px; font-family: 'Noto Serif JP', serif; font-size: 1rem; cursor: pointer; letter-spacing: 0.05em; transition: background 0.2s; }
-.submit-btn:hover { background: #a07850; }
-.submit-btn:disabled { background: #ccc; cursor: not-allowed; }
-.back-btn { background: none; border: none; color: #b8976a; font-family: 'Noto Serif JP', serif; font-size: 0.88rem; cursor: pointer; text-decoration: underline; margin-bottom: 14px; padding: 0; }
+.cal-cell.available{
+  cursor:pointer;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+  color:var(--white);transition:transform .15s,border-color .15s,background .15s;
+}
+.cal-cell.available:hover{transform:translateY(-2px);border-color:var(--gold);background:rgba(184,151,106,.1);}
+.cal-cell.available:active{transform:scale(.95);}
+.cal-cell.selected{
+  background:var(--gold) !important;border-color:var(--gold) !important;
+  color:var(--black) !important;transform:translateY(-2px);
+}
+.cal-cell.no-slots{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.2);}
 
-@media (max-width: 480px) {
-  .hero h1 { font-size: 1.2rem; }
-  .card { padding: 18px 14px; }
-  .time-grid { grid-template-columns: repeat(2, 1fr); }
+.cal-dot{font-size:7px;line-height:1;}
+.cal-dot-open{color:#4caf50;} .cal-dot-some{color:#f59e0b;} .cal-dot-few{color:#e53935;} .cal-dot-full{color:rgba(255,255,255,.2);}
+
+@keyframes pulse-few{0%,100%{box-shadow:0 0 0 0 rgba(229,57,53,.2);}50%{box-shadow:0 0 0 4px rgba(229,57,53,0);}}
+.cal-cell.cell-few{animation:pulse-few 2s ease-in-out infinite;}
+
+.cal-loading{grid-column:span 7;text-align:center;color:var(--text-d);padding:24px;font-size:.84rem;}
+.cal-notice{font-size:.72rem;color:rgba(255,255,255,.35);margin-top:14px;display:flex;gap:12px;flex-wrap:wrap;}
+.cal-notice span{display:flex;align-items:center;gap:5px;}
+
+/* TIME */
+.time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.time-btn{
+  padding:15px 8px;border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.04);font-family:'Noto Sans JP',sans-serif;
+  font-size:.88rem;color:var(--white);cursor:pointer;text-align:center;
+  transition:transform .15s,border-color .15s,background .15s;
+}
+.time-btn:hover{border-color:var(--gold);background:rgba(184,151,106,.1);transform:translateY(-2px);}
+.time-btn:active{transform:scale(.95);}
+.time-btn.selected{background:var(--gold);border-color:var(--gold);color:var(--black);transform:translateY(-2px);}
+
+/* FORM */
+.selected-info{background:rgba(184,151,106,.08);border:1px solid rgba(184,151,106,.2);padding:14px 18px;margin-bottom:20px;font-size:.84rem;color:var(--text-d);line-height:2.2;}
+.menu-display{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:12px 14px;font-size:.86rem;color:var(--text-d);line-height:1.6;}
+.form-group{margin-bottom:18px;}
+label{display:block;font-size:.78rem;color:var(--text-d);margin-bottom:7px;letter-spacing:.08em;}
+.req{color:#e57070;font-size:.72rem;margin-left:4px;}.opt{color:rgba(255,255,255,.25);font-size:.72rem;margin-left:4px;}
+input,textarea{
+  width:100%;padding:12px 14px;border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.04);font-family:'Noto Sans JP',sans-serif;
+  font-size:.94rem;color:var(--white);transition:border-color .2s;-webkit-appearance:none;
+}
+input:focus,textarea:focus{outline:none;border-color:var(--gold);background:rgba(184,151,106,.06);}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.2);}
+textarea{height:100px;resize:vertical;line-height:1.8;}
+.err{color:#e57070;font-size:.74rem;margin-top:5px;display:none;}
+.privacy{font-size:.74rem;color:rgba(255,255,255,.3);line-height:1.9;margin-bottom:20px;}
+.submit-btn{
+  width:100%;padding:16px;background:var(--gold);color:var(--black);border:none;
+  font-family:'Noto Sans JP',sans-serif;font-size:.92rem;cursor:pointer;
+  letter-spacing:.14em;font-weight:500;transition:background .2s;
+}
+.submit-btn:hover{background:var(--gold-l);}
+.submit-btn:disabled{background:rgba(255,255,255,.15);cursor:not-allowed;color:rgba(255,255,255,.3);}
+.back-btn{background:none;border:none;color:var(--gold);font-family:'Noto Sans JP',sans-serif;font-size:.78rem;cursor:pointer;text-decoration:none;margin-bottom:16px;padding:0;display:flex;align-items:center;gap:6px;letter-spacing:.06em;opacity:.8;transition:opacity .2s;}
+.back-btn:hover{opacity:1;}
+
+@media(max-width:480px){
+  header{padding:0 20px;}
+  .hero{padding:56px 20px 40px;}
+  .card{padding:20px 16px;}
+  .time-grid{grid-template-columns:repeat(2,1fr);}
 }
 </style>
   <!-- Meta Pixel -->
@@ -179,11 +161,14 @@ textarea { height: 100px; resize: vertical; line-height: 1.8; }
   <!-- End Meta Pixel -->
 </head>
 <body>
-<header><a href="index.html">Na'au Noa</a></header>
+<header>
+  <a href="index.html">Na'au Noa<span>naau-noa.vercel.app</span></a>
+  <a href="index.html" class="header-back">← トップに戻る</a>
+</header>
 <div class="hero">
-  <span class="badge">🌐 全国オンライン対応（Zoom）</span>
-  <h1>ご予約</h1>
-  <p>ご希望のメニューと日時をお選びください。</p>
+  <p class="hero-label">Free Consultation</p>
+  <h1>Reserve</h1>
+  <p>ご希望のメニューと日時をお選びください。<br>完全オンライン（Zoom）/ 全国対応 / 完全無料</p>
 </div>
 <div class="container">
 
