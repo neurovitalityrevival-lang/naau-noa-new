@@ -427,7 +427,11 @@ function renderCalendar() {
         <span class="cal-dot cal-dot-open">●</span>
       </div>`;
     } else {
-      html += `<div class="cal-cell"><span class="date-num">${d}</span></div>`;
+      // スロット未設定 → 満席と同様に表示
+      html += `<div class="cal-cell no-slots">
+        <span class="date-num">${d}</span>
+        <span class="cal-dot cal-dot-full">●</span>
+      </div>`;
     }
   }
   document.getElementById('calBody').innerHTML = html;
