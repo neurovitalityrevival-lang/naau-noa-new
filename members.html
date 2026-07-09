@@ -5,23 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>メンバーズエリア | Na'au Noa</title>
   <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --dark: #1a3a3a;
-      --dark2: #0f2a20;
+      --black: #080a08;
+      --dark: #111310;
+      --mid: #1a1f18;
+      --dark-g: #1a3a3a;
       --amber: #b8976a;
       --gold: #e8c080;
-      --cream: #faf8f5;
-      --text: #2c2c2c;
-      --text-light: #5a5a5a;
+      --text-d: #c8c0b4;
+      --white: #fff;
     }
 
     body {
-      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', Georgia, serif;
-      background: var(--cream);
-      color: var(--text);
+      font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+      background: var(--black);
+      color: var(--white);
       min-height: 100vh;
     }
 
@@ -145,106 +147,135 @@
     }
 
     /* ── MEMBERS AREA ── */
-    #members {
-      display: none;
-    }
+    #members { display: none; }
 
     /* Header */
     .members-header {
-      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
-      padding: 20px 24px;
+      background: rgba(8,10,8,.96);
+      border-bottom: 1px solid rgba(184,151,106,.18);
+      padding: 0 40px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid rgba(184,151,106,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-
-    .members-header-left {
-      display: flex;
-      flex-direction: column;
-    }
-
+    .members-header-left { display: flex; flex-direction: column; }
     .members-header-brand {
-      font-size: 0.6rem;
-      letter-spacing: 0.3em;
-      color: var(--amber);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      letter-spacing: .22em;
+      color: var(--white);
     }
-
     .members-header-title {
-      font-size: 1rem;
-      color: #fff;
-      letter-spacing: 0.08em;
-      font-weight: 400;
+      font-size: .58rem;
+      letter-spacing: .28em;
+      color: var(--amber);
+      margin-top: 2px;
+    }
+    .members-badge {
+      font-size: .62rem;
+      letter-spacing: .18em;
+      color: var(--amber);
+      border: 1px solid rgba(184,151,106,.4);
+      padding: 5px 14px;
     }
 
-    .members-badge {
-      font-size: 0.6rem;
-      letter-spacing: 0.18em;
+    /* Hero banner */
+    .members-hero {
+      background: var(--dark);
+      border-bottom: 1px solid rgba(184,151,106,.12);
+      padding: 56px 24px 44px;
+      text-align: center;
+    }
+    .members-hero-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .72rem;
+      letter-spacing: .36em;
       color: var(--amber);
-      border: 1px solid rgba(184,151,106,0.5);
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+    .members-hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem,10vw,5.5rem);
+      letter-spacing: .06em;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .members-hero-sub {
+      font-size: .78rem;
+      letter-spacing: .14em;
+      color: var(--text-d);
+      font-weight: 300;
     }
 
     /* Content */
     .members-content {
       max-width: 760px;
       margin: 0 auto;
-      padding: 40px 20px 80px;
+      padding: 60px 20px 80px;
     }
 
     .section-tag {
-      font-size: 0.62rem;
-      letter-spacing: 0.25em;
+      font-size: .64rem;
+      letter-spacing: .28em;
       color: var(--amber);
-      font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--amber);
+      opacity: .6;
     }
 
     .section-title {
-      font-size: 1.25rem;
-      color: var(--dark);
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      margin-bottom: 6px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem,7vw,3.5rem);
+      letter-spacing: .04em;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 10px;
     }
 
     .section-desc {
-      font-size: 0.8rem;
-      color: var(--text-light);
-      line-height: 1.85;
-      margin-bottom: 24px;
-      font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+      font-size: .82rem;
+      color: var(--text-d);
+      line-height: 2;
+      margin-bottom: 28px;
+      font-weight: 300;
     }
 
     /* Video block */
     .video-card {
-      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
-      border: 1px solid rgba(184,151,106,0.35);
-      border-radius: 14px;
+      background: var(--mid);
+      border: 1px solid rgba(184,151,106,.15);
       overflow: hidden;
-      margin-bottom: 40px;
-      box-shadow: 0 4px 20px rgba(26,58,58,0.12);
+      margin-bottom: 20px;
     }
-
     .video-thumb {
       position: relative;
       width: 100%;
-      background: #0a1a1a;
+      background: #050808;
       cursor: pointer;
       overflow: hidden;
     }
-
     .video-thumb img {
       width: 100%;
       display: block;
-      opacity: 0.75;
-      transition: opacity 0.2s;
+      opacity: .7;
+      transition: opacity .25s;
     }
-
-    .video-thumb:hover img { opacity: 0.9; }
-
+    .video-thumb:hover img { opacity: .88; }
     .video-play-overlay {
       position: absolute;
       inset: 0;
@@ -255,142 +286,117 @@
       gap: 14px;
       text-decoration: none;
     }
-
     .video-play-btn {
-      width: 72px;
-      height: 72px;
-      background: rgba(184,151,106,0.92);
+      width: 68px;
+      height: 68px;
+      background: rgba(184,151,106,.9);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
-      transition: transform 0.2s, background 0.2s;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      font-size: 1.7rem;
+      transition: transform .2s, background .2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,.5);
+      color: #fff;
     }
-
     .video-play-overlay:hover .video-play-btn {
       transform: scale(1.08);
       background: var(--gold);
     }
-
     .video-play-label {
-      font-size: 0.78rem;
+      font-size: .76rem;
       color: #fff;
-      letter-spacing: 0.15em;
-      font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+      letter-spacing: .16em;
+      text-shadow: 0 1px 6px rgba(0,0,0,.6);
     }
-
     .video-caption {
       padding: 16px 20px;
-      border-top: 1px solid rgba(184,151,106,0.2);
+      border-top: 1px solid rgba(184,151,106,.15);
     }
-
     .video-caption-title {
-      font-size: 0.85rem;
-      color: #fff;
-      letter-spacing: 0.04em;
+      font-size: .86rem;
+      color: var(--white);
+      letter-spacing: .04em;
       margin-bottom: 2px;
     }
-
     .video-caption-sub {
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.4);
-      font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+      font-size: .68rem;
+      color: rgba(255,255,255,.35);
     }
 
     /* Section divider */
     .section-divider {
       width: 100%;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(184,151,106,0.35), transparent);
-      margin: 40px 0;
+      background: linear-gradient(90deg, transparent, rgba(184,151,106,.3), transparent);
+      margin: 56px 0;
     }
 
     /* PDF Download card */
     .pdf-card {
-      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
-      border: 1px solid rgba(184,151,106,0.35);
-      border-radius: 14px;
-      padding: 28px 24px;
+      background: var(--mid);
+      border: 1px solid rgba(184,151,106,.15);
+      padding: 24px 22px;
       display: flex;
       align-items: center;
-      gap: 20px;
-      box-shadow: 0 4px 20px rgba(26,58,58,0.12);
+      gap: 18px;
+      margin-bottom: 12px;
     }
-
     .pdf-icon {
-      width: 52px;
-      height: 52px;
-      background: rgba(184,151,106,0.15);
-      border: 1px solid rgba(184,151,106,0.4);
-      border-radius: 12px;
+      width: 48px;
+      height: 48px;
+      background: rgba(184,151,106,.1);
+      border: 1px solid rgba(184,151,106,.3);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
     }
-
-    .pdf-info {
-      flex: 1;
-    }
-
+    .pdf-info { flex: 1; }
     .pdf-name {
-      font-size: 0.9rem;
-      color: #fff;
-      letter-spacing: 0.04em;
-      margin-bottom: 4px;
+      font-size: .88rem;
+      color: var(--white);
+      letter-spacing: .04em;
+      margin-bottom: 3px;
     }
-
     .pdf-meta {
-      font-size: 0.68rem;
-      color: rgba(255,255,255,0.4);
-      font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+      font-size: .66rem;
+      color: rgba(255,255,255,.35);
     }
-
     .pdf-dl-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, var(--amber), var(--gold));
-      color: var(--dark);
-      font-size: 0.75rem;
-      letter-spacing: 0.14em;
+      gap: 7px;
+      background: var(--amber);
+      color: var(--black);
+      font-size: .74rem;
+      letter-spacing: .12em;
       font-weight: 700;
-      padding: 12px 20px;
-      border-radius: 8px;
+      padding: 11px 18px;
       text-decoration: none;
-      font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
-      transition: opacity 0.2s, transform 0.15s;
+      transition: background .2s, transform .15s;
       white-space: nowrap;
       flex-shrink: 0;
     }
+    .pdf-dl-btn:hover { background: var(--gold); transform: translateY(-1px); }
 
-    .pdf-dl-btn:hover { opacity: 0.88; transform: translateY(-1px); }
-
-    /* Footer note */
+    /* Footer */
     .members-footer {
       text-align: center;
-      padding: 32px 20px;
-      border-top: 1px solid rgba(184,151,106,0.15);
+      padding: 40px 20px;
+      border-top: 1px solid rgba(184,151,106,.12);
     }
-
     .members-footer p {
-      font-size: 0.68rem;
-      color: rgba(26,58,58,0.45);
-      line-height: 2;
-      font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+      font-size: .68rem;
+      color: rgba(255,255,255,.22);
+      line-height: 2.2;
     }
 
     /* ── WELLNESS WHEEL ── */
     .wl-card {
-      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
-      border: 1px solid rgba(184,151,106,0.35);
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(26,58,58,0.12);
+      background: var(--mid);
+      border: 1px solid rgba(184,151,106,.15);
       padding: 24px 20px;
     }
     .wl-inner {
@@ -498,8 +504,10 @@
     /* Responsive */
     @media (max-width: 600px) {
       .gate-card { padding: 36px 24px; }
-      .members-content { padding: 28px 16px 60px; }
-      .pdf-card { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .members-header { padding: 0 20px; }
+      .members-hero { padding: 40px 20px 32px; }
+      .members-content { padding: 40px 16px 60px; }
+      .pdf-card { flex-direction: column; align-items: flex-start; gap: 14px; }
       .pdf-dl-btn { width: 100%; justify-content: center; }
       .wl-inner { flex-direction: column; }
       .wl-slider-grid { grid-template-columns: 1fr; }
@@ -539,11 +547,16 @@
   <!-- Header -->
   <header class="members-header">
     <div class="members-header-left">
-      <span class="members-header-brand">NA'AU NOA</span>
-      <span class="members-header-title">メンバーズエリア</span>
+      <span class="members-header-brand">Na'au Noa</span>
+      <span class="members-header-title">MEMBERS AREA</span>
     </div>
     <span class="members-badge">MEMBERS ONLY</span>
   </header>
+  <div class="members-hero">
+    <p class="members-hero-label">Members Only</p>
+    <h1 class="members-hero-title">Members Area</h1>
+    <p class="members-hero-sub">Na'au Noa 契約クライアント専用エリア</p>
+  </div>
 
   <!-- Content -->
   <div class="members-content">
