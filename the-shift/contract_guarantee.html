@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE SHIFT コミュニティ入会契約 | 電子署名</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+<style>
+:root{--sand:#F7F5F0;--sage:#4A6B5D;--accent:#E8985E;--text:#2C3531;--text-l:#5a6560;--white:#fff;--border:#ddd;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--sand);color:var(--text);line-height:1.85}
+header{background:var(--sage);padding:18px 24px;text-align:center}
+header a{color:var(--white);text-decoration:none;font-family:'Shippori Mincho',serif;font-size:1.05rem;letter-spacing:.18em}
+.hero{background:linear-gradient(135deg,var(--sage),#3a5548);color:var(--white);text-align:center;padding:40px 24px 36px}
+.hero h1{font-family:'Shippori Mincho',serif;font-size:1.45rem;margin-bottom:8px;font-weight:600}
+.hero p{font-size:.88rem;opacity:.85}
+.main{max-width:840px;margin:0 auto;padding:32px 20px 80px}
+.notice{background:linear-gradient(135deg,#fff8f0,#fff);border:2px solid var(--accent);border-radius:14px;padding:20px 24px;margin-bottom:28px}
+.notice h2{font-size:.95rem;color:var(--accent);margin-bottom:8px}
+.notice p{font-size:.86rem;color:var(--text-l);line-height:1.9}
+.doc{background:var(--white);border-radius:16px;padding:36px 40px;box-shadow:0 4px 24px rgba(0,0,0,.06);margin-bottom:28px;max-height:520px;overflow-y:auto;font-size:.88rem;line-height:1.95}
+.doc::-webkit-scrollbar{width:6px}
+.doc::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px}
+.doc h1{font-family:'Shippori Mincho',serif;text-align:center;font-size:1.25rem;margin-bottom:6px}
+.doc .sub{text-align:center;font-size:.84rem;color:var(--text-l);margin-bottom:24px;padding-bottom:20px;border-bottom:2px solid var(--sand)}
+.preamble{background:var(--sand);border-left:4px solid var(--sage);padding:16px 20px;margin-bottom:24px;border-radius:0 8px 8px 0}
+.article{margin-bottom:22px}
+.article h3{font-family:'Shippori Mincho',serif;font-size:.95rem;color:var(--sage);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid #ece5dc}
+.article p,.article li{font-size:.86rem;color:var(--text);margin-bottom:6px}
+.article ul,.article ol{padding-left:20px}
+.warn{background:#fff3ee;border:1px solid rgba(232,152,94,.35);border-radius:8px;padding:12px 16px;margin-top:10px;font-size:.84rem;color:#a0522d;font-weight:600}
+.provider{text-align:right;font-size:.82rem;color:var(--text-l);margin-top:24px;padding-top:20px;border-top:1px solid #ece5dc}
+.card{background:var(--white);border-radius:16px;padding:28px;box-shadow:0 4px 24px rgba(0,0,0,.06);margin-bottom:24px}
+.card h2{font-family:'Shippori Mincho',serif;font-size:1rem;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--sand)}
+.check-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #f0ebe3;cursor:pointer}
+.check-item:last-child{border-bottom:none}
+.check-item input{width:20px;height:20px;accent-color:var(--sage);flex-shrink:0;margin-top:2px}
+.check-item span{font-size:.86rem;line-height:1.75}
+.check-item strong{color:#8B4513}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.84rem;font-weight:700;margin-bottom:6px}
+.req{color:#c0392b;font-size:.76rem;margin-left:4px}
+.form-input{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:.95rem;background:var(--sand)}
+.form-input:focus{outline:none;border-color:var(--sage);background:var(--white)}
+.sig-wrap{border:2px solid var(--border);border-radius:10px;overflow:hidden;position:relative;background:var(--white)}
+.sig-canvas{display:block;width:100%;touch-action:none;cursor:crosshair}
+.sig-hint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#ccc;font-size:.85rem;pointer-events:none;text-align:center}
+.sig-clear{margin-top:8px;background:none;border:1px solid var(--border);color:var(--text-l);padding:6px 18px;border-radius:20px;cursor:pointer;font-family:inherit;font-size:.82rem}
+.err{color:#c0392b;font-size:.78rem;margin-top:8px;display:none}
+.confirm{background:#fff8f0;border:2px solid var(--accent);border-radius:10px;padding:16px 20px;margin-bottom:20px;font-size:.86rem;line-height:1.85;color:#6b4c1e}
+.submit{width:100%;padding:18px;background:var(--accent);color:var(--white);border:none;border-radius:50px;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;transition:opacity .2s}
+.submit:hover{opacity:.9}
+.submit:disabled{background:#ccc;cursor:not-allowed}
+.scroll-hint{text-align:center;font-size:.78rem;color:#aaa;margin:8px 0 24px}
+@media(max-width:640px){.doc{padding:24px 18px}.card{padding:22px 18px}}
+</style>
+</head>
+<body>
+
+<header><a href="index.html">THE SHIFT</a></header>
+<div class="hero">
+  <h1>THE SHIFT コミュニティ</h1>
+  <p>入会契約書・利用規約への同意・電子署名</p>
+</div>
+
+<main class="main">
+
+  <div class="notice">
+    <h2>⚠️ ご署名の前にお読みください</h2>
+    <p>
+      本契約書は、THE SHIFT コミュニティへの入会に際して締結される電子契約書です。<br>
+      各条項を最後までお読みいただき、重要事項へのチェック、依頼者情報の入力、電子署名を完了することで契約が成立します。<br>
+      ご不明な点がある場合は、署名前に必ずご相談ください。
+    </p>
+  </div>
+
+  <div class="doc" id="contractDoc">
+    <h1>THE SHIFT コミュニティ<br>入会契約書・利用規約</h1>
+    <p class="sub">提供者：中川裕幸（以下「提供者」）／ 依頼者（以下「依頼者」）</p>
+
+    <div class="preamble">
+      中川裕幸（以下「提供者」）と依頼者は、会員制ブレイクスループログラム「THE SHIFT」（以下「本プログラム」）ならびに THE SHIFT コミュニティ（以下「本コミュニティ」）への入会に関して、以下のとおり合意の上、本規約を締結します。
+    </div>
+
+    <div class="article">
+      <h3>第1条（本プログラムの位置づけ）</h3>
+      <p>本プログラムは、スピリチュアルコミュニティでも、癒しの場でも、単なる人脈会でもありません。停滞している人が、良い人・良い場・良い視点に触れ、状態・ご縁・環境・行動の流れを整え、現実を変えていくための<strong>会員制ブレイクスループログラム</strong>です。</p>
+      <p>提供者は、古代ハワイの伝統を継承するエネルギーリリースの技術を用い、依頼者の思考・感情・身体に溜まった「詰まり」の解放を支援します。</p>
+    </div>
+
+    <div class="article">
+      <h3>第2条（サービス内容）</h3>
+      <p>提供者は依頼者に対し、以下のサービスを提供します。</p>
+      <ol>
+        <li><strong>パーソナルリリースワーク</strong>：60分 × 3回（Zoom・マンツーマン）。身体からのメッセージを翻訳し、潜在意識の詰まりを解除します。</li>
+        <li><strong>初期プログラム（環境再設計期間）</strong>：入会後3ヶ月間、状態・ご縁・環境・行動の流れを整えるための実践期間を設けます。</li>
+        <li><strong>THE SHIFT コミュニティへの招待</strong>：素敵でクリアなメンバーが集う選抜制コミュニティへの参加権。</li>
+        <li><strong>メンバー限定オープンチャット</strong>への招待。</li>
+        <li><strong>メンバー限定動画コンテンツ</strong>の視聴。</li>
+        <li><strong>人脈無料紹介</strong>（提供者の判断により実施）。</li>
+        <li><strong>ZOOMスパイラルアップミーティング</strong>：毎月1〜2回。</li>
+        <li><strong>サブスクグループ瞑想会</strong>：入会後3ヶ月間、月2回（ホォクゥ・ホォポノポノ各1回）。</li>
+        <li><strong>形式</strong>：Zoom（オンライン）／全国どこからでも参加可能。</li>
+      </ol>
+    </div>
+
+    <div class="article">
+      <h3>第3条（プログラム期間とコミュニティ所属）</h3>
+      <ol>
+        <li>初期プログラム（環境再設計期間）は、入会日を起算日として<strong>3ヶ月間</strong>とします。</li>
+        <li>本コミュニティへの所属は、<strong>依頼者が退会を申し出ない限り、無期限に継続</strong>します。初期プログラム終了後も、コミュニティへの参加権・メンバー限定コンテンツへのアクセス等は、退会まで継続して提供されます（提供者のサービス内容変更・休止を除く）。</li>
+        <li>セッション・ミーティングの日程は、双方が協議の上で決定するものとします。</li>
+      </ol>
+    </div>
+
+    <div class="article">
+      <h3>第4条（料金および支払い）</h3>
+      <ol>
+        <li>入会金は<strong>220,000円（税込）</strong>とします（紹介割適用時も22万円）。</li>
+        <li>入会金は、本プログラム開始前に、提供者が指定する方法（銀行振込またはカード分割決済等）でお支払いいただきます。</li>
+        <li>分割決済をご利用の場合、決済手数料等の条件は別途ご案内するものとします。</li>
+        <li>入会金のお支払いをもって、本規約の全条項に同意したものとみなします。</li>
+      </ol>
+    </div>
+
+    <div class="article">
+      <h3>第5条（免責事項・重要）</h3>
+      <p><strong>【本プログラムは医療行為ではありません】</strong></p>
+      <p>本プログラムおよびリリースワークは、医療行為・診断・治療・心理療法の代替ではありません。心身に変化があった場合は、医療機関への相談を優先してください。</p>
+      <p><strong>【効果・結果の保証について】</strong></p>
+      <p>特定の効果・結果（収益・人脈・開運・売上等）を保証するものではありません。変化の程度には著しい個人差があり、依頼者自身の行動量・取り組み姿勢によって結果は異なります。提供者はその結果について一切の責任を負いません。</p>
+      <div class="warn">潜在意識を願うだけで現実が変わるものとして扱いません。身体が嘘をつかない — その事実を起点に、状態・ご縁・環境・行動の流れを整えるプログラムです。</div>
+    </div>
+
+    <div class="article">
+      <h3>第6条（コミュニティのルール）</h3>
+      <ul>
+        <li>メンバー限定コンテンツ・チャット内容の無断転載・共有・二次利用を禁じます。</li>
+        <li>メンバー同士の respectful なコミュニケーションを心がけてください。</li>
+        <li>提供者の判断により、ルール違反が認められた場合、退会処分とすることがあります（返金なし）。</li>
+      </ul>
+    </div>
+
+    <div class="article">
+      <h3>第7条（潜在意識の書き換え許可が得られない場合）</h3>
+      <p>リリースワーク中に依頼者の潜在意識が書き換えに対して強い抵抗を示し、提供者の判断によりセッション継続が適切でないと判断した場合、提供者は当該セッションを中止することがあります。この場合、当該回分の料金は申し受けません。</p>
+    </div>
+
+    <div class="article">
+      <h3>第8条（退会）</h3>
+      <ol>
+        <li>依頼者は、いつでも提供者所定の方法により退会を申し出ることができます。</li>
+        <li>退会後は、本コミュニティへの参加権・メンバー限定コンテンツへのアクセス等は終了します。</li>
+        <li><strong>退会を理由とした返金は一切行いません。</strong></li>
+      </ol>
+    </div>
+
+    <div class="article">
+      <h3>第9条（返金の不対応）</h3>
+      <p>入会後は、以下のいかなる理由があっても返金には一切応じません。</p>
+      <ul>
+        <li>期待した効果・変化が得られなかった場合</li>
+        <li>コミュニティへの参加を希望しなくなった場合・退会した場合</li>
+        <li>メンバーとの相性・人間関係に関する理由</li>
+        <li>依頼者の都合・誤解・後悔・その他あらゆる主観的理由</li>
+      </ul>
+      <div class="warn">退会しても返金はありません。入会金のお支払いをもって、この条件に同意したものとみなします。</div>
+    </div>
+
+    <div class="article">
+      <h3>第10条（依頼者の自己責任）</h3>
+      <p>依頼者は、セッション・コミュニティ活動への積極的な参加、セッション外での行動・選択は自身の責任において行うこと、変化を起こす主体は依頼者自身であることに同意します。</p>
+    </div>
+
+    <div class="article">
+      <h3>第11条（録音・録画・情報の取り扱い）</h3>
+      <p>依頼者は、提供者の事前承諾なくセッション・ミーティングを録音・録画することを禁じます。メンバー限定コンテンツの無断複製・転載・SNS投稿・第三者への共有を禁じます。</p>
+    </div>
+
+    <div class="article">
+      <h3>第12条（個人情報・秘密保持）</h3>
+      <p>提供者は依頼者の個人情報を本プログラムの提供目的以外に使用せず、第三者に提供しません（法令に基づく場合を除く）。双方は、知り得た相手方の情報を同意なく第三者に開示しません。</p>
+    </div>
+
+    <div class="article">
+      <h3>第13条（準拠法および管轄）</h3>
+      <p>本規約は日本法に準拠します。紛争については神奈川県を管轄する裁判所を第一審の専属的合意管轄裁判所とします。本規約に定めのない事項は、双方誠意をもって協議し解決するものとします。</p>
+    </div>
+
+    <div class="provider">
+      THE SHIFT — 中川裕幸<br>
+      才能発掘スペシャリスト
+    </div>
+  </div>
+  <p class="scroll-hint">↑ スクロールして全文をお読みください</p>
+
+  <div class="card">
+    <h2>✅ 重要事項の確認（全8項目）</h2>
+    <label class="check-item"><input type="checkbox" class="agree-check"><span>本プログラムおよびリリースワークは<strong>医療行為ではない</strong>ことを理解しました。</span></label>
+    <label class="check-item"><input type="checkbox" class="agree-check"><span><strong>特定の効果・結果（収益・人脈・開運等）は保証されない</strong>ことを理解し、同意します。</span></label>
+    <label class="check-item"><input type="checkbox" class="agree-check"><span>入会金<strong>220,000円（税込）</strong>の内容と支払条件を理解しました。</span></label>
+    <label class="check-item"><input type="checkbox" class="agree-check"><span>初期プログラムは<strong>3ヶ月間</strong>であるが、コミュニティ所属は<strong>退会申出まで無期限</strong>であることを理解しました。</span></label>
+    <label class="check-item"><input type="checkbox" class="agree-check"><span>潜在意識の書き換え許可が得られない場合、<strong>提供者の判断でセッションを中止することがある</strong>（その場合は当該回の料金不要）ことに同意します。</span></label>
+    <label class="check-item"><input type="checkbox" class="agree-check"><span>メンバー限定コンテンツの<strong>無断転載・共有を行わない</strong>ことに同意します。</span></label>
+    <label class="check-item"><input type="checkbox" class="agree-check"><span><strong>退会した場合を含め、いかなる理由でも返金はない</strong>ことを理解し、同意します。</span></label>
+    <label class="check-item"><input type="checkbox" class="agree-check"><span>上記の利用規約全文（全13条）を読み、<strong>全ての条項に同意します</strong>。</span></label>
+    <div class="err" id="chkErr">すべての項目にチェックを入れてください</div>
+  </div>
+
+  <div class="card">
+    <h2>📝 依頼者情報</h2>
+    <div class="form-group"><label>お名前<span class="req">*必須</span></label><input class="form-input" type="text" id="name" placeholder="山田 花子"></div>
+    <div class="form-group"><label>ご住所<span class="req">*必須</span></label><input class="form-input" type="text" id="address" placeholder="神奈川県横浜市…"></div>
+    <div class="form-group"><label>電話番号<span class="req">*必須</span></label><input class="form-input" type="tel" id="phone" placeholder="090-1234-5678"></div>
+    <div class="form-group"><label>メールアドレス<span class="req">*必須</span></label><input class="form-input" type="email" id="email" placeholder="example@email.com"></div>
+  </div>
+
+  <div class="card">
+    <h2>✍️ 電子署名</h2>
+    <p style="font-size:.84rem;color:var(--text-l);margin-bottom:12px">下の枠内に、マウスまたは指でサインしてください。</p>
+    <div class="sig-wrap">
+      <canvas id="sigCanvas" class="sig-canvas" height="180"></canvas>
+      <div class="sig-hint" id="sigHint">ここにサインしてください</div>
+    </div>
+    <button type="button" class="sig-clear" onclick="clearSig()">消去してやり直す</button>
+    <div class="err" id="sigErr">署名を記入してください</div>
+  </div>
+
+  <div class="confirm">
+    本フォームを送信することにより、上記利用規約の全条項に電子的に署名・同意したものとみなします。<br>
+    署名日時が記録されます。<strong>送信後の取り消しはできません。</strong>
+  </div>
+
+  <button class="submit" id="submitBtn" onclick="submitContract()">上記に同意して電子署名を送信する</button>
+
+</main>
+
+<script>
+const canvas = document.getElementById('sigCanvas');
+const sigPad = new SignaturePad(canvas, {
+  backgroundColor: 'rgb(255,255,255)',
+  penColor: '#2C3531',
+  minWidth: 1.5,
+  maxWidth: 3,
+});
+
+function resizeCanvas() {
+  const ratio = Math.max(window.devicePixelRatio || 1, 1);
+  canvas.width = canvas.offsetWidth * ratio;
+  canvas.height = 180 * ratio;
+  canvas.getContext('2d').scale(ratio, ratio);
+  sigPad.clear();
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+sigPad.addEventListener('beginStroke', () => { document.getElementById('sigHint').style.display = 'none'; });
+function clearSig() { sigPad.clear(); document.getElementById('sigHint').style.display = 'block'; }
+
+function show(id, v) { document.getElementById(id).style.display = v ? 'block' : 'none'; }
+
+async function submitContract() {
+  let valid = true;
+  const checks = document.querySelectorAll('.agree-check');
+  const allChecked = [...checks].every(c => c.checked);
+  show('chkErr', !allChecked);
+  if (!allChecked) valid = false;
+
+  const name = document.getElementById('name').value.trim();
+  const address = document.getElementById('address').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
+  if (!name || !address || !phone) valid = false;
+  if (!email || !/\S+@\S+\.\S+/.test(email)) valid = false;
+  if (sigPad.isEmpty()) { show('sigErr', true); valid = false; } else show('sigErr', false);
+
+  if (!valid) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = '送信中...';
+
+  try {
+    const res = await fetch('/api/sign-contract-coaching', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name, address, phone, email,
+        signatureData: sigPad.toDataURL('image/png'),
+        agreedAt: new Date().toISOString(),
+        programType: 'THE SHIFT コミュニティ入会',
+      }),
+    });
+    const data = await res.json();
+    if (res.ok && data.success) {
+      window.location.href = 'contract-signed.html?name=' + encodeURIComponent(name);
+    } else {
+      throw new Error(data.error || '送信に失敗しました');
+    }
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = '上記に同意して電子署名を送信する';
+    alert(e.message || '送信中にエラーが発生しました。もう一度お試しください。');
+  }
+}
+</script>
+</body>
+</html>
