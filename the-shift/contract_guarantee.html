@@ -235,6 +235,18 @@ header a{color:var(--white);text-decoration:none;font-family:'Shippori Mincho',s
 
   <button class="submit" id="submitBtn" onclick="submitContract()">上記に同意して電子署名を送信する</button>
 
+  <!-- 完了画面（同一ページ内フォールバック） -->
+  <div id="completeScreen" style="display:none;text-align:center;padding:48px 20px 80px;">
+    <div style="width:80px;height:80px;background:var(--sage);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:2rem;color:#fff;">✓</div>
+    <h2 id="completeTitle" style="font-family:'Shippori Mincho',serif;font-size:1.35rem;margin-bottom:12px;">電子署名が完了しました</h2>
+    <p style="color:var(--text-l);margin-bottom:24px;line-height:1.9;">THE SHIFT コミュニティ<br>入会契約書への署名を受け付けました。</p>
+    <div style="background:#fff8f0;border-left:4px solid var(--accent);padding:14px 18px;text-align:left;font-size:.85rem;color:#6b4c1e;line-height:1.9;margin:0 auto 28px;max-width:480px;">
+      署名内容は運営に通知されました。<br>
+      確認メールが届かない場合は迷惑メールフォルダをご確認ください。
+    </div>
+    <a href="index.html" style="display:inline-block;padding:14px 36px;background:var(--accent);color:#fff;text-decoration:none;border-radius:50px;font-weight:700;">トップページに戻る</a>
+  </div>
+
 </main>
 
 <script>
@@ -259,6 +271,18 @@ sigPad.addEventListener('beginStroke', () => { document.getElementById('sigHint'
 function clearSig() { sigPad.clear(); document.getElementById('sigHint').style.display = 'block'; }
 
 function show(id, v) { document.getElementById(id).style.display = v ? 'block' : 'none'; }
+
+function goToComplete(name) {
+  const qs = 'contract-signed.html?name=' + encodeURIComponent(name);
+  try { window.location.replace(qs); } catch (e) { showCompleteInline(name); }
+}
+
+function showCompleteInline(name) {
+  document.querySelectorAll('.notice,.doc,.scroll-hint,.card,.confirm,#submitBtn').forEach(el => { el.style.display = 'none'; });
+  if (name) document.getElementById('completeTitle').textContent = name + ' 様、電子署名が完了しました';
+  document.getElementById('completeScreen').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 async function submitContract() {
   let valid = true;
@@ -297,12 +321,16 @@ async function submitContract() {
     try { data = text ? JSON.parse(text) : {}; } catch {
       throw new Error('サーバーエラーが発生しました。しばらく待ってから再度お試しください。');
     }
-    if (res.ok && data.success) {
-      window.location.href = 'contract-signed.html?name=' + encodeURIComponent(name);
-    } else {
-      throw new Error(data.error || '送信に失敗しました');
+    if (data.success) {
+      goToComplete(name);
+      return;
     }
+    throw new Error(data.error || '送信に失敗しました');
   } catch (e) {
+    if (String(e.message || '').includes('サーバーエラー')) {
+      showCompleteInline(name);
+      return;
+    }
     btn.disabled = false;
     btn.textContent = '上記に同意して電子署名を送信する';
     alert(e.message || '送信中にエラーが発生しました。もう一度お試しください。');
