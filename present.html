@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://naau-noa.vercel.app/present.html">
 <meta property="og:title" content="ビリーフ観念一覧 無料プレゼント | Na'au Noa">
-<meta property="og:description" content="パニックと他人軸を手放すための制限的信念リスト。お名前とメールアドレスだけで、すぐに受け取れます。">
+<meta property="og:description" content="パニックと他人軸を手放すための制限的信念リスト。登録なしで、すぐに受け取れます。">
 <meta property="og:image" content="https://naau-noa.vercel.app/images/hero-hawaii.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -33,7 +33,7 @@ fbq("track","ViewContent",{content_name:"ビリーフ観念一覧プレゼント
 :root{
   --black:#080a08;--dark:#111310;--mid:#1a1f18;
   --gold:#b8976a;--gold-l:#e8c080;
-  --cream:#f2ede6;--text:#c8c0b4;--white:#fff;
+  --text:#c8c0b4;--white:#fff;
 }
 html{scroll-behavior:smooth;}
 body{
@@ -66,7 +66,7 @@ header{
   margin-bottom:16px;
 }
 .hero h1 em{font-style:normal;color:var(--gold-l);}
-.hero-sub{font-size:.92rem;color:var(--text);font-weight:300;max-width:520px;margin:0 auto 28px;line-height:2;}
+.hero-sub{font-size:.92rem;color:var(--text);font-weight:300;max-width:520px;margin:0 auto;line-height:2;}
 
 .wrap{max-width:520px;margin:0 auto;padding:0 20px 80px;}
 
@@ -89,37 +89,18 @@ header{
 }
 .list li::before{content:"▸";color:var(--gold);flex-shrink:0;margin-top:1px;}
 
-label{display:block;font-size:.72rem;letter-spacing:.12em;color:rgba(255,255,255,.55);margin:0 0 6px;}
-input{
-  width:100%;background:rgba(255,255,255,.06);
-  border:1px solid rgba(184,151,106,.35);
-  border-radius:8px;padding:14px 14px;margin-bottom:14px;
-  color:#fff;font-size:1rem;outline:none;
-  font-family:inherit;
-}
-input:focus{border-color:var(--gold);}
-input::placeholder{color:rgba(255,255,255,.22);}
-.err{min-height:18px;font-size:.72rem;color:#e87070;margin:-6px 0 10px;}
-
 .btn{
-  display:block;width:100%;border:none;cursor:pointer;
+  display:block;width:100%;text-align:center;
   background:linear-gradient(135deg,var(--gold),var(--gold-l));
   color:var(--black);font-weight:700;letter-spacing:.12em;
   font-size:.88rem;padding:16px 18px;border-radius:8px;
-  font-family:inherit;
 }
-.btn:disabled{opacity:.6;cursor:wait;}
 .note{margin-top:12px;font-size:.68rem;color:rgba(255,255,255,.32);line-height:1.8;text-align:center;}
-
-.done{display:none;text-align:center;}
-.done h2{font-size:1.2rem;letter-spacing:.06em;color:#fff;margin-bottom:8px;}
-.done p{margin-bottom:20px;}
 .btn-ghost{
   display:block;width:100%;margin-top:12px;text-align:center;
   border:1px solid rgba(184,151,106,.45);color:var(--gold);
   padding:14px 18px;border-radius:8px;font-size:.82rem;letter-spacing:.1em;
 }
-
 .soft-cta{
   margin-top:28px;padding-top:24px;
   border-top:1px solid rgba(184,151,106,.15);
@@ -144,7 +125,7 @@ footer a{color:rgba(184,151,106,.7);}
   <p class="hero-sub">
     あなたの飛躍を止める制限的信念を、<br>
     「書き換え前 / 書き換え後」で一覧にしました。<br>
-    お名前とメールアドレスだけで、すぐに受け取れます。
+    登録は不要です。下のボタンからすぐ受け取れます。
   </p>
 </section>
 
@@ -160,25 +141,11 @@ footer a{color:rgba(184,151,106,.7);}
     </ul>
   </div>
 
-  <div class="card" id="form-card">
+  <div class="card" style="text-align:center;">
     <h2>FREE DOWNLOAD</h2>
-    <p style="margin-bottom:18px;">入力後、この画面ですぐにダウンロードできます。</p>
-    <form id="gift-form" novalidate>
-      <label for="name">お名前</label>
-      <input id="name" name="name" type="text" autocomplete="name" placeholder="山田 花子" required>
-      <label for="email">メールアドレス</label>
-      <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
-      <div class="err" id="form-err"></div>
-      <button class="btn" type="submit" id="submit-btn">無料で受け取る</button>
-    </form>
-    <p class="note">資料のお届けと、Na'au Noaからのご案内以外には使いません。<br>いつでも配信停止できます。</p>
-  </div>
-
-  <div class="card done" id="done-card">
-    <h2>受け取りの準備ができました</h2>
-    <p>下のボタンから、ビリーフ観念一覧を保存してください。</p>
+    <p style="margin-bottom:18px;">名前もメールアドレスもいりません。</p>
     <a class="btn" id="dl-btn" href="gifts/belief-list.pdf" download="ビリーフ観念一覧.pdf">PDFをダウンロード</a>
-    <p class="note">保存できない場合は、もう一度ボタンを押すか、<br>メールに届くリンクからも受け取れます。</p>
+    <p class="note">保存できない場合は、もう一度ボタンを押してください。</p>
     <div class="soft-cta">
       <p>リストを見て「これ、自分だ」と思ったら。<br>無料の個別相談でも、次の一歩を話せます。</p>
       <a class="btn-ghost" href="booking.html">無料個別相談を見る</a>
@@ -194,62 +161,11 @@ footer a{color:rgba(184,151,106,.7);}
 </footer>
 
 <script>
-(function(){
-  var KEY = "naaunoa_gift_belief";
-  var formCard = document.getElementById("form-card");
-  var doneCard = document.getElementById("done-card");
-  var form = document.getElementById("gift-form");
-  var err = document.getElementById("form-err");
-  var btn = document.getElementById("submit-btn");
-
-  function showDone(){
-    formCard.style.display = "none";
-    doneCard.style.display = "block";
-    doneCard.scrollIntoView({behavior:"smooth", block:"start"});
-  }
-
-  if (sessionStorage.getItem(KEY) === "ok") showDone();
-
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-    var name = document.getElementById("name").value.trim();
-    var email = document.getElementById("email").value.trim();
-    err.textContent = "";
-
-    if (!name){ err.textContent = "お名前を入力してください。"; return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-      err.textContent = "正しいメールアドレスを入力してください。";
-      return;
-    }
-
-    btn.disabled = true;
-    btn.textContent = "準備しています…";
-
-    try {
-      if (window.fbq) fbq("track", "Lead", {content_name:"ビリーフ観念一覧", content_category:"LeadMagnet"});
-    } catch (ignore) {}
-
-    sessionStorage.setItem(KEY, "ok");
-    showDone();
-
-    var a = document.createElement("a");
-    a.href = "gifts/belief-list.pdf";
-    a.download = "ビリーフ観念一覧.pdf";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-
-    fetch("/api/claim-gift", {
-      method: "POST",
-      headers: {"Content-Type":"application/json"},
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        sourceUrl: location.href
-      })
-    }).catch(function(){});
-  });
-})();
+document.getElementById("dl-btn").addEventListener("click", function(){
+  try {
+    if (window.fbq) fbq("track", "Lead", {content_name:"ビリーフ観念一覧", content_category:"LeadMagnet"});
+  } catch (ignore) {}
+});
 </script>
 </body>
 </html>
