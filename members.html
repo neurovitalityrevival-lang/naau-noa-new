@@ -270,8 +270,10 @@
     .video-embed {
       position: relative;
       width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
       background: #050808;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 9 / 16;
     }
     .video-embed video {
       width: 100%;
@@ -279,7 +281,6 @@
       display: block;
       background: #050808;
       object-fit: contain;
-      vertical-align: middle;
     }
     .video-thumb {
       position: relative;
@@ -633,7 +634,7 @@
           playsinline
           preload="metadata"
           controlslist="nodownload"
-          poster="images/landscape-1.jpg"
+          poster="members-private/kauai-blue-whale-poster.jpg"
           aria-label="カウアイの青い鯨と風と遊ぶ海"
         >
           <source src="members-private/kauai-blue-whale.mp4" type="video/mp4">
