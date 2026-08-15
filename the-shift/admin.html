@@ -84,6 +84,21 @@ tr:hover td{background:#f5f5f3;}
 .toast{position:fixed;bottom:20px;right:20px;background:var(--deep);color:#fff;padding:10px 20px;border-radius:8px;font-size:0.82rem;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:999;}
 .toast.show{opacity:1;}
 .hidden{display:none!important;}
+/* NOTIFICATIONS */
+.hdr-actions{display:flex;align-items:center;gap:8px;}
+.notify-btn{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:var(--cream);padding:5px 12px;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.72rem;transition:all 0.2s;}
+.notify-btn.on{background:var(--amber);border-color:var(--amber);color:#fff;}
+.notify-btn:hover{border-color:#fff;}
+.notify-banner{background:linear-gradient(90deg,#D9714E,#E8985E);color:#fff;padding:12px 20px;display:none;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;animation:slideDown 0.3s ease;}
+.notify-banner.show{display:flex;}
+.notify-banner-text{font-size:0.85rem;font-weight:700;}
+.notify-banner-btn{background:#fff;color:var(--deep);border:none;padding:6px 14px;border-radius:6px;font-family:inherit;font-size:0.78rem;font-weight:700;cursor:pointer;}
+.tab-badge{background:#ef4444;color:#fff;font-size:0.65rem;padding:1px 6px;border-radius:10px;margin-left:4px;vertical-align:middle;}
+.stat-box.new-alert{border:2px solid var(--gold);animation:pulse 2s infinite;}
+tr.row-new td{background:#fff8e8!important;border-left:3px solid var(--gold);}
+.poll-status{font-size:0.72rem;color:var(--muted);}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(217,113,78,0.3);}50%{box-shadow:0 0 0 6px rgba(217,113,78,0);}}
 </style>
 </head>
 <body>
@@ -101,13 +116,21 @@ tr:hover td{background:#f5f5f3;}
 
 <!-- MAIN -->
 <div id="mainWrap">
+  <div class="notify-banner" id="notifyBanner">
+    <span class="notify-banner-text" id="notifyBannerText">🔔 新しい予約が入りました</span>
+    <button class="notify-banner-btn" onclick="dismissNotifyBanner()">確認しました</button>
+  </div>
+
   <header>
     <div><div class="hdr-brand">THE SHIFT</div><div class="hdr-title">管理画面</div></div>
-    <button class="logout-btn" onclick="doLogout()">ログアウト</button>
+    <div class="hdr-actions">
+      <button class="notify-btn" id="notifyToggle" onclick="toggleNotify()" title="予約通知のON/OFF">🔔 通知OFF</button>
+      <button class="logout-btn" onclick="doLogout()">ログアウト</button>
+    </div>
   </header>
 
   <div class="tabs">
-    <div class="tab active" onclick="switchTab('bookings',this)">予約一覧</div>
+    <div class="tab active" onclick="switchTab('bookings',this)">予約一覧<span class="tab-badge hidden" id="tabBadge">0</span></div>
     <div class="tab" onclick="switchTab('slots',this)">枠設定</div>
   </div>
 
@@ -119,7 +142,10 @@ tr:hover td{background:#f5f5f3;}
         <div class="stat-box"><div class="stat-num" id="st-month">—</div><div class="stat-lbl">今月</div></div>
         <div class="stat-box"><div class="stat-num" id="st-week">—</div><div class="stat-lbl">今週</div></div>
       </div>
-      <button class="refresh-btn" onclick="loadBookings()">↻ 更新</button>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <span class="poll-status" id="pollStatus">自動監視: OFF</span>
+        <button class="refresh-btn" onclick="loadBookings()">↻ 更新</button>
+      </div>
     </div>
     <div class="tbl-wrap">
       <table>
@@ -206,38 +232,194 @@ tr:hover td{background:#f5f5f3;}
 <script>
 // ===== AUTH =====
 let adminPw = '';
+let pollTimer = null;
+let knownBookingIds = new Set();
+let unreadBookingIds = new Set();
+let notifyEnabled = localStorage.getItem('notifyEnabled') !== 'false';
+const POLL_INTERVAL_MS = 30000;
+const LS_KNOWN_IDS = 'shiftKnownBookingIds';
+const LS_UNREAD_IDS = 'shiftUnreadBookingIds';
+
+function loadStoredIds(key) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? new Set(JSON.parse(raw)) : new Set();
+  } catch { return new Set(); }
+}
+function saveStoredIds(key, set) {
+  localStorage.setItem(key, JSON.stringify([...set]));
+}
+
+function updateNotifyToggleUI() {
+  const btn = document.getElementById('notifyToggle');
+  if (!btn) return;
+  btn.textContent = notifyEnabled ? '🔔 通知ON' : '🔔 通知OFF';
+  btn.classList.toggle('on', notifyEnabled);
+  document.getElementById('pollStatus').textContent =
+    notifyEnabled ? `自動監視: 30秒ごと（最終確認 ${formatClock(new Date())}）` : '自動監視: OFF';
+}
+
+function formatClock(d) {
+  return d.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+}
+
+async function requestBrowserNotifyPermission() {
+  if (!('Notification' in window)) return false;
+  if (Notification.permission === 'granted') return true;
+  if (Notification.permission === 'denied') return false;
+  const p = await Notification.requestPermission();
+  return p === 'granted';
+}
+
+function toggleNotify() {
+  notifyEnabled = !notifyEnabled;
+  localStorage.setItem('notifyEnabled', notifyEnabled ? 'true' : 'false');
+  updateNotifyToggleUI();
+  if (notifyEnabled) {
+    startPolling();
+    toast('🔔 予約通知をONにしました');
+    requestBrowserNotifyPermission();
+  } else {
+    stopPolling();
+    toast('予約通知をOFFにしました');
+  }
+}
+
+function startPolling() {
+  stopPolling();
+  if (!notifyEnabled || !adminPw) return;
+  pollTimer = setInterval(() => loadBookings({ silent: true }), POLL_INTERVAL_MS);
+  updateNotifyToggleUI();
+}
+
+function stopPolling() {
+  if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
+  document.getElementById('pollStatus').textContent = notifyEnabled ? '自動監視: 停止中' : '自動監視: OFF';
+}
+
+function playNotifySound() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.frequency.value = 880;
+    gain.gain.value = 0.08;
+    osc.start();
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+    osc.stop(ctx.currentTime + 0.4);
+  } catch {}
+}
+
+function showBrowserNotification(bookings) {
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+  const b = bookings[0];
+  const slotDate = b.slots?.date || '';
+  const slotTime = b.slots?.start_time?.slice(0, 5) || '';
+  const body = `${b.name} 様\n${slotDate} ${slotTime}\n${b.menu || ''}`;
+  const n = new Notification('📅 新しい予約が入りました', {
+    body,
+    tag: 'shift-new-booking',
+    requireInteraction: true,
+  });
+  n.onclick = () => { window.focus(); switchTab('bookings', document.querySelector('.tab')); n.close(); };
+}
+
+function updateUnreadUI() {
+  const count = unreadBookingIds.size;
+  const badge = document.getElementById('tabBadge');
+  if (count > 0) {
+    badge.textContent = count;
+    badge.classList.remove('hidden');
+    document.title = `(${count}) 管理画面 | THE SHIFT`;
+    document.getElementById('st-week')?.parentElement?.classList.add('new-alert');
+  } else {
+    badge.classList.add('hidden');
+    document.title = '管理画面 | THE SHIFT';
+    document.getElementById('st-week')?.parentElement?.classList.remove('new-alert');
+  }
+}
+
+function markBookingsRead() {
+  unreadBookingIds.forEach(id => knownBookingIds.add(id));
+  unreadBookingIds.clear();
+  saveStoredIds(LS_KNOWN_IDS, knownBookingIds);
+  saveStoredIds(LS_UNREAD_IDS, unreadBookingIds);
+  updateUnreadUI();
+  dismissNotifyBanner();
+  document.querySelectorAll('tr.row-new').forEach(r => r.classList.remove('row-new'));
+}
+
+function dismissNotifyBanner() {
+  document.getElementById('notifyBanner').classList.remove('show');
+}
+
+function handleNewBookings(newOnes) {
+  if (!newOnes.length) return;
+  newOnes.forEach(b => unreadBookingIds.add(String(b.id)));
+  saveStoredIds(LS_UNREAD_IDS, unreadBookingIds);
+  updateUnreadUI();
+
+  const names = newOnes.map(b => b.name).join('、');
+  const msg = newOnes.length === 1
+    ? `🔔 新規予約: ${names} 様`
+    : `🔔 新規予約 ${newOnes.length}件（${names} 様 他）`;
+  document.getElementById('notifyBannerText').textContent = msg;
+  document.getElementById('notifyBanner').classList.add('show');
+  toast(msg);
+  playNotifySound();
+  showBrowserNotification(newOnes);
+}
 
 async function doLogin() {
   const pw = document.getElementById('pwInput').value;
   if (!pw) return;
-  // 認証確認：admin-bookingsにリクエスト
   try {
     const r = await fetch('/api/admin-bookings', { headers: { 'X-Admin-Password': pw } });
     if (r.status === 401) { document.getElementById('loginErr').classList.remove('hidden'); return; }
     adminPw = pw;
     sessionStorage.setItem('adminPw', pw);
+    knownBookingIds = loadStoredIds(LS_KNOWN_IDS);
+    unreadBookingIds = loadStoredIds(LS_UNREAD_IDS);
     document.getElementById('loginWrap').style.display = 'none';
     document.getElementById('mainWrap').style.display = 'block';
-    loadBookings();
+    updateNotifyToggleUI();
+    await loadBookings({ init: true });
     initWeek();
     loadSettings();
+    if (notifyEnabled) {
+      startPolling();
+      requestBrowserNotifyPermission().then(ok => {
+        if (ok) toast('ブラウザ通知が有効です（タブを閉じても通知されます）');
+      });
+    }
   } catch(e) { document.getElementById('loginErr').classList.remove('hidden'); }
 }
 
 function doLogout() {
+  stopPolling();
   adminPw = ''; sessionStorage.removeItem('adminPw');
   document.getElementById('mainWrap').style.display = 'none';
   document.getElementById('loginWrap').style.display = 'flex';
   document.getElementById('pwInput').value = '';
+  dismissNotifyBanner();
+  document.title = '管理画面 | THE SHIFT';
 }
 
 // Auto-login from session
 window.addEventListener('DOMContentLoaded', () => {
   const sp = sessionStorage.getItem('adminPw');
   if (sp) { document.getElementById('pwInput').value = sp; doLogin(); }
-  // default bulk month
   const now = new Date();
   document.getElementById('bulkMonth').value = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+  updateNotifyToggleUI();
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden && adminPw && notifyEnabled) {
+    loadBookings({ silent: true });
+  }
 });
 
 // ===== TABS =====
@@ -248,16 +430,38 @@ function switchTab(id, el) {
   const tc = document.getElementById('tab-'+id);
   tc.classList.add('active');
   tc.style.display='block';
+  if (id==='bookings') {
+    markBookingsRead();
+    loadBookings();
+  }
   if (id==='slots') loadWeek();
 }
 
 // ===== BOOKINGS =====
-async function loadBookings() {
+async function loadBookings(opts = {}) {
+  const { silent = false, init = false } = opts;
   const tbody = document.getElementById('bTbody');
-  tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:20px;color:var(--muted);">読み込み中…</td></tr>';
+  if (!silent) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:20px;color:var(--muted);">読み込み中…</td></tr>';
+  }
   try {
     const r = await fetch('/api/admin-bookings', { headers: { 'X-Admin-Password': adminPw } });
     const data = await r.json();
+    if (!Array.isArray(data)) throw new Error('invalid data');
+
+    if (init) {
+      data.forEach(b => knownBookingIds.add(String(b.id)));
+      saveStoredIds(LS_KNOWN_IDS, knownBookingIds);
+    } else if (notifyEnabled && data.length) {
+      const newOnes = data.filter(b => !knownBookingIds.has(String(b.id)) && !unreadBookingIds.has(String(b.id)));
+      if (newOnes.length) handleNewBookings(newOnes);
+    }
+
+    if (notifyEnabled) {
+      document.getElementById('pollStatus').textContent =
+        `自動監視: 30秒ごと（最終確認 ${formatClock(new Date())}）`;
+    }
+
     if (!data.length) {
       tbody.innerHTML = '';
       document.getElementById('bEmpty').classList.remove('hidden');
@@ -277,10 +481,11 @@ async function loadBookings() {
       const slotDate = b.slots?.date || '—';
       const slotTime = b.slots?.start_time?.slice(0,5) || '—';
       const dateLabel = slotDate!=='—' ? new Date(slotDate+'T00:00:00+09:00').toLocaleDateString('ja-JP',{month:'short',day:'numeric',weekday:'short'}) : '—';
-      return `<tr>
+      const isNew = unreadBookingIds.has(String(b.id));
+      return `<tr class="${isNew ? 'row-new' : ''}">
         <td>${dateLabel} ${slotTime}</td>
         <td>${b.menu}</td>
-        <td>${b.name}</td>
+        <td>${b.name}${isNew ? ' <span style="color:var(--gold);font-size:0.7rem;">NEW</span>' : ''}</td>
         <td>${b.email}</td>
         <td>${b.phone}</td>
         <td style="max-width:180px;overflow:hidden;text-overflow:ellipsis;">${b.message||'—'}</td>
@@ -290,7 +495,11 @@ async function loadBookings() {
     document.getElementById('st-total').textContent = data.length;
     document.getElementById('st-month').textContent = month;
     document.getElementById('st-week').textContent = week;
-  } catch(e) { tbody.innerHTML = '<tr><td colspan="7" style="color:#ef4444;">読み込み失敗</td></tr>'; toast('⚠️ 予約データ読み込み失敗（環境変数を確認してください）'); }
+    updateUnreadUI();
+  } catch(e) {
+    if (!silent) tbody.innerHTML = '<tr><td colspan="7" style="color:#ef4444;">読み込み失敗</td></tr>';
+    toast('⚠️ 予約データ読み込み失敗（環境変数を確認してください）');
+  }
 }
 
 // ===== WEEK TIMELINE =====
