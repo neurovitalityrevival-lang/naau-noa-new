@@ -4,20 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>署名完了 | THE SHIFT</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Noto Serif JP', serif; background: #faf8f5; color: #2c2c2c; min-height: 100vh; display: flex; flex-direction: column; }
-header { background: #1a3a3a; padding: 20px 24px; text-align: center; }
-header a { color: #b8976a; text-decoration: none; font-size: 1.2rem; letter-spacing: 0.12em; }
-.wrap { flex: 1; display: flex; align-items: center; justify-content: center; padding: 48px 24px; }
-.card { background: #fff; border-radius: 16px; padding: 48px 40px; max-width: 520px; width: 100%; text-align: center; box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
-.icon { width: 80px; height: 80px; background: linear-gradient(135deg, #1a3a3a, #2a5a5a); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; font-size: 2rem; color: #f0e8d8; }
-h1 { font-size: 1.35rem; color: #1a3a3a; margin-bottom: 14px; line-height: 1.6; }
-.sub { color: #888; font-size: 0.9rem; margin-bottom: 28px; line-height: 1.9; }
-.note { background: #fff8e8; border-left: 4px solid #b8976a; border-radius: 4px; padding: 14px 18px; text-align: left; font-size: 0.85rem; color: #7a5c2a; line-height: 1.9; margin-bottom: 28px; }
-.back-btn { display: inline-block; padding: 14px 40px; background: #1a3a3a; color: #fff; text-decoration: none; border-radius: 8px; font-size: 1rem; letter-spacing: 0.05em; transition: background 0.2s; }
-.back-btn:hover { background: #2a5a5a; }
+:root{--sand:#F7F5F0;--sage:#4A6B5D;--accent:#E8985E;--text:#2C3531;--text-l:#5a6560;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--sand);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+header{background:var(--sage);padding:20px 24px;text-align:center}
+header a{color:#fff;text-decoration:none;font-family:'Shippori Mincho',serif;font-size:1.05rem;letter-spacing:.18em}
+.wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 24px}
+.card{background:#fff;border-radius:16px;padding:48px 40px;max-width:520px;width:100%;text-align:center;box-shadow:0 4px 30px rgba(0,0,0,.08)}
+.icon{width:80px;height:80px;background:var(--sage);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 28px;font-size:2rem;color:#fff}
+h1{font-family:'Shippori Mincho',serif;font-size:1.35rem;margin-bottom:14px;line-height:1.6}
+.sub{color:var(--text-l);font-size:.9rem;margin-bottom:28px;line-height:1.9}
+.note{background:#fff8f0;border-left:4px solid var(--accent);padding:14px 18px;text-align:left;font-size:.85rem;color:#6b4c1e;line-height:1.9;margin-bottom:28px}
+.back-btn{display:inline-block;padding:14px 40px;background:var(--accent);color:#fff;text-decoration:none;border-radius:50px;font-weight:700}
 </style>
 </head>
 <body>
@@ -28,8 +29,8 @@ h1 { font-size: 1.35rem; color: #1a3a3a; margin-bottom: 14px; line-height: 1.6; 
     <h1 id="title">電子署名が完了しました</h1>
     <p class="sub">THE SHIFT コミュニティ<br>入会契約書への署名を受け付けました。</p>
     <div class="note">
-      署名完了の確認メールをお送りしました。<br>
-      届かない場合は迷惑メールフォルダをご確認ください。<br><br>
+      署名内容は運営に通知されました。<br>
+      確認メールが届かない場合は迷惑メールフォルダをご確認ください。<br><br>
       ご不明点は Instagram の DM またはメールにてご連絡ください。
     </div>
     <a href="index.html" class="back-btn">トップページに戻る</a>
