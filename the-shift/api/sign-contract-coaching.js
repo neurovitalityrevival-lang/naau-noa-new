@@ -1,5 +1,31 @@
 const { Resend } = require('resend');
 
+const RESEND_ACCOUNT_EMAIL = process.env.RESEND_ACCOUNT_EMAIL || 'neuro.vitality.revival@gmail.com';
+
+function isTestLimitError(err) {
+  const msg = err?.message || String(err || '');
+  return /only send testing emails to your own email/i.test(msg);
+}
+
+async function sendWithFallback(resend, payload, fallbackTo) {
+  let result = await resend.emails.send(payload);
+  if (result.error && isTestLimitError(result.error) && fallbackTo && payload.to[0] !== fallbackTo) {
+    result = await resend.emails.send({
+      ...payload,
+      to: [fallbackTo],
+      subject: `[転送] ${payload.subject}`,
+      html: `
+        <p style="background:#fff8e8;border-left:4px solid #E8985E;padding:12px 16px;font-size:.85rem;color:#6b4c1e;margin-bottom:20px;">
+          ※ Resend のテストモードのため、本来の宛先（<strong>${payload.to[0]}</strong>）に送れず、
+          アカウント登録メール（${fallbackTo}）へ転送しています。<br>
+          本番運用時は resend.com/domains でドメイン認証後、${payload.to[0]} 宛てに直接届きます。
+        </p>
+        ${payload.html}`,
+    });
+  }
+  return result;
+}
+
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
@@ -85,30 +111,32 @@ module.exports = async function handler(req, res) {
       content: base64Data,
     };
 
-    const clientResult = await resend.emails.send({
-      from: FROM,
-      to: [email],
-      subject: `【${BRAND_NAME}】${program} 契約書への電子署名を受け付けました`,
-      html: clientHtml,
-      attachments: [attachment],
-    });
-
-    if (clientResult.error) {
-      console.error('Resend client mail error:', clientResult.error);
-      return res.status(502).json({ error: clientResult.error.message || '確認メールの送信に失敗しました' });
-    }
-
-    const ownerResult = await resend.emails.send({
+    // 運営通知を先に送信（テストモード時はアカウントメールへ転送）
+    const ownerResult = await sendWithFallback(resend, {
       from: FROM,
       to: [NOTIFY_EMAIL],
       subject: `【契約署名】${name} 様が署名しました（${program}）`,
       html: ownerHtml,
       attachments: [attachment],
-    });
+    }, RESEND_ACCOUNT_EMAIL);
 
     if (ownerResult.error) {
       console.error('Resend owner mail error:', ownerResult.error);
       return res.status(502).json({ error: ownerResult.error.message || '通知メールの送信に失敗しました' });
+    }
+
+    // 依頼者宛確認メール（テストモードで送れない場合はスキップして署名は成功扱い）
+    const clientResult = await sendWithFallback(resend, {
+      from: FROM,
+      to: [email],
+      subject: `【${BRAND_NAME}】${program} 契約書への電子署名を受け付けました`,
+      html: clientHtml,
+      attachments: [attachment],
+    }, RESEND_ACCOUNT_EMAIL);
+
+    if (clientResult.error && !isTestLimitError(clientResult.error)) {
+      console.error('Resend client mail error:', clientResult.error);
+      return res.status(502).json({ error: clientResult.error.message || '確認メールの送信に失敗しました' });
     }
 
     return res.status(200).json({ success: true });
