@@ -154,14 +154,14 @@ nav a:hover{color:var(--white);}
 .menu-btn-out{background:transparent;border:1px solid var(--gold);color:var(--gold);}
 .menu-btn-out:hover{background:var(--gold);color:var(--black);}
 
-/* ACCESS */
-.access-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;max-width:900px;margin:56px auto 0;align-items:start;}
-.access-table{border-collapse:collapse;width:100%;}
-.access-table tr{border-bottom:1px solid rgba(0,0,0,.07);}
-.access-table td{padding:14px 0;font-size:.85rem;vertical-align:top;}
-.access-table td:first-child{color:#888;font-size:.72rem;letter-spacing:.1em;width:90px;padding-top:16px;}
-.access-map{border-radius:2px;overflow:hidden;height:280px;}
-.access-map iframe{width:100%;height:100%;border:none;}
+/* SNS */
+.sns-box{max-width:560px;margin:56px auto 0;text-align:center;}
+.sns-lead{font-size:1.05rem;color:var(--black);font-weight:500;letter-spacing:.04em;margin-bottom:16px;line-height:1.9;}
+.sns-body{font-size:.88rem;color:#666;font-weight:300;line-height:2.1;margin-bottom:32px;}
+.sns-handle{display:inline-block;font-size:.92rem;letter-spacing:.04em;color:var(--gold);margin-bottom:28px;}
+.sns-handle:hover{color:var(--gold-l);}
+.sns-btn{display:inline-block;padding:14px 40px;border:1px solid var(--gold);color:var(--gold);font-size:.78rem;letter-spacing:.16em;text-decoration:none;transition:all .2s;}
+.sns-btn:hover{background:var(--gold);color:var(--black);}
 
 /* CTA SECTION */
 .cta-sec{text-align:center;padding:140px 40px;position:relative;overflow:hidden;}
@@ -214,7 +214,6 @@ footer{background:var(--black);border-top:1px solid rgba(184,151,106,.15);paddin
   .review-list{grid-template-columns:1fr;}
   .profile-grid{grid-template-columns:1fr;}
   .menu-grid{grid-template-columns:1fr;}
-  .access-inner{grid-template-columns:1fr;}
   footer{padding:48px 24px 36px;} .footer-top{flex-direction:column;gap:24px;text-align:center;align-items:center;} .footer-info{text-align:center;}
   .footer-legal dl{grid-template-columns:1fr;gap:2px 0;} .footer-legal dt{margin-top:10px;}
   .sticky-bottom{padding:12px 20px;} .sticky-bottom-text{display:none;}
@@ -492,24 +491,21 @@ footer{background:var(--black);border-top:1px solid rgba(184,151,106,.15);paddin
   </div>
 </section>
 
-<!-- ACCESS -->
-<section id="access" class="sec sec-light">
+<!-- SNS -->
+<section id="sns" class="sec sec-light">
   <div class="inner">
-    <p class="sec-en sec-en-dark fade-up">Access</p>
-    <div class="sec-sub fade-up d1" style="color:#999;">アクセス</div>
-    <div class="access-inner">
-      <div class="fade-up d2">
-        <table class="access-table">
-          <tr><td>住所</td><td>神奈川県茅ヶ崎市中海岸1-1-46<br>SOUTHERN-St_Route33 1号室</td></tr>
-          <tr><td>最寄り駅</td><td>JR茅ヶ崎駅から徒歩5分</td></tr>
-          <tr><td>営業時間</td><td>平日 9:30〜16:30<br>土曜 10:15〜17:00</td></tr>
-          <tr><td>定休日</td><td>水曜・日曜</td></tr>
-          <tr><td>SNS</td><td><a href="https://www.instagram.com/daisuke_aloha_magician/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">@daisuke_aloha_magician</a></td></tr>
-          <tr><td>対応</td><td>完全オンライン（Zoom）対応 / 全国どこからでも</td></tr>
-        </table>
-      </div>
-      <div class="access-map fade-up d3">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3253.!2d139.4085!3d35.3194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60184e900fca7e4d%3A0x1a2b3c4d5e6f7890!2z576k5LyK5bed5biC5Lit5rW35bee5qCh!5e0!3m2!1sja!2sjp!4v1" allowfullscreen="" loading="lazy"></iframe>
+    <p class="sec-en sec-en-dark fade-up">SNS</p>
+    <div class="sec-sub fade-up d1" style="color:#999;">情報発信</div>
+    <div class="sns-box fade-up d2">
+      <p class="sns-lead">日々の発信は、Instagramで行っています。</p>
+      <p class="sns-body">
+        パニック障害の手放し方、潜在意識の書き換え、<br>
+        自分軸で生きるヒントを、リールと投稿でお届けしています。<br>
+        セッションは完全オンライン。全国どこからでもご覧いただけます。
+      </p>
+      <a class="sns-handle" href="https://www.instagram.com/daisuke_aloha_magician/" target="_blank" rel="noopener">@daisuke_aloha_magician</a>
+      <div>
+        <a class="sns-btn" href="https://www.instagram.com/daisuke_aloha_magician/" target="_blank" rel="noopener">Instagramを見る</a>
       </div>
     </div>
   </div>
