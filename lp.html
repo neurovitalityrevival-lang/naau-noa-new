@@ -116,6 +116,41 @@ header a { color: #b8976a; text-decoration: none; font-size: 1.1rem; letter-spac
 .delay-3 { transition-delay: 0.42s; }
 .delay-4 { transition-delay: 0.56s; }
 
+/* ── 口コミ動画（このページ内で再生） ── */
+.voice-block { width: 100%; max-width: 620px; margin: 0 auto 40px; }
+.voice-video {
+  position: relative; width: 100%; aspect-ratio: 16 / 9;
+  border-radius: 10px; overflow: hidden;
+  background: #050a0a; box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+}
+.voice-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.voice-video-poster {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  padding: 0; border: 0; background: #050a0a; cursor: pointer; display: block;
+}
+.voice-video-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.voice-video-play {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(to top, rgba(5,10,10,0.5), rgba(5,10,10,0.08) 42%, rgba(5,10,10,0.22));
+}
+.voice-video-poster:hover .voice-video-play,
+.voice-video-poster:focus-visible .voice-video-play { background: rgba(5,10,10,0.35); }
+.voice-video-poster:focus-visible { outline: 2px solid #e8c080; outline-offset: 3px; }
+.voice-video-play span {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: linear-gradient(135deg, #c9a870, #e8c080);
+  box-shadow: 0 8px 28px rgba(184,151,106,0.5);
+  display: flex; align-items: center; justify-content: center;
+}
+.voice-video-play span::before {
+  content: ''; display: block; margin-left: 4px;
+  border-style: solid; border-width: 11px 0 11px 18px;
+  border-color: transparent transparent transparent #1a2e2e;
+}
+.voice-video-caption {
+  margin-top: 14px; font-size: 0.78rem; letter-spacing: 0.12em; color: #b8976a;
+}
+
 /* ── フッター ── */
 footer { background: #030808; padding: 28px 24px; text-align: center; }
 footer p { color: #555; font-size: 0.76rem; }
@@ -167,7 +202,16 @@ footer a { color: #555; }
   <p class="t-mid fade-up delay-1" style="margin-bottom:48px;font-size:clamp(1rem,3.2vw,1.3rem);">
     「変わらない」と思っていた方たちが、<br>実際に変わった証拠
   </p>
-  <div class="fade-up delay-2" style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:620px;width:100%;">
+  <div class="voice-block fade-up delay-2">
+    <div class="voice-video" id="voiceVideo">
+      <button type="button" class="voice-video-poster" aria-label="受講後インタビューをこのページで再生">
+        <img src="images/voice-interview.jpg" alt="" width="1280" height="720">
+        <span class="voice-video-play" aria-hidden="true"><span></span></span>
+      </button>
+    </div>
+    <p class="voice-video-caption">受講後インタビュー</p>
+  </div>
+  <div class="fade-up delay-3" style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:620px;width:100%;">
     <img src="images/voice-dm1.jpg" alt="お客様の声" loading="lazy" style="width:100%;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,0.4);">
     <img src="images/voice-dm2.jpg" alt="お客様の声" loading="lazy" style="width:100%;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,0.4);">
     <img src="images/voice-dm3.jpg" alt="お客様の声" loading="lazy" style="width:100%;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,0.4);">
@@ -470,6 +514,24 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
 document.querySelectorAll('.fade-up, .fade-in').forEach(el => observer.observe(el));
+
+// 口コミ動画はクリック後にこのページ内へ埋め込む（YouTubeへ遷移しない）
+(function () {
+  var box = document.getElementById('voiceVideo');
+  if (!box) return;
+  var poster = box.querySelector('.voice-video-poster');
+  if (!poster) return;
+  poster.addEventListener('click', function () {
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/eOwlU3Y46lo?autoplay=1&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3';
+    iframe.title = 'パニック障害改善コーチング3ヶ月受講後のインタビュー';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    poster.remove();
+    box.appendChild(iframe);
+  });
+})();
 
 // ── セクション閲覧トラッキング ──
 const SECTIONS = {
