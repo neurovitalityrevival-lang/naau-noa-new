@@ -203,13 +203,22 @@ footer a { color: #555; }
     「変わらない」と思っていた方たちが、<br>実際に変わった証拠
   </p>
   <div class="voice-block fade-up delay-2">
-    <div class="voice-video" id="voiceVideo">
+    <div class="voice-video" id="voiceVideo" data-video-id="eOwlU3Y46lo" data-video-title="パニック障害改善コーチング3ヶ月受講後のインタビュー">
       <button type="button" class="voice-video-poster" aria-label="受講後インタビューをこのページで再生">
         <img src="images/voice-interview.jpg" alt="" width="1280" height="720">
         <span class="voice-video-play" aria-hidden="true"><span></span></span>
       </button>
     </div>
     <p class="voice-video-caption">受講後インタビュー</p>
+  </div>
+  <div class="voice-block fade-up delay-3">
+    <div class="voice-video" data-video-id="3429RUuhQqc" data-video-title="メンタルマスタープログラム受講完了後のインタビュー">
+      <button type="button" class="voice-video-poster" aria-label="メンタルマスタープログラム受講完了後のインタビューをこのページで再生">
+        <img src="images/voice-interview-2.jpg" alt="" width="1280" height="720">
+        <span class="voice-video-play" aria-hidden="true"><span></span></span>
+      </button>
+    </div>
+    <p class="voice-video-caption">メンタルマスタープログラム受講完了後</p>
   </div>
   <div class="fade-up delay-3" style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:620px;width:100%;">
     <img src="images/voice-dm5.jpg" alt="お客様の声" loading="lazy" style="width:100%;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,0.4);">
@@ -520,22 +529,21 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.fade-up, .fade-in').forEach(el => observer.observe(el));
 
 // 口コミ動画はクリック後にこのページ内へ埋め込む（YouTubeへ遷移しない）
-(function () {
-  var box = document.getElementById('voiceVideo');
-  if (!box) return;
+document.querySelectorAll('.voice-video').forEach(function (box) {
   var poster = box.querySelector('.voice-video-poster');
-  if (!poster) return;
+  var videoId = box.getAttribute('data-video-id');
+  if (!poster || !videoId) return;
   poster.addEventListener('click', function () {
     var iframe = document.createElement('iframe');
-    iframe.src = 'https://www.youtube-nocookie.com/embed/eOwlU3Y46lo?autoplay=1&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3';
-    iframe.title = 'パニック障害改善コーチング3ヶ月受講後のインタビュー';
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3';
+    iframe.title = box.getAttribute('data-video-title') || 'お客様の声';
     iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
     iframe.allowFullscreen = true;
     iframe.referrerPolicy = 'strict-origin-when-cross-origin';
     poster.remove();
     box.appendChild(iframe);
   });
-})();
+});
 
 // ── セクション閲覧トラッキング ──
 const SECTIONS = {
